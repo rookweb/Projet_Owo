@@ -4,7 +4,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Historique des ventes a credit </h1>
+                    <h1 class="page-header">Stock</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -13,17 +13,18 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Historique des ventes a credit 
+                            Liste des produits en stock
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>Date</th>
-                                        <th>Utilisateur</th>
-                                        <th>Identifiant de vente</th>
-                                        <th>Etat</th>
+                                        <th>Designation</th>
+                                        <th>Molecule</th>
+                                        <th>Laboratoire</th>
+                                        <th>Prix unitaire</th>
+                                        <th>Quantite en stock</th>
                                         <th>Action</th>
                                     </tr>
                                 <tbody>
@@ -32,10 +33,10 @@
                                         <td><?php echo $donnees['code_cip']; ?></td>
                                         <td><?php echo $donnees['designation']; ?></td>
                                         <td><?php echo $donnees['dci']; ?></td>
-                                        <td><?php echo 'Non regle'; ?></td>
+                                        <td><?php echo $donnees['dci']; ?></td>
+                                        <td class="center"><?php echo $donnees['nom_forme']; ?></td>
                                         <td class="center">
-                                            <a class="btn btn-outline btn-primary fa fa-gear" href="#">encaisser</a>
-                                            <!-- l'appuie du bouton doit declencher un popup pour definir le mode de paiement et les informations necessaires --> 
+                                            <a class="btn btn-outline btn-primary fa fa-gear" href="#"></a>
                                             <a class="btn btn-outline btn-success fa fa-times" href="#"></a>
                                             <a class="btn btn-outline btn-warning fa fa-times" href="#"></a>
                                         </td>
@@ -51,4 +52,5 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+
 
