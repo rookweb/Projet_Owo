@@ -23,8 +23,9 @@
                                         <th>Designation</th>
                                         <th>Molecule</th>
                                         <th>Laboratoire</th>
-                                        <th>Derniere livraison</th>
+                                        <th>Prix unitaire</th>
                                         <th>Quantite en stock</th>
+                                        <th>Total</th>
                                         <th>Action</th>
                                     </tr>
                                 <tbody>
@@ -35,6 +36,7 @@
                                         <td><?php echo $donnees['dci']; ?></td>
                                         <td><?php echo $donnees['dci']; ?></td>
                                         <td class="center"><?php echo $donnees['nom_forme']; ?></td>
+                                        <td><?php echo $donnees['code_cip']; ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-primary fa fa-gear" href="#"></a>
                                             <a class="btn btn-outline btn-success fa fa-times" href="#"></a>

@@ -16,7 +16,7 @@
                         <div class="panel-body">
                             <div class="row">
 
-                                <form role="form" method="post" action="script_ajout.php">
+                                <form role="form" method="post" action="http://localhost/OwoNew/index.php?page=ajout_commercial">
 
                                     
                                     

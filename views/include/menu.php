@@ -19,7 +19,7 @@
 					   <li class="dropdown-header"> CAISSE </li> 
                         <li><a href="?page=historiq_caisse"><i class="fa fa-history fa-fw"></i> Historique vente </a>
                         </li> 
-						<li><a href="#"><i class="fa fa-credit-card fa-fw"></i> Vente credit jour </a>
+						<li><a href="?page=vente_credit_caisse"><i class="fa fa-credit-card fa-fw"></i> Vente credit jour </a>
                         </li>
 						<li><a href="?page=sortie_caisse"><i class="fa fa-minus-square fa-fw"></i> Sortie caisse jour </a>
                         </li><li class="divider"></li>
@@ -34,17 +34,17 @@
                     </a>
                     <ul class="dropdown-menu dropdown-gear">
 					   <li class="dropdown-header"> GESTION PHARMACIE </li> 
-                        <li><a href="?page=produit"><i class="fa fa-medkit fa-fw"></i> Produits</a>
+                        <li><a href="?page=list_produit"><i class="fa fa-medkit fa-fw"></i> Produits</a>
                         </li> <li class="divider"></li>
 						<li><a href="?page=stock"><i class="fa fa-th-list fa-fw"></i> Stocks</a>
                         </li> <li class="divider"></li>
-						<li><a href="?page=client"><i class="fa fa-users fa-fw"></i> Clients</a>
+						<li><a href="?page=list_client"><i class="fa fa-users fa-fw"></i> Clients</a>
                         </li> <li class="divider"></li>
 						<li><a href="?page=journee"><i class="fa fa-calendar-check-o fa-fw"></i> Journées</a>
                         </li> <li class="divider"></li>
-                        <li><a href="?page=vente"><i class="fa fa-shopping-basket fa-fw"></i> Ventes</a>
+                        <li><a href="?page=liste_vente"><i class="fa fa-shopping-basket fa-fw"></i> Ventes</a>
                         </li> <li class="divider"></li
-                        <li><a href="?page=utilisateur"><i class="fa fa-user fa-fw"></i> Utilisateurs</a>
+                        <li><a href="?page=liste_utilisateur"><i class="fa fa-user fa-fw"></i> Utilisateurs</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -129,7 +129,7 @@
                                     <a href="#"><i class="fa fa-calendar-check-o fa-fw"></i> Gestion des journees<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="?page=journee"><i class="fa fa-calendar-plus-o fa-fw"></i>Ouvrir une journee</a>
+                                            <a href="?page=ouvrir_journee"><i class="fa fa-calendar-plus-o fa-fw"></i>Ouvrir une journee</a>
                                         </li>
                                         <li>
                                             <a href="?page=journee"><i class="fa fa-calendar-times-o fa-fw"></i>Journées de Caisse</a>
@@ -162,18 +162,12 @@
                                     <a href="?page=sortie_caisse"><i class="fa fa-hand-o-right fa-fw"></i> Sortie de caisse</a>
                                 </li>
 								 <li>
-                                              <a href="?page="><i class="fa fa-history fa-fw"></i> Gestion Tickets<span class="fa arrow"></span></a>
-                                              <ul class="nav nav-third-level">
+                                        <a href="?page="><i class="fa fa-history fa-fw"></i> Gestion Tickets<span class="fa arrow"></span></a>
+                                            <ul class="nav nav-third-level">
                                                 <li>
                                                    <a href="?page=tickets_caisse"><i class="fa fa-ticket fa-fw"></i> Tickets de caisse</a>
-                                                    </li>
-								                 <li>
-                                                 <a href="?page=tickets_caisse"> <i class="fa fa-close fa-fw"></i> Annulation Tickets</a>
-                                                 </li>
-                                                 <li>
-                                                <a href="?page=tickets_caisse"><i class="fa fa-edit fa-fw"></i> Modification Tickets</a>
-                                                    </li>
-                                                </ul>
+                                                </li>
+                                            </ul>
                             
                                  </li>
                             </ul>
@@ -270,10 +264,10 @@
                             <a href="?page="><i class="fa fa-files-o fa-fw"></i> Logs<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="?page="> <i class="fa fa-file-archive-o fa-fw"></i> Logs connexions</a>
+                                    <a href="?page=logs_connexion"> <i class="fa fa-file-archive-o fa-fw"></i> Logs connexions</a>
                                 </li>
                                 <li>
-                                    <a href="?page="><i class="fa fa-file-code-o fa-fw"></i> Logs evenements</a>
+                                    <a href="?page=logs"><i class="fa fa-file-code-o fa-fw"></i> Logs evenements</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
