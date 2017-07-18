@@ -1,3 +1,3 @@
 <?php
 
-require_once('views/administration/Fournisseur/compte_fournisseur.php');
+require_once('pages/administration/Fournisseur/compte_fournisseur.php');

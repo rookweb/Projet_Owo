@@ -21,4 +21,4 @@ if(isset($_POST['submit']))
 	}
 
 
-require_once("views/administration/Produit/ajout_produit.php");
+require_once("/pages/administration/Produit/ajout_produit.php");

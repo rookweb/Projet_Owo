@@ -6,7 +6,7 @@ if ( ! function_exists('getProduits')) {
 		$produits = array();
 		if (!empty($search)) {
 			$q = $bdd->prepare('SELECT * FROM produit where designation like ?');
-			$q->execute(['%'.$search.'%']);
+			$q->execute('%'.$search.'%');
 		}else{
 		$q = $bdd->query('SELECT * FROM produit');
 		$q->execute();	

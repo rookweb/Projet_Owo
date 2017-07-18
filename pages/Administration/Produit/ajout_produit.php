@@ -1,5 +1,5 @@
 <?php
-include("../../connexionDB.php");
+include("/pages/include/connexionDB.php");
 $labo=$bdd->query('SELECT code_lab,nom_laboratoire FROM laboratoire');
 $classe=$bdd->query('SELECT code_clas,description FROM classe');
 $exploitant = $bdd->query('SELECT code_exploitant,libelle FROM exploitant');
@@ -7,62 +7,14 @@ $specialite=$bdd->query('SELECT code_specialite,nom_specialite FROM specialite')
 $localisation=$bdd->query('SELECT code_localisation,nom_localisation FROM localisation');
 $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="../../assets/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../../assets/dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="../../assets/vendor/morrisjs/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../../assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <?php include("../../menu.php"); ?>
-
-    </div>
-
-        <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Enregistrement d'un produit</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            
-            <div class="row">
-                <div class="col-lg-12">
 
                     <!-- /.section des identifiants -->
                     <div class="panel panel-default">
@@ -70,7 +22,7 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                         <div class="panel-body">
                             <div class="row">
 
-                                <form role="form" method="post" action="script_ajout.php">
+                                <form role="form" method="post" action="pages/administration/Produit/script_ajout.php">
 
                                     <div class="col-lg-8">
                                     <h1>les identifiants</h1>
@@ -109,6 +61,10 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                         <h3>Informations</h3>
                                          <div class="form-group">
                                             <label for="dci">Molecule de base</label>
+                                            <input class="form-control" id="dci" name="dci">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dci">Dénomination Commune Internatioanl</label>
                                             <input class="form-control" id="dci" name="dci">
                                         </div>
                                         <div class="form-group">
@@ -239,47 +195,21 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                                 </select> 
                                             </div>
                                     </div>
-
                                     <div class="col-lg-8">
                                         <button type="submit" class="btn btn-success col-lg-5" name="submit">Enregistrer le produit</button>
                                         <button type="reset" class="btn btn-danger col-lg-5 col-lg-push-2">Annuler l'enregistrement</button>
                                     </div>
+
                                 </form>
                             </div>
-                                <!-- /.col-lg-6 (nested) -->
-                                
-                                <!-- /.col-lg-6 (nested) -->
-                            </div>
-                            <!-- /.row (nested) -->
-                    </div>
-                        <!-- /.panel-body -->
-                </div>
-                    <!-- /.section des prix -->
+                                <!-- /.row -->
 
-                    <!-- /.panel -->
-            </div>
+
+                        </div>
+                        <!-- /.panel -->
         </div>
             <!-- /.row -->
 
-
-
-
-    <script src="../../assets/vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../../assets/vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="../../assets/vendor/raphael/raphael.min.js"></script>
-    <script src="../../assets/vendor/morrisjs/morris.min.js"></script>
-    <script src="../../assets/data/morris-data.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../../assets/dist/js/sb-admin-2.js"></script>
-    <script type="text/javascript" src="../bootstrap-datepicker.min.js"></script>
     <script>
     $(document).ready(function(){
         var date_input=$('input[name="peremption"]'); //our date input has the name "date"
@@ -316,7 +246,82 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
         })
     })
     </script>
+    <script>
+        function noPreview() {
+            $('#image-preview-div').css("display", "none");
+            $('#preview-img').attr('src', 'noimage');
+            $('upload-button').attr('disabled', '');
+        }
 
-</body>
+        function selectImage(e) {
+            $('#file').css("color", "green");
+            $('#image-preview-div').css("display", "block");
+            $('#preview-img').attr('src', e.target.result);
+            $('#preview-img').css('max-width', '550px');
+        }
 
-</html>
+        $(document).ready(function (e) {
+
+            var maxsize = 500 * 1024; // 500 KB
+
+            $('#max-size').html((maxsize/1024).toFixed(2));
+
+            $('#upload-image-form').on('submit', function(e) {
+
+                e.preventDefault();
+
+                $('#message').empty();
+                $('#loading').show();
+
+                $.ajax({
+                    url: "upload_image.php",
+                    type: "POST",
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(data)
+                    {
+                        $('#loading').hide();
+                        $('#message').html(data);
+                    }
+                });
+
+            });
+
+            $('#file').change(function() {
+
+                $('#message').empty();
+
+                var file = this.files[0];
+                var match = ["image/jpeg", "image/png", "image/jpg"];
+
+                if ( !( (file.type == match[0]) || (file.type == match[1]) || (file.type == match[2]) ) )
+                {
+                    noPreview();
+
+                    $('#message').html('<div class="alert alert-warning" role="alert">Unvalid image format. Allowed formats: JPG, JPEG, PNG.</div>');
+
+                    return false;
+                }
+
+                if ( file.size > maxsize )
+                {
+                    noPreview();
+
+                    $('#message').html('<div class=\"alert alert-danger\" role=\"alert\">The size of image you are attempting to upload is ' + (file.size/1024).toFixed(2) + ' KB, maximum size allowed is ' + (maxsize/1024).toFixed(2) + ' KB</div>');
+
+                    return false;
+                }
+
+                $('#upload-button').removeAttr("disabled");
+
+                var reader = new FileReader();
+                reader.onload = selectImage;
+                reader.readAsDataURL(this.files[0]);
+
+            });
+
+        });
+    </script>
+

@@ -3,41 +3,79 @@
 session_start();
 
 
-    try
-    {
-        $bdd = new PDO('mysql:host=localhost;dbname=pharma', 'root', '');
-    }
-    catch (Exception $e)
-    {
-        die('Erreur : ' . $e->getMessage());
-    }
+include "../../include/connexionDB.php";
 
+if (isset($_POST['cip']) && isset($_POST['interne']) && isset($_POST['cip']) && isset($_POST['designation'])) {
 
 
 //Fonction pour valider les valeurs saisies dans les champs en fonction de la taille
 
 // les variables
 
-$barre=isset($_POST['barre']) ? $_POST['barre'] : '';
-$cip=isset($_POST['cip']) ? $_POST['cip']:'';
-$interne=isset($_POST['interne']) ? $_POST['interne']:'';
-$dci=isset($_POST['dci']) ? $_POST['dci']:'';
-$designation=isset($_POST['designation']) ? $_POST['designation']:'';
-$peremption=isset($_POST['peremption']) ? $_POST['peremption']:'';
-$tva=isset($_POST['tva']) ? $_POST['tva']:'';
-$achat=isset($_POST['achat']) ? $_POST['achat']:'';
-$coef=isset($_POST['coef']) ? $_POST['coef']:'';
-$reduction=isset($_POST['reduction']) ? $_POST['reduction']:'';
-$vente=isset($_POST['vente']) ? $_POST['vente']:'';
-$labo=isset($_POST['laboratoire']) ? $_POST['laboratoire']:'';
-$localisation=isset($_POST['localisation']) ? $_POST['localisation']:'';
-$exploitant=isset($_POST['exploitant']) ? $_POST['exploitant']:'';
-$classe=isset($_POST['classe']) ? $_POST['classe']:'';
-$specialite=isset($_POST['specialite']) ? $_POST['specialite']:'';
-$commercialisation=isset($_POST['commercialisation']) ? $_POST['commercialisation']:'';
-$enregistrement=isset($_POST['enregistrement']) ? $_POST['enregistrement']:'';
-$taux_tva=isset($_POST['tva']) ? $_POST['tva']:'';
-$forme=isset($_POST['forme']) ? $_POST['forme']:'';
+    $barre=isset($_POST['barre']) ? $_POST['barre'] : '';
+    $cip=isset($_POST['cip']) ? $_POST['cip']:'';
+    $interne=isset($_POST['interne']) ? $_POST['interne']:'';
+    $dci=isset($_POST['dci']) ? $_POST['dci']:'';
+    $designation=isset($_POST['designation']) ? $_POST['designation']:'';
+    $peremption=isset($_POST['peremption']) ? $_POST['peremption']:'';
+    $tva=isset($_POST['tva']) ? $_POST['tva']:'';
+    $achat=isset($_POST['achat']) ? $_POST['achat']:'';
+    $coef=isset($_POST['coef']) ? $_POST['coef']:'';
+    $reduction=isset($_POST['reduction']) ? $_POST['reduction']:'';
+    $vente=isset($_POST['vente']) ? $_POST['vente']:'';
+    $labo=isset($_POST['laboratoire']) ? $_POST['laboratoire']:'';
+    $localisation=isset($_POST['localisation']) ? $_POST['localisation']:'';
+    $exploitant=isset($_POST['exploitant']) ? $_POST['exploitant']:'';
+    $classe=isset($_POST['classe']) ? $_POST['classe']:'';
+    $specialite=isset($_POST['specialite']) ? $_POST['specialite']:'';
+    $commercialisation=isset($_POST['commercialisation']) ? $_POST['commercialisation']:'';
+    $enregistrement=isset($_POST['enregistrement']) ? $_POST['enregistrement']:'';
+    $taux_tva=isset($_POST['tva']) ? $_POST['tva']:'';
+    $forme=isset($_POST['forme']) ? $_POST['forme']:'';
+    //Formattage
+    $nom_article = htmlspecialchars($designation);
+    $dci = utf8_decode($dci);
+    $indice = htmlspecialchars($indice);
+    $prix_achat = htmlspecialchars($prix_achat);
+    $prix_vente = htmlspecialchars($prix_vente);
+    $dcriptiones = htmlspecialchars($description);
+    //Traitement
+    $json = array();
+    $erreursChamp = array();
+    $json['erreur'] = false;
+    if ($nom_article === '') {
+        $erreursChamp['nom_article'] = 'vide';
+    }
+    if (!$indice) {
+        $erreursChamp['prix_a'] = (!isset($_POST['prix_a'])) ? 'vide' : '';
+    }
+    if (!$indice) {
+        $erreursChamp['prix_u'] = (!isset($_POST['prix_u'])) ? 'vide' : '';
+    }
+    if (!empty($erreursChamp)) {
+        $json['erreur'] = 'champs';
+        $json['liste_erreurs'] = $erreursChamp;
+    }
+    if (!$json['erreur']) {//Pas d erreur
+        $req = $bdd->prepare("SELECT ID FROM article WHERE nom_article=?");
+        $req->execute(array($nom_article));
+        if ($req->rowCount() != 0) {
+            $json['erreur'] = 'doublon';
+        } else {
+            $req = $bdd->prepare("INSERT INTO article VALUES('',?,?,?,?,?,?,NOW())");
+            $req->execute(array($famille, $nom_article, $description, $indice, $prix_u, $prix_a));
+            $lastId = (int) $bdd->lastInsertId();
+            $req = $bdd->prepare("INSERT INTO stock VALUES('',?,0,NOW())");
+            $req->execute(array($lastId));
+        }
+    }
+    echo json_encode($json);
+*/
+
+
+
+
+
 
 
 $insertion = array(

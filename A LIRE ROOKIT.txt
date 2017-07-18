@@ -12,8 +12,8 @@ Interface V1
 	le menu de l'interface normale: ../menu.php
 	le menu de l'interface d'admin: ../menuAdmin.php
 	connexion a la base : ../connexionDB.php
-	page par defaut : ../pages/generiques/login.php
-	page d'accueil apres identification : ../pages/generique/index.php
+	page par defaut : ../views/generiques/login.php
+	page d'accueil apres identification : ../views/generique/index.php
 
 	les autres pages html pouront etre utilisees a titre de modele pour les formulaires, les 
 	tableaux, les graphiques ou aussi les icones a utiliser 

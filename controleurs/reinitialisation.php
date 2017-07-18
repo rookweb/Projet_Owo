@@ -1,2 +1,2 @@
 <?php
-require_once("views/administration/Utilisateurs/reinitialisation_mdp.php");
+require_once("/pages/administration/Utilisateurs/reinitialisation_mdp.php");

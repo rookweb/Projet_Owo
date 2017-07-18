@@ -1,2 +1,2 @@
 <?php
-require_once('views/Entite/Caisse/ticket.php');
+require_once('/pages/Entite/Caisse/ticket.php');

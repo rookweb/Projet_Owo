@@ -1,3 +1,3 @@
 <?php
 
-require_once('views/administration/Client/compte_client.php');
+require_once('/pages/administration/Client/compte_client.php');

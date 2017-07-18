@@ -1,2 +1,2 @@
 <?php
-require_once('views/Entite/Client/regularisation.php');
+require_once('/pages/Entite/Client/regularisation.php');

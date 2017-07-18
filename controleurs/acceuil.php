@@ -1,2 +1,2 @@
 <?php
-require_once('views/generiques/index.php');
+require_once('/pages/Generiques/acceuil.php');

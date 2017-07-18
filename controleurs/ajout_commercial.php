@@ -1,3 +1,3 @@
 <?php
 
-require_once('views/administration/Commercial/ajout_commercial.php');
+require_once('/pages/administration/Commercial/ajout_commercial.php');

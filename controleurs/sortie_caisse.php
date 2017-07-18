@@ -1,2 +1,2 @@
 <?php
-require_once('views/Entite/Caisse/sortie_caisse.php');
+require_once('/pages/Entite/Caisse/sortie_caisse.php');

@@ -1,2 +1,2 @@
 <?php
-require_once("views/Logs/logs_action.php");
+require_once("/pages/Logs/logs_action.php");

@@ -1,2 +1,2 @@
 <?php
-require_once("views/Entite/Caisse/encaissement.php");
+require_once("/pages/Entite/Caisse/encaissement.php");

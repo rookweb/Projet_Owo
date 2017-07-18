@@ -1,2 +1,2 @@
 <?php
-require_once("views/administration/Parametre/dictionnaire.php");
+require_once("/pages/administration/Parametre/dictionnaire.php");

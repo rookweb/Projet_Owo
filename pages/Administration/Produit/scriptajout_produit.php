@@ -1,6 +1,6 @@
 <?php
 session_start();
-    include "../../connexionDB.php";
+    include "../../include/connexionDB.php";
 
 //Fonction pour valider les valeurs saisies dans les champs en fonction de la taille
 function is_valid($value, $taille)

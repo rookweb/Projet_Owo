@@ -1,2 +1,2 @@
 <?php
-require_once('views/administration/Stock/mise_rebus.php');
+require_once('/pages/administration/Stock/mise_rebus.php');

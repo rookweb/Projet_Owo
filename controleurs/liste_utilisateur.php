@@ -1,2 +1,2 @@
 <?php
-require_once("views/administration/Utilisateurs/liste_utilisateur.php");
+require_once("/pages/administration/Utilisateurs/liste_utilisateur.php");

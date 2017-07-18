@@ -1,2 +1,2 @@
 <?php
-require_once("views/administration/Parametre/donnees.php");
+require_once("/pages/administration/Parametre/donnees.php");

@@ -2,7 +2,7 @@
 <?php 
 session_start();
 
-  include("views/include/connexionDB.php");
+  include("pages/include/connexionDB.php");
   //
 
   //verifier si la pages existe on scan toute les pages du controleurs
@@ -15,14 +15,14 @@ session_start();
     if ($page !== "login") {
       ?>
       <!DOCTYPE html>
-      <html lang="en">
-      <?php include("views/include/headerNormal.php"); ?>
+      <html lang="fr">
+      <?php include("pages/include/headerNormal.php"); ?>
 
       <body>
 
           <div id="wrapper">
               <!-- Navigation -->
-              <?php include("views/include/menu.php"); ?>
+              <?php include("pages/include/menu.php"); ?>
 
           </div>
           <!-- /#wrapper -->
@@ -30,7 +30,7 @@ session_start();
               <?php include("controleurs/".$page.".php"); ?>
           </div>
               
-          <?php include("views/include/footerNormal.php"); ?>
+          <?php include("pages/include/footerNormal.php"); ?>
 
       </body>
 

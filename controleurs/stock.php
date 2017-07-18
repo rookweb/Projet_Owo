@@ -1,2 +1,2 @@
 <?php
-require_once("views/administration/Stock/etat_stock.php");
+require_once("/pages/administration/Stock/etat_stock.php");

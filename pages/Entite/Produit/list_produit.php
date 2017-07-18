@@ -1,32 +1,19 @@
-<?php 
-    include("../connexionDB.php");
-    $produits = $bdd->query('SELECT designation,nom_forme,code_cip,dci FROM produit P JOIN forme F WHERE F.code_forme = P.code_forme');
-    $forme = $bdd->query('SELECT nom_forme FROM forme JOIN produit WHERE forme.code_forme');
- ?>
-<!DOCTYPE html>
-<html lang="fr">
 
-<?php include("../headerNormal.php"); ?>
-
-<body>
-
-    <div id="wrapper">
-
-       <?php include("../menu.php"); ?>
-
-        <div id="page-wrapper">
-            <div class="row">
+<?php
+$sql="SELECT * FROM `produit` p INNER JOIN stock s ON p.code_produit = s.code_produit ORDER BY p.designation";
+$req = $bdd->query($sql);
+if($req->rowCount() > 0){
+    ?>
+           <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Recherche de produit</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
+                    <h1 class="page-header">PRODUITS</h1>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Base de donnee des produits
+                            <a class="btn btn-outline btn-primary fa fa-print" href="#"> IMPRIMER</a>
+                            <a class="btn btn-outline btn-success fa fa-file" href="#"> EXPORTER</a>
+                            <a class="btn btn-outline btn-warning fa fa-plus" href="?page=ajout_client"> NOUVEAU</a>
+                            <B>  <h3> Liste des produits </h3></B>
+
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -36,24 +23,37 @@
                                         <th>Code CIP</th>
                                         <th>Designation</th>
                                         <th>DCI</th>
-                                        <th>Forme</th>
+                                        <th>Prix</th>
+                                        <th>Quantite</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                               <?php while ($donnees = $produits->fetch()){  ?>
-                                    <tr class="odd gradeX">
-                                        <td><?php echo $donnees['code_cip']; ?></td>
-                                        <td><?php echo $donnees['designation']; ?></td>
-                                        <td><?php echo $donnees['dci']; ?></td>
-                                        <td class="center"><?php echo $donnees['nom_forme']; ?></td>
-                                        <td class="center">
-                                            <a class="btn btn-outline btn-primary fa fa-gear" href="#"></a>
-                                            <a class="btn btn-outline btn-success fa fa-times" href="#"></a>
-                                            <a class="btn btn-outline btn-warning fa fa-times" href="#"></a>
-                                        </td>
-                                    </tr>
+                                <?php
+                                while($data = $req->fetch()){
+                                ?>
+                                <tr>
+                                    <td><?php echo /*utf8_encode(*/$data['code_cip']//) ?></td>
+                                    <td><?php echo utf8_encode($data['designation']) ?></td>
+                                    <td><?php echo /*utf8_encode(*/$data['dci']//) ?></td>
+                                    <td><?php echo $data['prix_vente'] ?></td>
+                                    <td><?php echo $data['qte_stock'] ?></td>
+                                    <td class="center">
+                                        <a class="btn btn-outline btn-primary fa fa-edit" href="#"> Mod</a>
+                                        <a class="btn btn-outline btn-success fa fa-eye" href="#"> Aff</a>
+                                        <a class="btn btn-outline btn-warning fa fa-times" href="#"> Sup</a>
+                                    </td>
+                                </tr>
                                 <?php } ?>
+
+
+                                    <?php }else{?>
+                                        <br />
+                                        <center class="ui-state-highlight ui-corner-all">Aucun article n'a ?t? enregistr? pour l' instant ...</center>
+                                    <?php }
+                                     ?>
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -62,15 +62,5 @@
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->
+              </div>
             </div>
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-    <?php include("../footerTab.php");?>
-
-</body>
-
-</html>

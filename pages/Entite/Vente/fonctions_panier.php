@@ -1,5 +1,6 @@
-// ici sont les fonctions a utiliser sur le panier de vente
 <?php
+// ici sont les fonctions a utiliser sur le panier de vente
+
 function creationPanier(){
    if (!isset($_SESSION['panier'])){
       $_SESSION['panier']=array();
@@ -116,4 +117,9 @@ function supprimePanier(){
    unset($_SESSION['panier']);
 }
 
+function retournerPanier()
+{
+   # code...
+   return $_SESSION['panier'];
+}
 ?>

@@ -1,2 +1,2 @@
 <?php
-require_once('views/administration/Client/list_client.php');
+require_once('/pages/administration/Client/list_client.php');

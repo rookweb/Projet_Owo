@@ -1,2 +1,2 @@
 <?php
-require_once('views/generiques/dash.php');
+require_once('/pages/generiques/dash.php');

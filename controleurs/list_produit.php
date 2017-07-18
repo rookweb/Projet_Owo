@@ -1,3 +1,3 @@
 
 <?php
-require_once("views/Entite/Produit/list_produit.php");
+require_once("pages/Entite/Produit/list_produit.php");
