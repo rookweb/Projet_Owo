@@ -77,11 +77,7 @@
                                                                         <td><?php echo 'donnees'; ?></td>
                                                                         <td><?php echo 'donnees'; ?></td>
                                                                         <td class="center">
-<<<<<<< HEAD
                                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Ajouter</button>
-=======
-                                                                            <button class="btn btn-outline btn-primary fa fa-plus" id="popup" onclick="div_show()">Ajouter</button>
->>>>>>> 6a71bc1a03919584d65d54d26070be33d1b112d6
                                                                         </td>
                                                                     </tr>
 
@@ -162,7 +158,6 @@
             <!-- /.row -->
 
             <!-- formulaire popup -->
-<<<<<<< HEAD
             <!--Begin Modal Window--> 
 <div class="modal fade left" id="myModal"> 
     <div class="modal-dialog"> 
@@ -224,39 +219,6 @@
         </div> 
     </div> 
 </div>
-=======
-            <form action="#" id="form" method="post" name="form">
-                <div id="body" style="overflow: hidden;">
-                    <div class="row" id="abc">
-                        <div class="col-lg-8" id="popupContact">
-                            <div class="form-group">
-                                <h2> les quantites</h2>
-                                <div class="form-group col-lg-6">
-                                    <label for="quantite">Quantite livree</label>
-                                    <input class="form-control" id="quantite" name="quantite">
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-group col-lg-6">
-                                        <label for="payante">Quantite payante</label>
-                                        <input class="form-control" id="payante" name="payante">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-group col-lg-6">
-                                        <label for="gratuite">Quantite gratuite </label>
-                                        <input class="form-control" id="gratuite" name="gratuite    ">
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 col-lg-push-2">
-                                    <a class="btn btn-outline btn-primary fa fa-check" href="javascript:%20check_empty()" id="submit">Valider</a>
-                                    <a class="btn btn-outline btn-danger fa fa-times" href="#" onclick="div_hide()" id="close"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>   
-                </div>
-            </form>
->>>>>>> 6a71bc1a03919584d65d54d26070be33d1b112d6
 
 
 
