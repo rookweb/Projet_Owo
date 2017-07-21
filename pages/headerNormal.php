@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="../assets/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../assets/dist/css/popup.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="../assets/vendor/morrisjs/morris.css" rel="stylesheet">
