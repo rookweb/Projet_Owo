@@ -138,7 +138,7 @@
                                     
 
                                     <div class="col-lg-8 col-lg-push-2">
-                                        <button type="submit" class="btn btn-success col-lg-5" name="submit">Enregistrer le commercial</button>
+                                        <button type="submit" class="btn btn-success col-lg-5" name="submit">Enregistrer l'ajout</button>
                                         <button type="reset" class="btn btn-danger col-lg-5 col-lg-push-2">Annuler l'enregistrement</button>
                                     </div>
                                 </form>
