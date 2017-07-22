@@ -1,12 +1,10 @@
 
-        
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Enregistrement d'un fournisseur</h1>
+                    <h1 class="page-header">ENREGISTREMENT FOURNISSEUR</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            
             <div class="row">
                 <div class="col-lg-12">
 
@@ -16,20 +14,25 @@
                         <div class="panel-body">
                             <div class="row">
 
-                                <form role="form" method="post" action="script_ajout.php">
+                                <form role="form" method="post" action="pages/administration/Fournisseur/script_fournisseur.php">
 
                                     
                                     
                                     <div class="col-lg-8 col-lg-push-2">
 
-                                        <div class="form-group">
-                                            <label for="raison">Raison sociale du fournisseur</label>
-                                            <input class="form-control" id="raison" name="raison">
-                                        </div>
+
                                         <div class="form-group">
                                             <div class="form-group col-lg-6">
+                                                <label for="raison">Raison Sociale du Fournisseur</label>
+                                                <input class="form-control" id="raison" name="raison" REQUIRED/>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label for="per_contact">Personne Contact</label>
+                                                <input class="form-control" id="raison" name="per_contact" REQUIRED/>
+                                            </div>
+                                            <div class="form-group col-lg-6">
                                                 <label for="tel1">Telephone standard</label>
-                                                <input class="form-control" id="tel1" name="tel1">
+                                                <input class="form-control" id="tel1" name="tel1" REQUIRED/>
                                             </div>
                                             <div class="form-group col-lg-6">
                                                 <label for="tel2">Telephone d'urgence</label>
@@ -41,15 +44,15 @@
                                             </div>
                                             <div class="form-group col-lg-6 col-xm-2">
                                                 <label for="adresse">Adresse</label>
-                                                <input class="form-control" id="adresse" name="adresse">
+                                                <input class="form-control" id="adresse" name="adresse"REQUIRED/>
                                             </div>
                                         </div>
                                     </div> 
                                     
 
                                     <div class="col-lg-8 col-lg-push-2">
-                                        <button type="submit" class="btn btn-success col-lg-5" name="submit">Enregistrer le fournisseur</button>
-                                        <button type="reset" class="btn btn-danger col-lg-5 col-lg-push-2">Annuler l'enregistrement</button>
+                                        <button type="submit" class="btn btn-success col-lg-5" name="addfrs">Enregistrer </button>
+                                        <button type="reset" class="btn btn-danger col-lg-5 col-lg-push-2">Annuler </button>
                                     </div>
                                 </form>
                             </div>

@@ -11,7 +11,7 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Enregistrement d'un produit</h1>
+                    <h1 class="page-header">ENREGISTREMENT PRODUIT</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -59,33 +59,30 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                     <div class="col-lg-8">
                                         
                                         <h3>Informations</h3>
-                                         <div class="form-group">
-                                            <label for="dci">Molecule de base</label>
+                                        <div class="form-group">
+                                            <label for="dci">Denomination Commune Internatioanl</label>
                                             <input class="form-control" id="dci" name="dci">
                                         </div>
                                         <div class="form-group">
-                                            <label for="dci">Dénomination Commune Internatioanl</label>
-                                            <input class="form-control" id="dci" name="dci">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="designation">designation</label>
+                                            <label for="designation">Designation</label>
                                             <input class="form-control" id="designation" name="designation">
                                         </div>
                                         <div class="form-group">
                                             <label for="commercialisation">Date commercialisation</label>
-                                            <input type="text" class="form-control mydatepicker" placeholder="DD/MM/YYY" id="commercialisation" name="commercialisation"/>
+                                            <input type="text" class="form-control mydatepicker"  data-provide="datepicker" placeholder="DD/MM/YYY" id="commercialisation" name="commercialisation"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="peremption">Date peremption</label>
-                                            <input type="text" class="form-control" placeholder="DD/MM/YYY" id="peremption" name="peremption"/>
+                                            <input type="text" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYY" id="peremption" name="peremption"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="enregistrement">Date enregistrement</label>
-                                            <input class="form-control" id="enregistrement" name="enregistrement" placeholder="DD/MM/YYY" type="text"/>
+                                            <input class="form-control datepicker" data-provide="datepicker" id="enregistrement" name="enregistrement" placeholder="DD/MM/YYY" type="text"/>
                                         </div>
                                     </div> 
 
                                     <div class="col-lg-8">
+                                        <form role="form" method="post" action="">
                                         <hr style="border: 0.1em solid black" />
                                         <h1 class="text-center">Prix</h1>
                                         <hr style="border: 0.1em solid black" />
@@ -96,7 +93,7 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                                 </label>
                                             </div>
                                             <div class="form-group col-lg-6">
-                                                <label for="tva">taux TVA</label>
+                                                <label for="tva">Taux TVA</label>
                                                 <input class="form-control" id="tva" name="tva">
                                             </div>
                                             <div class="form-group col-lg-6">
@@ -111,11 +108,25 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                                 <label for="reduction">Reduction</label>
                                                 <input class="form-control" id="reduction" name="reduction">
                                             </div>
+                                            <?php
+                                         /*  $tva = $_POST['tva'];
+                                           $achat =  $_POST['achat'] ;
+                                            $coef = $_POST['coef'];
+                                            $reduction = $_POST['reduction'];
+                                            $vente = (((($tva * $achat)/100)*coef))- $reduction;*/
+                                            ?>
                                             <div class="form-group col-lg-6 col-xm-2">
                                                 <label for="vente">Prix de vente</label>
-                                                <input class="form-control" id="vente" name="vente">
+                                                <input class="form-control" id="vente" name="vente" value = "<?php //echo $vente;?>"  readonly/>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-xm-2">
+                                                <label for="pv">Lancer le calcul du Prix de vente</label>
+                                                <button type="" class="btn btn-primary col-lg-5" name="pv">Calculer</button>
+                                                
                                             </div>
                                         </div>
+
+                                            </form>
                                     </div> 
                                     <div class="col-lg-8">
                                         <hr style="border: 0.1em solid black" />
@@ -196,7 +207,7 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                             </div>
                                     </div>
                                     <div class="col-lg-8">
-                                        <button type="submit" class="btn btn-success col-lg-5" name="submit">Enregistrer le produit</button>
+                                        <button type="submit" class="btn btn-success col-lg-5" name="addprod">Enregistrer le produit</button>
                                         <button type="reset" class="btn btn-danger col-lg-5 col-lg-push-2">Annuler l'enregistrement</button>
                                     </div>
 

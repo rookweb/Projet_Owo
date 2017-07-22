@@ -1,5 +1,5 @@
 <?php 
-    $clients= $bdd->query('SELECT code_cli, titre, nom_cli, prenom_cli, date_naissance, email, adresse, tel1, tel2, statut, credit_maximum, nbr_jr_avant_paie, remise, droit_au_credit, depassement FROM client C');
+    $clients= $bdd->query('SELECT code_cli, titre, nom_cli, prenom_cli, date_creation, email, adresse, tel1, tel2, statut, credit_maximum, nbr_jr_avant_paie, remise, droit_au_credit, depassement FROM client C');
 
 ?>
 

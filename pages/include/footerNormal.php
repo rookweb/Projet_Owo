@@ -19,6 +19,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="assets/dist/js/sb-admin-2.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-datepicker.min.js"></script>
+
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>

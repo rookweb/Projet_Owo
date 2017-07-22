@@ -6,14 +6,14 @@
 <?php include("pages/include/script.php"); ?>
 <?php include("pages/include/connexionDB.php"); ?>
 
-<body>
+<body class=" btn-success">
 
-<div class="container">
+<div class="container" >
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-4 col-md-offset-4 ">
             <div class="login-panel panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">CONNECTEZ VOUS A OWO PHARMA</h3>
+                <div class="panel-heading" >
+                    <h2 class="panel-title">CONNECTEZ VOUS A OWO PHARMA</h2>
                 </div>
                 <div class="panel-body">
                     <form role="form" action="" method="post" name="connect">
@@ -24,9 +24,9 @@
                             <div class="form-group">
                                 <input class="form-control" placeholder="Mot de Passe" name="Pwd" type="password"  id = "Pwd" value="">
                             </div>
-                            <div class="checkbox">
+                            <div class="checkbox btn-warning">
                                 <label  >
-                                    <input  name="remember" type="checkbox" value="Remember Me">     Se Rappeler </input>
+                                    <input  name="remember" type="checkbox" value="Remember Me">   Se Rappeler </input>
                                 </label>
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
