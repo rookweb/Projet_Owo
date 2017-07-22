@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce9c2dc8-fceb-4e1e-a3db-7a952d4ca5f0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/administration/Client/script_ajout_client.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/administration/Commercial/script_commercial.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/administration/Fournisseur/script_fournisseur.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/administration/Utilisateurs/script_utilisateur.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/administration/Commercial/ajout_commercial.php" afterPath="$PROJECT_DIR$/pages/administration/Commercial/ajout_commercial.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/administration/Fournisseur/ajout_fournisseur.php" afterPath="$PROJECT_DIR$/pages/administration/Fournisseur/ajout_fournisseur.php" />
-      <change type="MODIFICATION" beforePath="C:\Users\CANAAN-LAND\Documents\GitHub\Projet_Owo\pages\administration\Produit\ajout_produit.php" afterPath="$PROJECT_DIR$/pages/administration/Produit/ajout_produit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/include/footerNormal.php" afterPath="$PROJECT_DIR$/pages/include/footerNormal.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/include/headerNormal.php" afterPath="$PROJECT_DIR$/pages/include/headerNormal.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/historiq_caisse_jrnee.php" afterPath="$PROJECT_DIR$/model/historiq_caisse_jrnee.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/administration/Client/list_client.php" afterPath="$PROJECT_DIR$/pages/administration/Client/list_client.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/liste_vente.php" afterPath="$PROJECT_DIR$/model/liste_vente.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Generiques/login.php" afterPath="$PROJECT_DIR$/pages/Generiques/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="C:\Users\CANAAN-LAND\Documents\GitHub\Projet_Owo\pages\administration\Produit\script_ajout.php" afterPath="$PROJECT_DIR$/pages/administration/Produit/script_ajout.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="ce9c2dc8-fceb-4e1e-a3db-7a952d4ca5f0" name="Default" comment="" />
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />

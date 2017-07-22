@@ -279,16 +279,16 @@
                                         <a href="?page="><i class="fa fa-file-pdf-o fa-fw"></i> Statistiques de ventes <span class="fa arrow"></span></a>
                                   <ul class="nav nav-third-level">
                                       <li>
-                                    <a href="?page=">Recaps des tickets</a>
+                                    <a href="?page=tableau_recap_tickets_caisse ">Recaps des tickets</a>
                                      </li>
                                       <li>
-                                    <a href="?page=">Vente crédit</a>
+                                    <a href="?page=vente_credit_caisse">Vente crédit</a>
                                       </li>
 									  <li>
-                                    <a href="?page=">Recap Encaissement</a>
+                                    <a href="?page=Tableau_recap_encaissement">Recap Encaissement</a>
                                       </li>
 									  <li>
-                                    <a href="?page="> Recap sortie caisse</a>
+                                    <a href="?page=tableau_recap_sortie_caisse"> Recap sortie caisse</a>
                                       </li>
 									   <li>
                                     <a href="?page="> Recap Mouvement</a>
@@ -303,10 +303,10 @@
                                     <a href="?page="> Génériques Produits</a>
                                      </li>
                                       <li>
-                                    <a href="?page=">Enreg Produits</a>
+                                    <a href="?page=tablaeu_recap_produit">Enreg Produits</a>
                                       </li>
 									  <li>
-                                    <a href="?page=">Produits Périmés</a>
+                                    <a href="?page=tableau_recap_produit_perime">Produits Périmés</a>
                                       </li>
                                     </ul>
                                   </li>
@@ -314,7 +314,7 @@
                                         <a href="?page="><i class="fa fa-file-pdf-o fa-fw"></i> Statistiques d'Affaires <span class="fa arrow"></span></a>
                                   <ul class="nav nav-third-level">
                                       <li>
-                                    <a href="?page=">Situation Compte</a>
+                                    <a href="?page=tableau_recap_compte">Situation Compte</a>
                                      </li>
                                       <li>
                                     <a href="?page=">Chiffre d'affaire</a>
