@@ -13,7 +13,7 @@
 */
 //
 
-if (isset($_POST['Login'])){ // execution uniquement apres envoi du formulaire (test si la variable POST existe)
+if (isset($_POST['togin'])){ // execution uniquement apres envoi du formulaire (test si la variable POST existe)
     $Login = addslashes($_POST['Login']); // mise en variable du nom d'utilisateur
     $Pwd = addslashes(md5($_POST['Pwd'])); // mise en variable du mot de passe chiffr? ? l'aide de md5
     $log=$_SESSION['Login'];

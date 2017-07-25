@@ -6,7 +6,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="?page="> OWO Pharma | Interface <?php echo "Utilisateurs" // ici on mettra une variable et une requete pour recupérer le profil de l'utilisateur?>  </a>
+                <a class="navbar-brand" href="?page="> OWO Pharma | Interface <?php echo $_SESSION['Auth']->designation ; // ici on mettra une variable et une requete pour recupérer le profil de l'utilisateur?>   </a>
             </div>
             <!-- /.navbar-header -->
 
@@ -112,7 +112,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>PROFILS : <PHP? echo $SESSION[Login];?> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>PROFILS : <?php echo $_SESSION['Auth']->login ;?> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
 					   <li class="dropdown-header"> UTILISATEURS </li> 
@@ -121,7 +121,7 @@
                         <li><a href="?page=reinitialisation"><i class="fa fa-key fa-fw"></i> Mot de passe</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="?page="><i class="fa fa-sign-out fa-fw"></i> Deconnexion</a>
+                        <li><a href="?page=logout"><i class="fa fa-sign-out fa-fw"></i> Deconnexion</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
