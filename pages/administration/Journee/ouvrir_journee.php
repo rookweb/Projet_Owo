@@ -70,7 +70,7 @@ if (!empty($_POST['go'])) {
                             </table>
                             <td height="50" colspan="2"><div align="center"><br/>
                                     <input class="btn btn-outline btn-success" type="submit" name="go" id="go" value="Ouvrir" />
-                                    <input class="btn btn-outline btn-warning" type="reset" name="reini" id="reini" value="Reinitialiser le formulaire" />
+                                    <input class="btn btn-outline btn-success" type="reset" name="annuler" id="annuler" value="Annuler" />
                                 </div></td>
 
                         </form>

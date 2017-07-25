@@ -1,2 +1,2 @@
 <?php
-require_once('views/Entite/Caisse/tableau_recap_sortie_caisse.php');
+require_once('/pages/statistique/tableau_recap_sortie_caisse.php');
