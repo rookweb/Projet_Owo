@@ -3,8 +3,10 @@
 session_start();
 
   include("pages/include/connexionDB.php");
+  require "pages/include/classes/class.auth.php";
   //
 
+  ob_start();
   //verifier si la pages existe on scan toute les pages du controleurs
   $pages=scandir("controleurs/");
 
@@ -43,6 +45,7 @@ session_start();
     }
 
     $_SESSION["courante_page"] =$page;
+    
   }
    else{
      include("controleurs/".$_SESSION["courante_page"].".php");
