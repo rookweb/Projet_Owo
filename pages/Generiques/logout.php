@@ -1,16 +1,6 @@
-
 <?php
-
-    if(!empty($_POST)){
-        if($Auth->login($_POST)){
-            header("Location:?page=acceuil");
-
-        }else { ?>
-            <script type="text/javascript">
-                alert('Le Login ou le mot de passe est incorrect! \n veuillez re-essayer s\'il vous plait');
-            </script>
-       <?php }
-    }
+$_SESSION=array();
+header("Location:?page=login");
 ?>
 <?php include("pages/include/headerNormal.php"); ?>
 
@@ -53,8 +43,3 @@
                 <pre><?php print_r($_SESSION);?></pre>
     </div>
 </div>
-
-
-<!-- jQuery -->
-
-
