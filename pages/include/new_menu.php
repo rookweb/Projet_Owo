@@ -25,7 +25,7 @@ $menu ='
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li class="dropdown-header"> VENTE </li>
-                        <li><a href="?page=VENTE"><i class="fa fa-shopping-cart fa-fw"></i> VENDRE </a>
+                        <li><a href="?page=vente"><i class="fa fa-shopping-cart fa-fw"></i> VENDRE </a>
                         </li>
                     </ul>
 

@@ -1,5 +1,9 @@
 <?php 
-    $produits = $bdd->query('SELECT designation,nom_forme,code_cip,dci FROM produit P JOIN forme F WHERE F.code_forme = P.code_forme');
+    global $bdd;
+    $fournisseurs = $bdd->prepare('SELECT SELECT designation,nom_forme,code_cip,dci FROM produit P JOIN forme F WHERE F.code_forme = P.code_forme');
+    $fournisseurs->execute();
+    $data=$fournisseurs->fetchAll();
+    $four=array()
 ?>
 
             <div class="row">
