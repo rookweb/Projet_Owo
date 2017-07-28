@@ -1,5 +1,9 @@
 <?php 
-    $produits = $bdd->query('SELECT designation,nom_forme,code_cip,dci FROM produit P JOIN forme F WHERE F.code_forme = P.code_forme');
+    global $bdd;
+    $fournisseurs = $bdd->prepare('SELECT RAISON_SOCIAL,TEL,EMAIL,SOLDE_COMPTE FROM fournisseur');
+    $fournisseurs->execute();
+    $data=$fournisseurs->fetchAll();
+    $four=array()
 ?>
 
             <div class="row">
@@ -21,7 +25,6 @@
                                 <thead>
                                     <tr>
                                         <th>Raison sociale</th>
-                                        <th>Date</th>
                                         <th>Telephone 1</th>
                                         <th>Email</th>
                                         <th>Dette</th>
@@ -29,18 +32,17 @@
                                         <th>Action</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $produits->fetch()){  ?>
+                               <?php foreach ($data as $d){?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['code_cip']; ?></td>
-                                        <td><?php echo $donnees['designation']; ?></td>
-                                        <td><?php echo $donnees['dci']; ?></td>
-                                        <td class="center"><?php echo $donnees['nom_forme']; ?></td>
-                                        <td><?php echo $donnees['code_cip']; ?></td>
-                                        <td>Regle</td>
+                                        <td><?php echo $d->RAISON_SOCIAL; ?></td>
+                                        <td><?php echo $d->TEL; ?></td>
+                                        <td><?php echo $d->EMAIL; ?></td>
+                                        <td class="center"><?php echo $d->SOLDE_COMPTE; ?></td>
+                                        <td><?php echo 'regle'; ?></td>
                                         <td class="center">
-                                            <a class="btn btn-outline btn-primary fa fa-edit" href="#"> Mod</a>
-                                            <a class="btn btn-outline btn-warning fa fa-times" href="#"> Supp</a>
-                                            <a class="btn btn-outline btn-success fa fa-money" href="#"> Pay</a>
+                                            <a class="btn btn-outline btn-primary fa fa-money" href="#"> Pay</a>
+                                            <a class="btn btn-outline btn-success fa fa-edit" href="#"> Mod</a>
+                                            <a class="btn btn-outline btn-warning fa fa-times" href="#"> Sup</a>
                                         </td>
                                     </tr>
                                 <?php } ?>

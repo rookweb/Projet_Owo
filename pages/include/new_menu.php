@@ -1,5 +1,5 @@
 
-<?php require_once('getCodePriv.php');
+<?php 
 
 $menu =  '<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -9,15 +9,16 @@ $menu =  '<nav class="navbar navbar-default navbar-static-top" role="navigation"
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="?page="> OWO Pharma | Interface <?php echo "Utilisateurs" // ici on mettra une variable et une requete pour recupérer le profil de l\'utilisateur?>  </a>
-            </div>';
+                <a class="navbar-brand" href="?page="> OWO Pharma | Interface ' . $_SESSION['Auth']->designation. ' </a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">';
 
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5 || $_SESSION['Auth']->level == 4 || $_SESSION['Auth']->level == 3){
 echo $menu;}
 ?>
 <!-- /.navbar-header -->
 <?php
-$menu ='  <ul class="nav navbar-top-links navbar-right">
+$menu ='  
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-shopping-basket fa-fw"></i> VENTE <i class="fa fa-caret-down"></i>
@@ -29,7 +30,7 @@ $menu ='  <ul class="nav navbar-top-links navbar-right">
                     </ul>
 
                 </li>';
-                if (getCodePriv() == 1){
+                if ($_SESSION['Auth']->level == 5 || $_SESSION['Auth']->level == 4){
                 echo $menu;}
                 ?>
 <!-- /.dropdown-user -->
@@ -63,7 +64,7 @@ $menu = ' <li class="dropdown">
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>  ';
-                if (getCodePriv() == 1){
+                if ($_SESSION['Auth']->level == 5 || $_SESSION['Auth']->level == 3){
                     echo $menu;}
                 ?>
                 <!-- /.dropdown-user -->
@@ -91,7 +92,7 @@ $menu = ' <li class="dropdown">
                     <!-- /.dropdown-user -->
                 </li>
                  ';
-                if (getCodePriv() == 1){
+                if ($_SESSION['Auth']->level == 5){
                     echo $menu;}
                 ?>
 <!-- /.dropdown-user -->
@@ -132,7 +133,7 @@ $menu = '
                     <!-- /.dropdown-messages -->
                 </li>
                  ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -145,7 +146,7 @@ $menu = '
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>PROFILS : <PHP? echo $SESSION[Login];?> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>PROFILS : '.$_SESSION['Auth']->login.' <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
 					   <li class="dropdown-header"> UTILISATEURS </li> 
@@ -162,7 +163,7 @@ $menu = '
                 <!-- /.dropdown -->
             </ul>
              ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5 || $_SESSION['Auth']->level == 4 || $_SESSION['Auth']->level == 3){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -185,7 +186,7 @@ $menu = '
                             <!-- /input-group -->
                         </li>
                          ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5 || $_SESSION['Auth']->level == 4 || $_SESSION['Auth']->level == 3){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -207,7 +208,7 @@ $menu = '
                             <!-- /.nav-second-level -->
                                 </li>
                                  ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5 || $_SESSION['Auth']->level == 4 || $_SESSION['Auth']->level == 3 ){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -226,7 +227,7 @@ $menu = '
                             <!-- /.nav-second-level -->
                         </li>
                          ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5 || $_SESSION['Auth']->level == 4){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -263,7 +264,7 @@ $menu = '
                             
                         </li>
                          ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5 || $_SESSION['Auth']->level == 3){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -284,7 +285,7 @@ $menu = '
                             </ul>
                         </li>
                          ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -308,7 +309,7 @@ $menu = '
                             </ul>
                         </li>
                          ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -330,7 +331,7 @@ $menu = '
                             <!-- /.nav-second-level -->
                         </li>
                          ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -353,7 +354,7 @@ $menu = '
                             <!-- /.nav-second-level -->
                                 </li>
                                  ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -372,7 +373,7 @@ $menu = '
                             <!-- /.nav-second-level -->
                                 </li>
                                  ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -392,7 +393,7 @@ $menu = '
                             <!-- /.nav-second-level -->
                                 </li>
                                  ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -411,7 +412,7 @@ $menu = '
                             <!-- /.nav-second-level -->
                         </li>
                          ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -441,7 +442,7 @@ $menu = '
                                     </ul>
                                   </li>
                                    ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5 || $_SESSION['Auth']->level == 4){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -463,7 +464,7 @@ $menu = '
                                     </ul>
                                   </li>
                                    ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->
@@ -484,7 +485,7 @@ $menu = '
                                     </ul>
                                   </li>
                                    ';
-if (getCodePriv() == 1){
+if ($_SESSION['Auth']->level == 5){
     echo $menu;}
 ?>
 <!-- /.dropdown-user -->

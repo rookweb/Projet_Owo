@@ -1,5 +1,9 @@
 <?php 
-    $connexion = $bdd->query('SELECT date_con,login,statut,action,ip FROM connexion C');
+    global $bdd;
+    $log = $bdd->prepare('SELECT LOGIN, STATUT, IP, DATE_CONNEXION, ACTION FROM connexion');
+    $log->execute();
+    $data=$log->fetchAll();
+    $logs=array()
 ?>
 
             <div class="row">
@@ -30,13 +34,13 @@
                                         <th>IP Cible</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $connexion->fetch()){  ?>
+                               <?php foreach ($data as $d){?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['date_con']; ?></td>
-                                        <td><?php echo $donnees['login']; ?></td>
-                                        <td><?php if($donnees['action']=="C"){echo"Connexion";} else{ echo "Deconnexion";} ?></td>
-                                        <td><?php if($donnees['statut']=="0"){echo  "Reussi";} else { echo "Erreur !!!!";}?></td>
-                                        <td><?php echo $donnees['ip']; ?></td>
+                                        <td><?php echo $d->DATE_CONNEXION; ?></td>
+                                        <td><?php echo $d->LOGIN; ?></td>
+                                        <td><?php if($d->ACTION =="C"){echo"Connexion";} else{ echo "Deconnexion";} ?></td>
+                                        <td><?php if($d->STATUT =="0"){echo  "Reussi";} else { echo "Erreur !!!!";}?></td>
+                                        <td><?php echo $d->IP; ?></td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>

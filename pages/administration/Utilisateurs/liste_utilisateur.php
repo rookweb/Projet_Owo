@@ -1,5 +1,9 @@
 <?php 
-    $user = $bdd->query('SELECT * FROM utilisateur U JOIN privilege P WHERE U.code_priv = P.code_priv');
+    global $bdd;
+    $utilisateur = $bdd->prepare('SELECT NOM_USER,PRENOM_USER,LOGIN,STATUT,DESIGNATION,DATE_ENREGISTREMENT FROM utilisateur U JOIN privileges P WHERE U.code_privilege = P.code_privilege');
+    $utilisateur->execute();
+    $data=$utilisateur->fetchAll();
+    $user=array()
 ?>
 
             <div class="row">
@@ -33,14 +37,15 @@
                                         <th>Action</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $user->fetch()){  ?>
+                               <?php foreach ($data as $d){?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['nom_u']; ?></td>
-                                        <td><?php echo $donnees['prenom_u']; ?></td>
-                                        <td><?php echo $donnees['login']; ?></td>
-                                        <td><?php echo $donnees['denomination']; ?></td>
-                                        <td><?php echo $donnees['date_enregistrement']; ?></td>
-                                        <td class="center"><?php if($donnees['statut'] == 0){echo "Actif";} else {echo "Desactiver";} ?></td>
+                                        <td><?php echo $d->NOM_USER; ?></td>
+                                        <td><?php echo $d->PRENOM_USER; ?></td>
+                                        <td><?php echo $d->LOGIN; ?></td>
+                                        <td class="center"><?php echo $d->DESIGNATION; ?></td>
+                                        <td><?php echo $d->DATE_ENREGISTREMENT; ?></td>
+
+                                        <td class="center"><?php if($d->STATUT == 0){echo "Actif";} else {echo "Desactiver";} ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-primary fa fa-gear" href="#"> Modifier</a>
                                             <a class="btn btn-outline btn-success fa fa-times" href="#"> Desactiver</a>

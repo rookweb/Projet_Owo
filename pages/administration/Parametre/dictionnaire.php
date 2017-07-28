@@ -1,13 +1,13 @@
 <?php 
-    $banque = $bdd->query('SELECT num_banque, description FROM banque');
-    $classe = $bdd->query('SELECT num_clas, description FROM classe');
-    $exploitant = $bdd->query('SELECT num_exploitant, libelle FROM exploitant');
-    $famille = $bdd->query('SELECT num_famille, nom_famille FROM famille');
-    $forme = $bdd->query('SELECT num_forme, nom_forme FROM forme');
-    $laboratoire = $bdd->query('SELECT numero_labo, nom_laboratoire FROM laboratoire');
-    $localisation = $bdd->query('SELECT num_localisation, nom_localisation FROM localisation');
+    $banque = $bdd->query('SELECT code_banque, description FROM banque');
+    $classe = $bdd->query('SELECT code_clas, description FROM classe');
+    $exploitant = $bdd->query('SELECT code_exploitant, libelle FROM exploitant');
+    $famille = $bdd->query('SELECT code_famille, nom_famille FROM famille');
+    $forme = $bdd->query('SELECT code_forme, nom_forme FROM forme');
+    $laboratoire = $bdd->query('SELECT code_lab, nom_laboratoire FROM laboratoire');
+    $localisation = $bdd->query('SELECT code_localisation, nom_localisation FROM localisation');
     $motif = $bdd->query('SELECT code_motif, description FROM motif');
-    $specialite = $bdd->query('SELECT num_specialite, nom_specialite FROM specialite');
+    $specialite = $bdd->query('SELECT code_specialite, nom_specialite FROM specialite');
 ?>
 
 

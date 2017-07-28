@@ -1,6 +1,9 @@
 <?php
-$fournisseurs= $bdd->query('SELECT * FROM fournisseur F');
-
+global $bdd;
+$fournisseur= $bdd->prepare('SELECT * FROM fournisseur');
+$fournisseur->execute();
+$data=$fournisseur->fetchAll();
+$four=array();
 ?>
 
             <div class="row">
@@ -34,14 +37,14 @@ $fournisseurs= $bdd->query('SELECT * FROM fournisseur F');
                                         <th>Action</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $fournisseurs->fetch()){  ?>
+                               <?php foreach ($data as $d){?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['raison_social']; ?></td>
-                                        <td><?php echo $donnees['contact']; ?></td>
-                                        <td><?php echo $donnees['adresse']; ?></td>
-                                        <td><?php echo $donnees['tel']; ?></td>
-                                        <td><?php echo $donnees['email']; ?></td>
-                                        <td class="center"><?php echo $donnees['solde_compte']; ?></td>
+                                        <td><?php echo $d->RAISON_SOCIAL; ?></td>
+                                        <td><?php echo $d->CONCTACT; ?></td>
+                                        <td><?php echo $d->ADRESSE; ?></td>
+                                        <td><?php echo $d->TEL; ?></td>
+                                        <td><?php echo $d->EMAIL; ?></td>
+                                        <td class="center"><?php echo $d->SOLDE_COMPTE; ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-primary fa fa-money" href="#"> Pay</a>
                                             <a class="btn btn-outline btn-success fa fa-edit" href="#"> Mod</a>

@@ -1,13 +1,32 @@
 <?php
 include("/pages/include/connexionDB.php");
 $labo=$bdd->query('SELECT code_lab,nom_laboratoire FROM laboratoire');
-$classe=$bdd->query('SELECT code_clas,description FROM classe');
+$classe=$bdd->query('SELECT code_classe,description FROM classe_produit');
 $exploitant = $bdd->query('SELECT code_exploitant,libelle FROM exploitant');
 $specialite=$bdd->query('SELECT code_specialite,nom_specialite FROM specialite');
 $localisation=$bdd->query('SELECT code_localisation,nom_localisation FROM localisation');
 $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
+ /*$tva = $_POST['tva'] =0; 
+ $achat =  $_POST['achat']=0; 
+ $coef = $_POST['coef']=0; 
+ $reduction = $_POST['reduction']=0;*/
+ $vente=0;
 ?>
 
+<?php
+
+    if(!empty($_POST['pv'])){
+        if($Auth->vente($_POST['pv'])){
+            $vente=vente($_POST['pv']);
+            header("Location:?page=produit");
+
+        }else { ?>
+            <script type="text/javascript">
+                alert('Le Login ou le mot de passe est incorrect! \n veuillez re-essayer s\'il vous plait');
+            </script>
+       <?php }
+    }
+?>
 
             <div class="row">
                 <div class="col-lg-12">
@@ -82,7 +101,7 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                     </div> 
 
                                     <div class="col-lg-8">
-                                        <form role="form" method="post" action="">
+                                        <form role="form" method="post" action="toto">
                                         <hr style="border: 0.1em solid black" />
                                         <h1 class="text-center">Prix</h1>
                                         <hr style="border: 0.1em solid black" />
@@ -94,34 +113,32 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                             </div>
                                             <div class="form-group col-lg-6">
                                                 <label for="tva">Taux TVA</label>
-                                                <input class="form-control" id="tva" name="tva">
+                                                <input class="form-control" type="number" min="0" max="100" id="tva" name="tva">
+
                                             </div>
                                             <div class="form-group col-lg-6">
                                                 <label for="achat">Prix d'achat</label>
-                                                <input class="form-control" id="achat" name="achat">
+                                                <input class="form-control" type="number" id="achat" name="achat">
+                                                
                                             </div>
                                             <div class="form-group col-lg-6 col-xm-2">
                                                 <label for="coef">Coeficient</label>
-                                                <input class="form-control" id="coef" name="coef">
+                                                <input class="form-control" type="number" id="coef" name="coef">
+
                                             </div>
                                             <div class="form-group col-lg-6 col-xm-2">
                                                 <label for="reduction">Reduction</label>
-                                                <input class="form-control" id="reduction" name="reduction">
+                                                <input class="form-control" type="number" id="reduction" name="reduction">
+
                                             </div>
-                                            <?php
-                                         /*  $tva = $_POST['tva'];
-                                           $achat =  $_POST['achat'] ;
-                                            $coef = $_POST['coef'];
-                                            $reduction = $_POST['reduction'];
-                                            $vente = (((($tva * $achat)/100)*coef))- $reduction;*/
-                                            ?>
+                                            
                                             <div class="form-group col-lg-6 col-xm-2">
                                                 <label for="vente">Prix de vente</label>
-                                                <input class="form-control" id="vente" name="vente" value = "<?php //echo $vente;?>"  readonly/>
+                                                <input class="form-control" id="vente" name="vente" value = "<?php echo $vente;?>"  readonly/>
                                             </div>
                                             <div class="form-group col-lg-6 col-xm-2">
                                                 <label for="pv">Lancer le calcul du Prix de vente</label>
-                                                <button type="" class="btn btn-primary col-lg-5" name="pv">Calculer</button>
+                                                <button type="submit" class="btn btn-primary col-lg-5" name="pv">Calculer</button>
                                                 
                                             </div>
                                         </div>

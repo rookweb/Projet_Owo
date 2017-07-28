@@ -1,5 +1,5 @@
 <?php 
-    $clients= $bdd->query('SELECT code_cli, titre, nom_cli, prenom_cli, date_creation, email, adresse, tel1, tel2, statut, credit_maximum, nbr_jr_avant_paie, remise, droit_au_credit, depassement FROM client C');
+    $clients= $bdd->query('SELECT CODE_CLI, TITRE, NOM_CLI, PRENOM_CLI, EMAIL, ADRESSE, TEL1, TEL2, STATUT, CREDIT_MAX, DELAI_PAIEMENT, REMISE, DROIT_CREDIT, DEPASSEMENT FROM client C');
 
 ?>
 
@@ -37,13 +37,13 @@
                                 <tbody>
                                <?php while ($donnees = $clients->fetch()){  ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['titre']; ?></td>
-                                        <td><?php echo $donnees['nom_cli']; ?></td>
-                                        <td><?php echo $donnees['prenom_cli']; ?></td>
-                                        <td><?php echo $donnees['tel1']; ?></td>
-                                        <td><?php echo $donnees['email']; ?></td>
-                                        <td><?php echo $donnees['droit_au_credit']; ?></td>
-                                        <td class="center"><?php echo $donnees['statut']; ?></td>
+                                        <td><?php echo $donnees['TITRE']; ?></td>
+                                        <td><?php echo $donnees['NOM_CLI']; ?></td>
+                                        <td><?php echo $donnees['PRENOM_CLI']; ?></td>
+                                        <td><?php echo $donnees['TEL1']; ?></td>
+                                        <td><?php echo $donnees['EMAIL']; ?></td>
+                                        <td><?php echo $donnees['DROIT_CREDIT']; ?></td>
+                                        <td class="center"><?php echo $donnees['STATUT']; ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-primary fa fa-edit" href="#"> Mod</a>
                                             <a class="btn btn-outline btn-success fa fa-eye" href="#"> Aff</a>

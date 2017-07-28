@@ -1,6 +1,9 @@
 <?php
-include("/pages/include/connexionDB.php");
-$privilege=$bdd->query('SELECT code_priv,denomination FROM privilege');
+ global $bdd;
+    $privilege = $bdd->prepare('SELECT CODE_PRIVILEGE,DESIGNATION FROM privileges');
+    $privilege->execute();
+    $data=$privilege->fetchAll();
+    $four=array()
 ?>
 
 
@@ -23,7 +26,7 @@ $privilege=$bdd->query('SELECT code_priv,denomination FROM privilege');
 
                         <form role="form" method="post" action="pages/administration/Utilisateurs/script_utilisateur.php">
 
-                            <div class=" form-group col-lg-8">
+                            <div class=" form-group col-lg-12">
 
                                 <h3>INFORMATIONS GENERALES</h3>
                                 <div class="form-group col-lg-6">
@@ -34,24 +37,27 @@ $privilege=$bdd->query('SELECT code_priv,denomination FROM privilege');
                                     <label for="prenom">Pr&eacute;nom </label>
                                     <input class="form-control" type="text" id="prenom" name="prenom" REQUIRED />
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-10">
                                     <label for="priv">Privil&egrave;ge</label>
                                     <select class="form-control" id="priv" name="priv">
-                                        <?php while ($donnees = $privilege->fetch()){
-                                            echo '<option value="'.$donnees['code_priv'].'">';
+                                        <?php foreach ($data as $d){
+                                            echo '<option value="'.$d->CODE_PRIVILEGE.'">';
 
-                                            echo $donnees['denomination'];
+                                            echo $d->DESIGNATION ;
 
                                             echo '</option>';
                                         } ?>
                                     </select>
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" value="1" id="statut" name="status">  Bloqu&eacute;
-                                    </label>
+                                <div class="form-group col-lg-1">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value="1" id="statut" name="status">  Bloqu&eacute;
+                                        </label>
+                                    </div>  
                                 </div>
-                                </div>
+                            </div>
+
                             <div class=" form-group col-lg-8">
 
                                 <h3>INFORMATION DE CONNEXION</h3>

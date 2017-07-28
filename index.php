@@ -24,7 +24,7 @@ session_start();
 
           <div id="wrapper">
               <!-- Navigation -->
-              <?php include("pages/include/menu.php"); ?>
+              <?php include("pages/include/new_menu.php"); ?>
 
           </div>
           <!-- /#wrapper -->

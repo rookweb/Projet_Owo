@@ -5,7 +5,7 @@
 	**/
 	function login($d){
 		global $bdd;
-		$req=$bdd->prepare('SELECT login,pwd,utilisateur.code_priv,privilege.designation,privilege.level FROM utilisateur LEFT JOIN privilege ON utilisateur.code_priv=privilege.code_priv WHERE login=:login AND pwd=:pwd');
+		$req=$bdd->prepare('SELECT login,pwd,utilisateur.code_privilege,privileges.designation,privileges.level FROM utilisateur LEFT JOIN privileges ON utilisateur.code_privilege=privileges.code_privilege WHERE login=:login AND pwd=:pwd');
 		$req->execute(array(':login'=>$d['Login'], ':pwd'=>$d['Pwd']));
 		$data=$req->fetchAll();
 		print_r($data);
@@ -16,6 +16,16 @@
 		return false;
 	}	
 
+	function vente($d){
+		$tva = $_POST['tva']; 
+		$achat =  $_POST['achat']; 
+		$coef = $_POST['coef']; 
+		$reduction = $_POST['reduction'];
+		$vente = (((($tva * $achat)/100)*$coef))- $reduction;
+		
+			return $vente;
+	}
+
 
 	/**
 	* Permet a l'utilisateur d'avoir une page forbidden en cas de non autorisation
@@ -23,14 +33,14 @@
 
 	function allow($rang){
 		global $bdd;
-		$req=$bdd->prepare('SELECT slug,level FROM privilege');
+		$req=$bdd->prepare('SELECT level FROM privileges');
 		$req->execute();
 		$data=$req->fetchAll();
 		$roles= array();
 		foreach ($data as $d) {
-			$roles[$d->slug]=$d->level;
+			$roles[$d->level]=$d->level;
 		}
-		$this->user('slug');
+		$this->user('level');
 	}
 
 	/**
@@ -38,7 +48,9 @@
 	**/
 
 	function user($field){
-
+		if(isset($_SESSION['Auth']->slug)){
+			
+		}
 	}
 
 }
