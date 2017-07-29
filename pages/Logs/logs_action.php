@@ -1,5 +1,9 @@
 <?php 
-    $logs = $bdd->query('SELECT * FROM logs L');
+    global $bdd;
+    $log = $bdd->prepare('SELECT * FROM logs');
+    $log->execute();
+    $data=$log->fetchAll();
+    $logs=array()
 ?>
 
             <div class="row">
@@ -28,12 +32,12 @@
                                         <th>statut</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $logs->fetch()){  ?>
+                               <?php foreach ($data as $d){?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['heure']; ?></td>
-                                        <td><?php echo $donnees['login']; ?></td>
-                                        <td><?php echo $donnees['evenement']; ?></td>
-                                        <td class="center"><?php echo $donnees['statut']; ?></td>
+                                        <td><?php echo $d->HEURE; ?></td>
+                                        <td><?php echo $d->LOGIN; ?></td>
+                                        <td><?php echo $d->EVENEMENT; ?></td>
+                                        <td class="center"><?php echo $d->STATUT; ?></td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
