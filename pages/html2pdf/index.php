@@ -92,7 +92,7 @@ ob_start();
 
 $content = ob_get_clean();
 
-require_once 'html2pdf-4.4.0/html2pdf.class.php';
+require_once 'html2pdf/html2pdf.class.php';
 
 try {
 

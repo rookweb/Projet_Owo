@@ -85,7 +85,7 @@ $menu = ' <li class="dropdown">
 						<li><a href="?page=ouvrir_journee"><i class="fa fa-calendar-check-o fa-fw"></i> Journées</a>
                         </li> <li class="divider"></li>
                         <li><a href="?page=liste_vente"><i class="fa fa-shopping-basket fa-fw"></i> Ventes</a>
-                        </li> <li class="divider"></li
+                        </li> <li class="divider"></li>
                         <li><a href="?page=liste_utilisateur"><i class="fa fa-user fa-fw"></i> Utilisateurs</a>
                         </li>
                     </ul>
@@ -453,7 +453,7 @@ $menu = '
                                         <a href="?page="><i class="fa fa-file-excel-o fa-fw"></i> Statistiques Produits <span class="fa arrow"></span></a>
                                   <ul class="nav nav-third-level">
                                       <li>
-                                    <a href="?page="> Génériques Produits</a>
+                                    <a href="?page=generiq_produit"> Génériques Produits</a>
                                      </li>
                                       <li>
                                     <a href="?page=">Enreg Produits</a>

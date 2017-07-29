@@ -1,7 +1,15 @@
 
 <?php
-$sql="SELECT * FROM `produit` p INNER JOIN stock s ON p.code_produit = s.code_produit ORDER BY p.designation";
+if(isset($_GET['searchValue'])){
+    $sql= "SELECT * FROM `produit` p WHERE p.dci LIKE '%".$_GET['searchValue']."%'  ORDER BY p.designation";
+}else{
+    $sql="SELECT * FROM `produit` p ORDER BY p.designation";
+}
+
+$sql2 = $sql;
+
 $req = $bdd->query($sql);
+
 if($req->rowCount() > 0){
     ?>
            <div class="row">
@@ -9,11 +17,21 @@ if($req->rowCount() > 0){
                     <h1 class="page-header">PRODUITS</h1>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a class="btn btn-outline btn-primary fa fa-print" href="#"> IMPRIMER</a>
+                            <?php echo '<a class="btn btn-outline btn-primary fa fa-print col-md-offset-4"  href="?page=etat_produit&sql='.$sql2.'"' ?>> IMPRIMER</a>
                             <a class="btn btn-outline btn-success fa fa-file" href="#"> EXPORTER</a>
                             <a class="btn btn-outline btn-warning fa fa-plus" href="?page=ajout_client"> NOUVEAU</a>
-                            <B>  <h3> Liste des produits </h3></B>
 
+                            <B>  <h3> Liste des produits </h3></B>
+                            <form action="search_traitement.php" method="post">
+                                <div class="input-group custom-search-form col-md-4 col-md-offset-4">
+                                    <input type="text" name="searchValue" class="form-control" placeholder="Liste par molécule de base...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -30,14 +48,14 @@ if($req->rowCount() > 0){
                                 </thead>
                                 <tbody>
                                 <?php
-                                while($data = $req->fetch()){
+                                while($data = $req->fetch(PDO::FETCH_ASSOC)){
                                 ?>
                                 <tr>
-                                    <td><?php echo /*utf8_encode(*/$data['code_cip']//) ?></td>
-                                    <td><?php echo utf8_encode($data['designation']) ?></td>
-                                    <td><?php echo /*utf8_encode(*/$data['dci']//) ?></td>
-                                    <td><?php echo $data['prix_vente'] ?></td>
-                                    <td><?php echo $data['qte_stock'] ?></td>
+                                    <td><?php echo /*utf8_encode(*/$data['CIP']//) ?></td>
+                                    <td><?php echo utf8_encode($data['DESIGNATION']) ?></td>
+                                    <td><?php echo /*utf8_encode(*/$data['DCI']//) ?></td>
+                                    <td><?php echo $data['PRIX_PRODUIT'] ?></td>
+                                    <td><?php echo $data['QTE_STOCK'] ?></td>
                                     <td class="center">
                                         <a class="btn btn-outline btn-primary fa fa-edit" href="#"> Mod</a>
                                         <a class="btn btn-outline btn-success fa fa-eye" href="#"> Aff</a>
@@ -49,7 +67,7 @@ if($req->rowCount() > 0){
 
                                     <?php }else{?>
                                         <br />
-                                        <center class="ui-state-highlight ui-corner-all">Aucun article n'a ?t? enregistr? pour l' instant ...</center>
+                                        <center class="ui-state-highlight ui-corner-all">Aucun article n'a été enregistré pour l' instant ...</center>
                                     <?php }
                                      ?>
 

@@ -13,44 +13,52 @@ session_start();
      // var_dump($pages);
   $page=!empty($_GET["page"])?$_GET["page"]:"login";
   //rec
-  if (in_array($page.".php", $pages)) {
-    if ($page !== "login") {
-      ?>
-      <!DOCTYPE html>
-      <html lang="fr">
-      <?php include("pages/include/headerNormal.php"); ?>
 
-      <body>
+    if (strstr($_GET["page"],"etat_")){
+        include("controleurs/".$page.".php");
+        $_SESSION["courante_page"] =$page;
+    }else{
+        if (in_array($page.".php", $pages)) {
+            if ($page !== "login") {
+                ?>
+                <!DOCTYPE html>
+                <html lang="fr">
+                <?php include("pages/include/headerNormal.php"); ?>
 
-          <div id="wrapper">
-              <!-- Navigation -->
-              <?php include("pages/include/new_menu.php"); ?>
+                <body>
 
-          </div>
-          <!-- /#wrapper -->
-          <div id="page-wrapper">
-              <?php include("controleurs/".$page.".php"); ?>
-          </div>
-              
-          <?php include("pages/include/footerNormal.php"); ?>
+                <div id="wrapper">
+                    <!-- Navigation -->
+                    <?php include("pages/include/new_menu.php"); ?>
 
-      </body>
+                </div>
+                <!-- /#wrapper -->
+                <div id="page-wrapper">
+                    <?php include("controleurs/".$page.".php"); ?>
+                </div>
 
-      </html>
-      <?php
+                <?php include("pages/include/footerNormal.php"); ?>
+
+                </body>
+
+                </html>
+                <?php
+            }
+            else
+            {
+                include("controleurs/".$page.".php");
+            }
+
+            $_SESSION["courante_page"] =$page;
+
+        }
+        else{
+            include("controleurs/".$_SESSION["courante_page"].".php");
+
+        }
     }
-    else
-    {
-      include("controleurs/".$page.".php");
-    }
 
-    $_SESSION["courante_page"] =$page;
-    
-  }
-   else{
-     include("controleurs/".$_SESSION["courante_page"].".php");
-         
-   }
+
 
   
 
