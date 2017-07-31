@@ -11,13 +11,14 @@ if (isset($_POST['addcli'])){
 
      // if (isset($_GET['form'])) {
             if ( isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['tel1']) && isset($_POST['adresse'])) {
+                $commercial = isset($_POST['commercial']) ? $_POST['commercial'] : '';
                 $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
                 $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
                 $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : '';
                 $datep = isset($_POST['datep']) ? $_POST['datep'] : '';
                 $piece = isset($_POST['piece']) ? $_POST['piece'] : '';
                 $numpiece = isset($_POST['numpiece']) ? $_POST['numpiece'] : '';
-                $droit = isset($_POST['droit']) ? $_POST['droit'] : '';
+                $droit = isset($_POST['droit']) ? $_POST['droit'] : '0';
                 $email = isset($_POST['email']) ? $_POST['email'] : '';
                 $tel1 = isset($_POST['tel1']) ? $_POST['tel1'] : '';
                 $tel2 = isset($_POST['tel2']) ? $_POST['tel2'] : '';
@@ -72,16 +73,18 @@ if (isset($_POST['addcli'])){
                     $json['liste_erreurs'] = $erreursChamp;
                 }
                 if (!$json['erreur']) {//Pas d erreur
-                    $req = $bdd->prepare("SELECT code_client FROM client WHERE Nom_cli=?");
+                    $req = $bdd->prepare("SELECT code_cli FROM client WHERE Nom_cli=?");
                     $req->execute(array($nom));
                     if ($req->rowCount() != 0) {
                         $json['erreur'] = 'doublon';
                     } else {
-                        $req = $bdd->prepare("INSERT INTO client (titre, Nom_cli, prenom_cli, type_piece, num_piece, date_piece,
-						Email, adresse, tel1, tel2, statut,total_du, credit_maximum, nbr_jr_avant_paie, remise, droit_au_credit, depassement)
-                                                VALUES(:titre,:Nom_cli,:prenom_cli,:type_piece, :num_piece, :date_piece,
-						:Email, :adresse, :tel1, :tel2, :statut,:total_du, :credit_maximum, :nbr_jr_avant_paie, :remise, :droit_au_credit, :depassement)");
-                        $req->execute(array('titre' =>$titre,
+                        $req = $bdd->prepare("INSERT INTO client (CODE_COM,TITRE, NOM_CLI, PRENOM_CLI, TYPE_PIECE, NUM_PIECE, DATE_PIECE,
+                        EMAIL, ADRESSE, TEL1, TEL2, STATUT,TOTAL_DU, CREDIT_MAX, DELAI_PAIEMENT, REMISE, DROIT_CREDIT, DEPASSEMENT)
+                                                VALUES(:code_com,:titre,:Nom_cli,:prenom_cli,:type_piece, :num_piece, :date_piece,
+						:Email, :adresse, :tel1, :tel2, :statut,:total_du, :credit_max, :delai_paiement, :remise, :droit_credit, :depassement)");
+                        $req->execute(array(
+                        'code_com'=>$commercial,
+                        'titre' =>$titre,
 						'Nom_cli'=>$nom, 
 						'prenom_cli'=>$prenom, 
 						'type_piece'=>$piece, 
@@ -93,11 +96,12 @@ if (isset($_POST['addcli'])){
 						'tel2'=>$tel2, 
 						'statut'=>'0',
 						'total_du'=>0, 
-						'credit_maximum'=>$credit,
-						'nbr_jr_avant_paie'=>$delai, 
+						'credit_max'=>$credit,
+						'delai_paiement'=>$delai, 
 						'remise' =>$remise,
-						'droit_au_credit'=>$droit,
-						'depassement' =>$depassement));
+						'droit_credit'=>$droit,
+						'depassement' =>$depassement)
+                        );
                         $lastId = (int)$bdd->lastInsertId();
 
                     }

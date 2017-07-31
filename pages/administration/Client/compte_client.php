@@ -1,5 +1,9 @@
 <?php
-$clients= $bdd->query('SELECT code_cli, titre, nom_cli, prenom_cli, date_naissance, email, adresse, tel1, tel2, statut,total_du solde, credit_maximum, nbr_jr_avant_paie, remise, droit_au_credit, depassement FROM client C');
+global $bdd;
+$clients= $bdd->prepare('SELECT CODE_CLI, TITRE, NOM_CLI, PRENOM_CLI, EMAIL, ADRESSE, TEL1, TEL2, STATUT,TOTAL_DU SOLDE, CREDIT_MAX, DELAI_PAIEMENT, REMISE, DROIT_CREDIT, DEPASSEMENT FROM client');
+$clients->execute();
+$data=$clients->fetchAll();
+$four=array();
 
 ?>
 
@@ -37,17 +41,18 @@ $clients= $bdd->query('SELECT code_cli, titre, nom_cli, prenom_cli, date_naissan
                                         <th>Action</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $clients->fetch()){  ?>
+                               <?php foreach ($data as $d){
+                                //var_dump($data) ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['titre']; ?></td>
-                                        <td><?php echo $donnees['nom_cli']; ?></td>
-                                        <td><?php echo $donnees['credit_maximum']; ?> FCFA</td>
-                                        <td><?php echo $donnees['nbr_jr_avant_paie']; ?></td>
-                                        <td><?php echo $donnees['remise']; ?>%</td>
-                                        <td><?php if($donnees['droit_au_credit']==0){echo "Oui";} else{echo "non";} ?></td>
-                                        <td><?php echo $donnees['solde']; ?> FCFA</td>
-                                        <td><?php if($donnees['depassement']==0){echo "Oui";} else{echo "non";} ?></td>
-                                        <td><?php if($donnees['depassement']==0) {echo $depassement = $donnees['credit_maximum']- $donnees['solde'];} else {echo 0;}?> FCFA
+                                        <td><?php echo $d->TITRE; ?></td>
+                                        <td><?php echo $d->NOM_CLI; ?></td>
+                                        <td><?php echo $d->CREDIT_MAX; ?></td>
+                                        <td><?php echo $d->DELAI_PAIEMENT." jours"; ?></td>
+                                        <td><?php echo $d->SOLDE; ?></td>
+                                        <td><?php if($d->DROIT_CREDIT==0){echo "Oui";} else{echo "non";} ?></td>
+                                        <td><?php echo $d->SOLDE; ?> FCFA</td>
+                                        <td><?php if($d->DROIT_CREDIT==0){echo "Oui";} else{echo "non";} ?></td>
+                                        <td><?php if($d->DROIT_CREDIT==0) {echo $depassement =$d->CREDIT_MAX- $d->SOLDE;} else {echo 0;}?> FCFA
                                             </td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-success fa fa-gg" href="#"> sold</a>

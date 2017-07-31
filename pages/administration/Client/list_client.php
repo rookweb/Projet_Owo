@@ -1,5 +1,9 @@
 <?php 
-    $clients= $bdd->query('SELECT CODE_CLI, TITRE, NOM_CLI, PRENOM_CLI, EMAIL, ADRESSE, TEL1, TEL2, STATUT, CREDIT_MAX, DELAI_PAIEMENT, REMISE, DROIT_CREDIT, DEPASSEMENT FROM client C');
+    global $bdd;
+$clients= $bdd->prepare('SELECT CODE_CLI, TITRE, NOM_CLI, PRENOM_CLI, EMAIL, ADRESSE, TEL1, TEL2, STATUT,TOTAL_DU SOLDE, CREDIT_MAX, DELAI_PAIEMENT, REMISE, DROIT_CREDIT, DEPASSEMENT FROM client');
+$clients->execute();
+$data=$clients->fetchAll();
+$four=array();
 
 ?>
 
@@ -35,15 +39,15 @@
                                         <th>Action</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $clients->fetch()){  ?>
+                               <?php foreach ($data as $d){ ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['TITRE']; ?></td>
-                                        <td><?php echo $donnees['NOM_CLI']; ?></td>
-                                        <td><?php echo $donnees['PRENOM_CLI']; ?></td>
-                                        <td><?php echo $donnees['TEL1']; ?></td>
-                                        <td><?php echo $donnees['EMAIL']; ?></td>
-                                        <td><?php echo $donnees['DROIT_CREDIT']; ?></td>
-                                        <td class="center"><?php echo $donnees['STATUT']; ?></td>
+                                        <td><?php echo $d->TITRE; ?></td>
+                                        <td><?php echo $d->NOM_CLI; ?></td>
+                                        <td><?php echo $d->PRENOM_CLI; ?></td>
+                                        <td><?php echo $d->TEL2; ?></td>
+                                        <td><?php echo $d->EMAIL; ?></td>
+                                        <td><?php echo $d->SOLDE; ?></td>
+                                        <td class="center"><?php if($d->STATUT==0){echo "En regle";} else{echo "Credit";} ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-primary fa fa-edit" href="#"> Mod</a>
                                             <a class="btn btn-outline btn-success fa fa-eye" href="#"> Aff</a>

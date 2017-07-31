@@ -52,7 +52,7 @@
                                 <div class="form-group col-lg-1">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" value="1" id="statut" name="status">  Bloqu&eacute;
+                                            <input type="checkbox" value="1" id="statut" name="statut">  Bloqu&eacute;
                                         </label>
                                     </div>  
                                 </div>
@@ -75,7 +75,7 @@
                                 </div>
 
                             <div class="col-lg-8">
-                                <button  type="submit" class="btn btn-success col-lg-5" name "adduser" >Enregistrer </button>
+                                <button  type="submit" class="btn btn-success col-lg-5" name="adduser" >Enregistrer </button>
                                 <button type="reset" class="btn btn-danger col-lg-5 col-lg-push-2" >Annuler </button>
                             </div>
                             </div>

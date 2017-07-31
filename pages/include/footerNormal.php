@@ -13,7 +13,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="assets/dist/js/sb-admin-2.js"></script>
-    <script src="assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="assets/vendor/datatables/js/jquery.dataTables.js"></script>
     <script src="assets/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
     <script src="assets/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
