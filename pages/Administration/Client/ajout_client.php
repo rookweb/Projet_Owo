@@ -1,4 +1,11 @@
+<?php
+global $bdd;
+$commercial= $bdd->prepare('SELECT code_com, nom_com, prenom_com FROM commerciale');
+$commercial->execute();
+$data=$commercial->fetchAll();
+$four=array();
 
+?>
         
             <div class="row">
                 <div class="col-lg-12">
@@ -21,7 +28,7 @@
                                     <div class="col-lg-8 col-lg-push-2">
                                         <div class="row">
                                             <div class="form-group">
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-5">
                                                     <label for="titre">Titre</label>
                                                     <select class="form-control" id="titre" name="titre">
                                                         <option value="Mr">Monsieur</option>
@@ -29,8 +36,17 @@
                                                         <option value="Dle">Demoiselle</option>
                                                     </select> 
                                                 </div>
+                                            
+                                                <div class="form-group col-lg-5">
+                                                    <label for="commercial">Commercial</label>
+                                                    <select class="form-control" id="commercial" name="commercial">
+                                                    <?php foreach ($data as $d) { ?>
+                                                        <option value="<?php echo $d->code_com; ?>"><?php echo $d->nom_com." ".$d->prenom_com; ?></option>
+                                                    <?php } ?>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="form-group col-lg-6 col-lg-push-2">
+                                            <div class="form-group col-lg-2">
                                                 <div class="checkbox">
                                                     <label>
                                                         <input type="checkbox" name = "droit" value="1">droit au credit </input>
@@ -64,7 +80,7 @@
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label for="datep">Date piece </label>
-                                            <input type="text" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYYY" id="datep" name="datep"/>
+                                            <input type="text" class="form-control datepicker" data-provide="datepicker" placeholder="YYYY/MM/DD" id="datep" name="datep"/>
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label for="calendrar"> </label>
@@ -159,7 +175,7 @@
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
         date_input.datepicker({
             language: 'fr',
-            format: 'dd/mm/yyyy',
+            format: 'yyyy/mm/dd',
             container: container,
             todayHighlight: true,
             autoclose: true,

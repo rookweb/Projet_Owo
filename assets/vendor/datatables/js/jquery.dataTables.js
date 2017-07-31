@@ -11272,7 +11272,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sFirst": "First",
+				"sFirst": "Premier",
 	
 	
 				/**
@@ -11295,7 +11295,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sLast": "Last",
+				"sLast": "Dernier",
 	
 	
 				/**
@@ -11318,7 +11318,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Next",
+				"sNext": "Suivant",
 	
 	
 				/**
@@ -11341,7 +11341,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Previous"
+				"sPrevious": "Precedent"
 			},
 	
 			/**
@@ -11364,7 +11364,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "No data available in table",
+			"sEmptyTable": "Aucune donnee disponible dans la base",
 	
 	
 			/**
@@ -11396,7 +11396,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "Liste de _START_ à _END_ de _TOTAL_ enregistrements",
 	
 	
 			/**
@@ -11417,7 +11417,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "Liste de 0 à 0 de 0 enregistrements",
 	
 	
 			/**
@@ -11439,7 +11439,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtered from _MAX_ total entries)",
+			"sInfoFiltered": "(Filtrage de _MAX_ enregistrements au total)",
 	
 	
 			/**
@@ -11557,7 +11557,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Show _MENU_ entries",
+			"sLengthMenu": "Liste de _MENU_ enregistrements",
 	
 	
 			/**
@@ -11581,7 +11581,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLoadingRecords": "Loading...",
+			"sLoadingRecords": "Chargement...",
 	
 	
 			/**
@@ -11602,7 +11602,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sProcessing": "Processing...",
+			"sProcessing": "En cours...",
 	
 	
 			/**
@@ -11637,7 +11637,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search:",
+			"sSearch": "Rechercher :",
 	
 	
 			/**
@@ -11648,7 +11648,7 @@
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.searchPlaceholder
 			 */
-			"sSearchPlaceholder": "",
+			"sSearchPlaceholder": "Entrez votre recherche",
 	
 	
 			/**
@@ -11695,7 +11695,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "No matching records found"
+			"sZeroRecords": "Aucune correspondance trouvée"
 		},
 	
 	
@@ -11741,7 +11741,7 @@
 		 *
 		 *  @deprecated 1.10. Please use `ajax` for this functionality now.
 		 */
-		"sAjaxDataProp": "data",
+		"sAjaxDataProp": "données",
 	
 	
 		/**

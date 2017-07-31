@@ -1,5 +1,10 @@
 <?php 
     $com = $bdd->query('SELECT nom_com,prenom_com,date_emb,tel_com, tel_urg, chiffre, pourcentage FROM commerciale C ');
+    global $bdd;
+$commerciale= $bdd->prepare('SELECT nom_com,prenom_com,date_emb,tel_com, tel_urg, chiffre, pourcentage FROM commerciale');
+$commerciale->execute();
+$data=$commerciale->fetchAll();
+$four=array();
 ?>
 
             <div class="row">
@@ -34,15 +39,15 @@
                                         <th>Action</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $com->fetch()){  ?>
+                               <?php foreach ($data as $d){?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['nom_com']; ?></td>
-                                        <td><?php echo $donnees['prenom_com']; ?></td>
-                                        <td><?php echo $donnees['date_emb']; ?></td>
-                                        <td><?php echo $donnees['tel_com']; ?></td>
-                                        <td><?php echo $donnees['tel_urg']; ?></td>
-                                        <td class="center"><?php echo $donnees['pourcentage']; ?> %</td>
-                                        <td><?php echo $donnees['chiffre']; ?> FCFA</td>
+                                        <td><?php echo $d->nom_com; ?></td>
+                                        <td><?php echo $d->prenom_com; ?></td>
+                                        <td><?php echo $d->date_emb; ?></td>
+                                        <td><?php echo $d->tel_com; ?></td>
+                                        <td><?php echo $d->tel_urg; ?></td>
+                                        <td><?php echo $d->pourcentage; ?></td>
+                                        <td><?php echo $d->chiffre; ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-primary fa fa-edit" href="#"> Mod</a>
                                             <a class="btn btn-outline btn-success fa fa-money" href="#"> Pay</a>
