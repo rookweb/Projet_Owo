@@ -12,6 +12,7 @@ catch (Exception $e)
 
 			if (isset($_GET['sql']) && $_GET['sql'] != ''){
 				$reponse = $bdd->query($_GET['sql']);
+//				var_dump($_GET['sql']);
 			}else{
 				$reponse=$bdd->query("SELECT * FROM produit order by code_produit");
 			}

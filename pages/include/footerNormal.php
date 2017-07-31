@@ -51,4 +51,16 @@
             responsive: true
         });
     });
+
+    $(document).ready(function clic_modal(id) {
+        var evt = document.createEvent("MouseEvents");
+        evt.initMouseEvent("click, true, true, windows, 0, 0, 0, 0, 0, false, false, false, false, 0, null");
+        document.getElementById(id).dispatchEvent(evt);
+        alert("tête de con!!!");
+    });
+
+//    $(document).ready(function() {
+//        document.getElementById(<?php //echo $id;  ?>//).click();
+//        alert("tête de con!!!");
+//    });
     </script>

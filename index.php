@@ -14,7 +14,7 @@ session_start();
   $page=!empty($_GET["page"])?$_GET["page"]:"login";
   //rec
 
-    if (strstr($_GET["page"],"etat_")){
+    if (isset($_GET["page"]) && strstr($_GET["page"],"etat_")){
         include("controleurs/".$page.".php");
         $_SESSION["courante_page"] =$page;
     }else{
