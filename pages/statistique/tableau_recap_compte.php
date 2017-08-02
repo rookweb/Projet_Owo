@@ -1,6 +1,7 @@
 <?php
-$clients= $bdd->query('SELECT code_cli, titre, nom_cli, prenom_cli, date_naissance, email, adresse, tel1, tel2, statut,total_du solde, credit_maximum, nbr_jr_avant_paie, remise, droit_au_credit, depassement FROM client ');
-
+global $bdd;
+$sql="SELECT client.TITRE,client.NOM_CLI,client.CREDIT_MAX,client.DELAI_PAIEMENT,client.REMISE,client.TOTAL_DU,client.DEPASSEMENT,operationcompte.SOLDE FROM client ,operationcompte";
+$req= $bdd->query($sql);
 ?>
 
             <div class="row">
@@ -32,21 +33,18 @@ $clients= $bdd->query('SELECT code_cli, titre, nom_cli, prenom_cli, date_naissan
                                         <th>Credit</th>
                                         <th>Solde</th>
                                         <th>Depassement</th>
-                                        <th>Montant</th>
-                                        <th>Action</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $clients->fetch()){  ?>
+                               <?php while ($donnees = $req->fetch(PDO::FETCH_ASSOC)){  ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['titre']; ?></td>
-                                        <td><?php echo $donnees['nom_cli']; ?></td>
-                                        <td><?php echo $donnees['credit_maximum']; ?> FCFA</td>
-                                        <td><?php echo $donnees['nbr_jr_avant_paie']; ?></td>
-                                        <td><?php echo $donnees['remise']; ?></td>
-                                        <td class="center">
-                                            <a class="btn btn-outline btn-success fa fa-gg" href="#">Mod</a>
-                                            <a class="btn btn-outline btn-primary fa fa-history" href="#"> Sup</a>
-                                        </td>
+                                        <td><?php echo $donnees['TITRE']; ?></td>
+                                        <td><?php echo $donnees['NOM_CLI']; ?></td>
+                                        <td><?php echo $donnees['CREDIT_MAX']; ?> FCFA</td>
+                                        <td><?php echo $donnees['DELAI_PAIEMENT']; ?></td>
+                                        <td><?php echo $donnees['REMISE']; ?></td>
+                                        <td><?php echo $donnees['TOTAL_DU']; ?></td>
+                                        <td><?php echo $donnees['DEPASSEMENT']; ?></td>
+                                        <td><?php echo $donnees['SOLDE']; ?></td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>

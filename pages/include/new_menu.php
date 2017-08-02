@@ -425,19 +425,19 @@ $menu = '
                                         <a href="?page="><i class="fa fa-file-pdf-o fa-fw"></i> Statistiques de ventes <span class="fa arrow"></span></a>
                                   <ul class="nav nav-third-level">
                                       <li>
-                                    <a href="?page=">Recaps des tickets</a>
+                                    <a href="?page=tableau_recap_ticket">Recaps des tickets</a>
                                      </li>
                                       <li>
-                                    <a href="?page=">Vente crédit</a>
+                                    <a href="?page=vente_credit_caisse">Vente crédit</a>
                                       </li>
 									  <li>
-                                    <a href="?page=">Recap Encaissement</a>
+                                    <a href="?page=Tableau_recap_encaissement">Recap Encaissement</a>
                                       </li>
 									  <li>
-                                    <a href="?page="> Recap sortie caisse</a>
+                                    <a href="?page=tableau_recap_sortie_caisse"> Recap sortie caisse</a>
                                       </li>
 									   <li>
-                                    <a href="?page="> Recap Mouvement</a>
+                                    <a href="?page=recap_mouvement"> Recap Mouvement</a>
                                       </li>
                                     </ul>
                                   </li>
@@ -456,10 +456,10 @@ $menu = '
                                     <a href="?page=generiq_produit"> Génériques Produits</a>
                                      </li>
                                       <li>
-                                    <a href="?page=">Enreg Produits</a>
+                                    <a href="?page=tableau_recap_produit_enrg">Enreg Produits</a>
                                       </li>
 									  <li>
-                                    <a href="?page=">Produits Périmés</a>
+                                    <a href="?page=tableau_recap_produit_perime">Produits Périmés</a>
                                       </li>
                                     </ul>
                                   </li>
@@ -474,13 +474,13 @@ $menu = '
                                         <a href="?page="><i class="fa fa-file-pdf-o fa-fw"></i> Statistiques d\'Affaires <span class="fa arrow"></span></a>
                                   <ul class="nav nav-third-level">
                                       <li>
-                                    <a href="?page=">Situation Compte</a>
+                                    <a href="?page=tableau_recap_compte">Situation Compte</a>
                                      </li>
                                       <li>
-                                    <a href="?page=">Chiffre d\'affaire</a>
+                                    <a href="?page=recap_chiffre_affaire">Chiffre d\'affaire</a>
                                       </li>
 									  <li>
-                                    <a href="?page=">Benefice primaire</a>
+                                    <a href="?page=recap_benefice">Benefice primaire</a>
                                       </li>
                                     </ul>
                                   </li>
@@ -495,16 +495,16 @@ $menu = '
                                         <a href="?page="><i class="fa fa-file-excel-o fa-fw"></i> Statistiques des Journées <span class="fa arrow"></span></a>
                                   <ul class="nav nav-third-level">
                                       <li>
-                                    <a href="?page=">Tickets arrêts caisse</a>
+                                    <a href="?page=ticket_arret_caisse">Tickets arrêts caisse</a>
                                      </li>
                                       <li>
-                                    <a href="?page="> Recap cloture caisse</a>
+                                    <a href="?page=ticket_cloture_caisse"> Recap cloture caisse</a>
                                       </li>
 									  <li>
-                                    <a href="?page="> Ticket Mouvement Journée</a>
+                                    <a href="?page=ticket_mouvement_journee"> Ticket Mouvement Journée</a>
                                       </li>
 									  <li>
-                                    <a href="?page="> Recap Journée / Periode</a>
+                                    <a href="?page=recap_journee"> Recap Journée / Periode</a>
                                       </li>
                                     </ul>
                                   </li>

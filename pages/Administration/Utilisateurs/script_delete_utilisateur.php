@@ -8,17 +8,12 @@
 include "../../include/connexionDB.php";
 
     
-                $statut = 0;
+                
                 $id = isset($_POST['memids']) ? $_POST['memids'] : '';
 
                     {
-                        $req = $bdd->prepare("UPDATE utilisateur SET STATUT=:statut WHERE CODE_USER=:code");
-                        $req->execute(array(
-                			'statut'=>$statut,
-                            'code'=>$id
-                        //'date_enr'=>$date_enr
-                        ));
-                        $lastId = (int)$bdd->lastInsertId();
+                        $req = $bdd->prepare("UPDATE utilisateur SET STATUT='0' WHERE utilisateur.CODE_USER=:code");
+                        $req->execute(array('code'=>$id));
                     }
                // }
                // echo json_encode($json);

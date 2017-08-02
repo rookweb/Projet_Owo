@@ -1,5 +1,30 @@
 <?php
-     $fournisseurs= $bdd->query('SELECT * FROM fournisseur F');
+$dd="";
+$df="";
+
+if (isset($_POST['dated']) && isset($_POST['datef']) && $_POST['dated'] !='' && $_POST['datef'] !='' ) {
+     $dd = $_POST['dated'];
+     $df = $_POST['datef'];
+     
+     global $bdd;
+
+    $sql2="SELECT produit.DESIGNATION, produit.SOUMIS_TVA, 
+    produit.TAUX_TVA,produit.PRIX_PRODUIT, produit.PRIX_PRODUIT*(produit.TAUX_TVA/100) AS 'TVA SUR LE PRODUIT',
+    produit.PRIX_PRODUIT+(produit.PRIX_PRODUIT*(produit.TAUX_TVA/100)) AS 'MONTANT TOTAL', produit.PRIX_PRODUIT+(produit.PRIX_PRODUIT*(produit.TAUX_TVA/100)) - produit.PRIX_PRODUIT AS 'BENEFICE'
+     FROM produit WHERE produit.DATE_ENREGISTREMENT BETWEEN ".$_POST['dated']." AND ".$_POST['datef']  ;
+
+    $req2= $bdd->query($sql2);
+    
+}
+
+
+
+    $sql=" SELECT produit.DESIGNATION,produit.SOUMIS_TVA,produit.TAUX_TVA,produit.PRIX_PRODUIT,
+      produit.PRIX_PRODUIT*(produit.TAUX_TVA/100) AS 'TVA SUR LE PRODUIT',produit.PRIX_PRODUIT+(produit.PRIX_PRODUIT*(produit.TAUX_TVA/100)) AS 'MONTANT TOTAL', 
+      produit.PRIX_PRODUIT+(produit.PRIX_PRODUIT*(produit.TAUX_TVA/100)) - produit.PRIX_PRODUIT AS 'BENEFICE' FROM produit";
+     $req= $bdd->query($sql);
+
+
 ?>
 
             <div class="row">
@@ -13,51 +38,94 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a class="btn btn-outline btn-primary fa fa-print" href="#"> IMPRIMER</a>
+                            <a class="btn btn-outline btn-primary fa fa-print" <?php echo 'href="?page=etat_benefice&sql='.$sql.'"' ?>> IMPRIMER</a>
                             <a class="btn btn-outline btn-success fa fa-file" href="#"> EXPORTER</a>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                          <form role="form" method="post">
-                                <div class="col-lg-8">
-                                    <div class="form-group col-lg-6">
-                                        <label for="date"> Periode: </label>
-                                        <input type="date" name="periode_1" id="periode_1">
+                          <div class="container">
+                        
+                            <form role="form" method="post" >
+                                    <div class="row">
+
+                                          <input type="text" class="hidden" name="page" value="recap_benefice" />
+
+                                        <div class="col-lg-8 col-lg-push-0 text-align-center">
+                                                
+                                            <div class="form-group col-lg-3">
+                                                <input type="text" placeholder="Date debut" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYYY" id="dated" name="dated"/>
+                                            </div>
+                                        
+                                            <div class="form-group col-lg-3">
+                                                <input type="text" placeholder="Date fin" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYYY" id="datef" name="datef"/>
+                                           </div>
+
+                                            <div class="form-group col-lg-4">
+                                                <input class="btn btn-outline btn-success btn-sm" type="submit" name="go" id="go" value="valider" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-lg-4">
-                                        <input type="text" name="periode_2" id="periode_2">
-                                    </div>
-                                        <input class="btn btn-outline btn-success" type="submit" name="go" id="go" value="Ouvrir" />
-                                </div>
+                              </form>
+                            </div >
 
                             <table class="table table-striped table-bordered table-hover">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                       <th>Date</th>
-                                        <th>Id vente</th>
-                                        <th>Client</th>
-                                        <th>Responsable ouverture</th>
-                                        <th>Responsable fermeture</th>
-                                        <th>Action</th>
+                                       <th>Designation produit</th>
+                                        <th>Prix achat</th>
+                                        <th>TVA</th>
+                                        <th>Taux de TVA</th>
+                                        <th>Montant du TVA sur le produit</th>
+                                        <th>Montant total</th>
+                                        <th>Benefice</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $fournisseurs->fetch()){  ?>
+                              
+
+                               
+
+                                
+                              <?php
+                              if (!isset($_POST['go']) || ($_POST['dated'] =='' && $_POST['datef'] =='')) {
+                                    while ($donnees = $req->fetch(PDO::FETCH_ASSOC)){  ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['raison_social']; ?></td>
-                                        <td><?php echo $donnees['contact']; ?></td>
-                                        <td><?php echo $donnees['adresse']; ?></td>
-                                        <td><?php echo $donnees['tel']; ?></td>
-                                        <td><?php echo $donnees['email']; ?></td>
-                                        <td class="center"><?php echo $donnees['solde_compte']; ?></td>
-                                        <td class="center">
-                                            <a class="btn btn-outline btn-primary fa fa-money" href="#"> Pay</a>
-                                            <a class="btn btn-outline btn-success fa fa-edit" href="#"> Mod</a>
-                                            <a class="btn btn-outline btn-warning fa fa-times" href="#"> Sup</a>
-                                        </td>
+                                    <td><?php echo $donnees['DESIGNATION']; ?></td>
+                                    <td><?php echo $donnees['PRIX_PRODUIT']; ?></td>
+                                    <td><?php echo $donnees['SOUMIS_TVA']; ?></td>
+                                    <td><?php echo $donnees['TAUX_TVA']; ?></td>
+                                    <td><?php echo $donnees['TVA SUR LE PRODUIT']; ?></td>
+                                    <td><?php echo $donnees['MONTANT TOTAL']; ?></td>
+                                    <td><?php echo $donnees['BENEFICE']; ?></td>
                                     </tr>
-                                <?php } ?>
-                                </tbody>
+                                <?php } 
+                              }else{
+                                 if (!empty($_POST['dated']) && !empty($_POST['datef'])){
+                                       
+                                          if (isset($req2)) {
+                                            while ($donnees2 = $req2->fetch(PDO::FETCH_ASSOC)){  ?>
+                                                <tr class="odd gradeX">
+                                                <td><?php echo $donnees2['DESIGNATION']; ?></td>
+                                                <td><?php echo $donnees2['PRIX_PRODUIT']; ?></td>
+                                                <td><?php echo $donnees2['SOUMIS_TVA']; ?></td>
+                                                <td><?php echo $donnees2['TAUX_TVA']; ?></td>
+                                                <td><?php echo $donnees2['TVA SUR LE PRODUIT']; ?></td>
+                                                <td><?php echo $donnees2['MONTANT TOTAL']; ?></td>
+                                                <td><?php echo $donnees2['BENEFICE']; ?></td>
+                                               </tr>
+                                          }
+                                         
+                                          
+                                          <?php }
+
+                                       } 
+                                 } 
+                              }
+
+                                   
+
+                               ?>
+                                
                                 </tbody>
                             </table>
                         </div>
