@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: OLA
- * Date: 19/07/2017
- * Time: 22:54
- */
 include "../../include/connexionDB.php";
-if (isset($_POST['addcli'])){
+if (isset($_POST['update_cli'])){
     //<editor-fold defaultstate="collapsed" desc=" case 'ajout_client' ">
 
      // if (isset($_GET['form'])) {
@@ -27,6 +21,7 @@ if (isset($_POST['addcli'])){
                 $remise = isset($_POST['remise']) ? $_POST['remise'] : '';
                 $depassement = isset($_POST['depassement']) ? $_POST['depassement'] : '';
                 $delai = isset($_POST['delai']) ? $_POST['delai'] : '';
+                $code= isset($_POST['memids']) ? $_POST['memids'] : '';
                 //Formattage
                 $nom = htmlspecialchars($nom);
                 $prenom = htmlspecialchars($prenom);
@@ -51,67 +46,39 @@ if (isset($_POST['addcli'])){
                 ECHO  $droit ; ?> </Br> <?Php
                 ECHO  $depassement ; ?> </Br> <?Php
 **/
-
-                //Traitement
-                $json = array();
-                $erreursChamp = array();
-                $json['erreur'] = false;
-                if ($nom === '') {
-                    $erreursChamp['nom'] = 'vide';
-                }
-                if ($prenom === '') {
-                    $erreursChamp['prenom'] = 'vide';
-                }
-                if (!$adresse) {
-                    $erreursChamp['adresse'] = (!isset($_POST['adresse'])) ? 'vide' : '';
-                }
-                if (!$tel1) {
-                    $erreursChamp['tel1'] = (!isset($_POST['tel1'])) ? 'vide' : '';
-                }
-                if (!empty($erreursChamp)) {
-                    $json['erreur'] = 'champs';
-                    $json['liste_erreurs'] = $erreursChamp;
-                }
-                if (!$json['erreur']) {//Pas d erreur
-                    $req = $bdd->prepare("SELECT code_cli FROM client WHERE Nom_cli=?");
-                    $req->execute(array($nom));
-                    if ($req->rowCount() != 0) {
-                        $json['erreur'] = 'doublon';
-                    } else {
-                        $req = $bdd->prepare("INSERT INTO client (CODE_COM,TITRE, NOM_CLI, PRENOM_CLI, TYPE_PIECE, NUM_PIECE, DATE_PIECE,
-                        EMAIL, ADRESSE, TEL1, TEL2, STATUT,TOTAL_DU, CREDIT_MAX, DELAI_PAIEMENT, REMISE, DROIT_CREDIT, DEPASSEMENT)
-                                                VALUES(:code_com,:titre,:Nom_cli,:prenom_cli,:type_piece, :num_piece, :date_piece,
-						:Email, :adresse, :tel1, :tel2, :statut,:total_du, :credit_max, :delai_paiement, :remise, :droit_credit, :depassement)");
+                
+                        $req = $bdd->prepare("UPDATE client SET TITRE=:titre, NOM_CLI=:Nom_cli, PRENOM_CLI=:prenom_cli, TYPE_PIECE=:type_piece, NUM_PIECE:=num_piece, DATE_PIECE:=date_piece,
+                        EMAIL:=Email, ADRESSE=:adresse, TEL1=:tel1, TEL2=:tel2, STATUT=:statut,TOTAL_DU=:total_du, CREDIT_MAX=:credit_max, DELAI_PAIEMENT=:delai_paiement, REMISE=:remise, DROIT_CREDIT=:droit_credit, DEPASSEMENT=:depassement WHERE CODE_CLI=:code");
                         $req->execute(array(
-                        'code_com'=>$commercial,
                         'titre' =>$titre,
-						'Nom_cli'=>$nom, 
-						'prenom_cli'=>$prenom, 
-						'type_piece'=>$piece, 
-						'num_piece'=>$numpiece,
-						'date_piece'=>$datep, 
-						'Email'=>$email,
-						'adresse'=>$adresse,
-						'tel1'=>$tel1, 
-						'tel2'=>$tel2, 
-						'statut'=>'0',
-						'total_du'=>0, 
-						'credit_max'=>$credit,
-						'delai_paiement'=>$delai, 
-						'remise' =>$remise,
-						'droit_credit'=>$droit,
-						'depassement' =>$depassement)
+                        'Nom_cli'=>$nom, 
+                        'prenom_cli'=>$prenom, 
+                        'type_piece'=>$piece, 
+                        'num_piece'=>$numpiece,
+                        'date_piece'=>$datep, 
+                        'Email'=>$email,
+                        'adresse'=>$adresse,
+                        'tel1'=>$tel1, 
+                        'tel2'=>$tel2, 
+                        'statut'=>'0',
+                        'total_du'=>0, 
+                        'credit_max'=>$credit,
+                        'delai_paiement'=>$delai, 
+                        'remise' =>$remise,
+                        'droit_credit'=>$droit,
+                        'depassement' =>$depassement,
+                        'code'=>$code)
                         );
-                        $lastId = (int)$bdd->lastInsertId();
+
+                        print_r($req);
 
                     }
-                }
+                
                // echo json_encode($json);
-				echo '<body onload ="alert(\'Client ajouté avec succès\')">';
-				echo '<meta http-equiv="refresh" content="0;URL=../../../index.php?page=list_client">';
+                echo '<body onload ="alert(\'Client mis a jour avec succès\')">';
+                echo '<meta http-equiv="refresh" content="0;URL=../../../index.php?page=list_client">';
             }
      //  }
-}
 
 
 ?>

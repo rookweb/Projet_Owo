@@ -1,6 +1,6 @@
 <?php 
     global $bdd;
-    $utilisateur = $bdd->prepare('SELECT NOM_USER,PRENOM_USER,LOGIN,STATUT,DESIGNATION,DATE_ENREGISTREMENT FROM utilisateur U JOIN privileges P WHERE U.code_privilege = P.code_privilege');
+    $utilisateur = $bdd->prepare('SELECT CODE_USER,NOM_USER,PRENOM_USER,LOGIN,STATUT,DESIGNATION,DATE_ENREGISTREMENT FROM utilisateur U JOIN privileges P WHERE U.code_privilege = P.code_privilege');
     $utilisateur->execute();
     $data=$utilisateur->fetchAll();
     $user=array()
@@ -47,8 +47,8 @@
 
                                         <td class="center"><?php if($d->STATUT == 0){echo "Actif";} else {echo "Desactiver";} ?></td>
                                         <td class="center">
-                                            <a class="btn btn-outline btn-primary fa fa-gear" href="#"> Modifier</a>
-                                            <a class="btn btn-outline btn-success fa fa-times" href="#"> Desactiver</a>
+                                            <a class="btn btn-outline btn-primary fa fa-gear" href="?page=update_utilisateur&amp;id=<?php echo $d->CODE_USER; ?>"> Modifier</a>
+                                            <a class="btn btn-outline btn-success fa fa-times" href="pages/administration/utilisateurs/script_delete_utilisateur.php?id=<?php echo $d->CODE_USER; ?>"> Desactiver</a>
                                             <a class="btn btn-outline btn-warning fa fa-times" href="#"> Reinitialiser</a>
                                         </td>
                                     </tr>

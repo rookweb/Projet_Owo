@@ -46,9 +46,9 @@ $four=array();
                                         <td><?php echo $d->EMAIL; ?></td>
                                         <td class="center"><?php echo $d->SOLDE_COMPTE; ?></td>
                                         <td class="center">
-                                            <a class="btn btn-outline btn-primary fa fa-money" href="#"> Pay</a>
-                                            <a class="btn btn-outline btn-success fa fa-edit" href="#"> Mod</a>
-                                            <a class="btn btn-outline btn-warning fa fa-times" href="#"> Sup</a>
+                                            <a class="btn btn-outline btn-primary fa fa-money" href=""> Pay</a>
+                                            <a class="btn btn-outline btn-success fa fa-edit" href="?page=update_fournisseur&amp;id=<?php echo $d->CODE_FOURNISSEUR; ?>"> Mod</a>
+                                            <a class="btn btn-outline btn-warning fa fa-times" href="pages/administration/Fournisseur/script_delete_fournisseur.php?id=<?php echo $d->CODE_FOURNISSEUR; ?>"> Sup</a>
                                         </td>
                                     </tr>
                                 <?php } ?>
