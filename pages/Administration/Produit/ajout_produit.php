@@ -1,11 +1,6 @@
 <?php
 include("/pages/include/connexionDB.php");
-$labo=$bdd->query('SELECT code_lab,nom_laboratoire FROM laboratoire');
-$classe=$bdd->query('SELECT code_classe,description FROM classe_produit');
-$exploitant = $bdd->query('SELECT code_exploitant,libelle FROM exploitant');
-$specialite=$bdd->query('SELECT code_specialite,nom_specialite FROM specialite');
-$localisation=$bdd->query('SELECT code_localisation,nom_localisation FROM localisation');
-$forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
+
  /*$tva = $_POST['tva'] =0; 
  $achat =  $_POST['achat']=0; 
  $coef = $_POST['coef']=0; 
@@ -41,10 +36,10 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
     
     <div class="panel-body">
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#tab1" data-toggle="tab">Programme</a></li>
-          <li><a href="#tab2" data-toggle="tab">Public</a></li>
-          <li><a href="#tab3" data-toggle="tab">Objectifs</a></li>
-          <li><a href="#tab4" data-toggle="tab">En complément</a></li>
+          <li class="active"><a data-toggle="tab" href="#tab1" >Les identifiants</a></li>
+          <li><a data-toggle="tab" href="#tab2" >Informations</a></li>
+          <li><a data-toggle="tab" href="#tab3" >Prix</a></li>
+          <li><a data-toggle="tab" href="#tab4" >Autre</a></li>
         </ul>
 
         <div class="panel-body">
@@ -69,10 +64,11 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                     <input class="form-control" id="interne" name="interne">
                                 </div>
                                 <div class="form-group col-lg-4 col-xm-2">
-                                    <a class="btn btn-primary" role="tab" data-toggle="tab2" href="#tab2" >suivant</a>
+                                    <a class="btn btn-primary" role="tab" data-toggle="tab" href="#tab2" >suivant</a>
                                 </div>
                             </div>   
                         </div>
+                        <!--
                         <div class="col-lg-3">
                             <h3>La photo</h3>
                             <div class="form-group">
@@ -84,6 +80,7 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                 <input type="file" id="photo" name="photo">
                             </div>
                         </div>
+                        -->
                     </div>
 
                     <div class="tab-pane" id="tab2">
@@ -131,34 +128,14 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                     </label>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <label for="tva">Taux TVA</label>
-                                    <input class="form-control" type="number" min="0" max="100" id="tva" name="tva">
-
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <label for="achat">Prix d'achat</label>
-                                    <input class="form-control" type="number" id="achat" name="achat">
-                                    
-                                </div>
-                                <div class="form-group col-lg-6 col-xm-2">
-                                    <label for="coef">Coeficient</label>
-                                    <input class="form-control" type="number" id="coef" name="coef">
-
-                                </div>
-                                <div class="form-group col-lg-6 col-xm-2">
-                                    <label for="reduction">Reduction</label>
-                                    <input class="form-control" type="number" id="reduction" name="reduction">
+                                    <label for="taux_tva">Taux TVA</label>
+                                    <input class="form-control" type="number" min="0" max="100" id="taux_tva" name="taux_tva">
 
                                 </div>
                                 
                                 <div class="form-group col-lg-6 col-xm-2">
                                     <label for="vente">Prix de vente</label>
-                                    <input class="form-control" id="vente" name="vente" value = "<?php echo $vente;?>"  readonly/>
-                                </div>
-                                <div class="form-group col-lg-6 col-xm-2">
-                                    <label for="pv">Lancer le calcul du Prix de vente</label>
-                                    <button type="submit" class="btn btn-primary col-lg-5" name="pv">Calculer</button>
-                                    
+                                    <input class="form-control" id="vente" name="vente" value = "<?php echo $vente;?>" required/>
                                 </div>
                             </div>
                             <div class="form-group col-lg-6">
@@ -173,74 +150,115 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
 
                         <div class="col-lg-11">
                             <h1 class="text-center">Autres informations</h1>
-                                
+                                <?php
+                                global $bdd;
+                                    $labo= $bdd->prepare('SELECT CODE_LAB,NOM_LABORATOIRE FROM laboratoire');
+                                    $labo->execute();
+                                    $data=$labo->fetchAll();
+                                    $four=array();
+                                ?>
                             <div class="form-group col-lg-4">
                                 <label for="laboratoire">Laboratoire</label>
                                 <select class="form-control" id="laboratoire" name="laboratoire">
-                                    <?php while ($donnees = $labo->fetch()){
-                                        echo '<option value="'.$donnees['code_lab'].'">';
+                                    <?php foreach ($data as $d) {
+                                        echo '<option value="'.$d->CODE_LAB.'">';
 
-                                        echo $donnees['nom_laboratoire'];
+                                        echo $d->NOM_LABORATOIRE;
 
                                         echo '</option>';
                                     } ?>
                                 </select> 
                             </div>
+                            <?php
+                                global $bdd;
+                                    $localisation= $bdd->prepare('SELECT CODE_LOCALISATION,NOM_LOCALISATION FROM localisation');
+                                    $localisation->execute();
+                                    $data=$localisation->fetchAll();
+                                    $four=array();
+                            ?>
                             <div class="form-group col-lg-4">
                                 <label for="localisation">Localisation</label>
                                 <select class="form-control" id="localisation" name="localisation">
-                                    <?php while ($donnees = $localisation->fetch()){
-                                        echo '<option value="'.$donnees['code_localisation'].'">';
+                                    <?php foreach ($data as $d) {
+                                        echo '<option value="'.$d->CODE_LOCALISATION.'">';
 
-                                                echo $donnees['nom_localisation'];
+                                                echo $d->NOM_LOCALISATION;
 
                                         echo '</option>';
                                      } ?>
                                 </select> 
                             </div>
                             <div class="form-group col-lg-4">
+                            <?php
+                                global $bdd;
+                                    $exploitant= $bdd->prepare('SELECT CODE_EXPLOITANT,LIBELLE FROM exploitant');
+                                    $exploitant->execute();
+                                    $data=$exploitant->fetchAll();
+                                    $four=array();
+                                ?>
                                 <label for="exploitant">Exploitant</label>
                                 <select class="form-control" id="exploitant" name="exploitant">
-                                    <?php while ($donnees = $exploitant->fetch()){
-                                        echo '<option value="'.$donnees['code_exploitant'].'">';
+                                    <?php foreach ($data as $d) {
+                                        echo '<option value="'.$d->CODE_EXPLOITANT.'">';
 
-                                        echo $donnees['libelle'];
+                                        echo $d->LIBELLE;
 
                                         echo '</option>';
                                     } ?>
                                 </select> 
                             </div>
                             <div class="form-group col-lg-4">
+                            <?php
+                                global $bdd;
+                                    $classe= $bdd->prepare('SELECT CODE_CLASSE,DESCRIPTION FROM classe_produit');
+                                    $classe->execute();
+                                    $data=$classe->fetchAll();
+                                    $four=array();
+                                ?>
                                 <label for="classe">Classe</label>
                                 <select class="form-control" id="classe" name="classe">
-                                    <?php while ($donnees = $classe->fetch()){
-                                        echo '<option value="'.$donnees['code_clas'].'">';
+                                    <?php foreach ($data as $d) {
+                                        echo '<option value="'.$d->CODE_CLASSE.'">';
 
-                                        echo $donnees['description'];
+                                        echo $d->DESCRIPTION;
 
                                         echo '</option>';
                                     } ?>
                                 </select> 
                             </div>
                             <div class="form-group col-lg-4">
+                            <?php
+                                global $bdd;
+                                    $specialite= $bdd->prepare('SELECT CODE_SPECIALITE,NOM_SPECIALITE FROM specialite');
+                                    $specialite->execute();
+                                    $data=$specialite->fetchAll();
+                                    $four=array();
+                                ?>
                                 <label for="specialite">Specialite</label>
                                 <select class="form-control" id="specialite" name="specialite">
-                                    <?php while ($donnees = $specialite->fetch()){
-                                        echo '<option value="'.$donnees['code_specialite'].'">';
+                                    <?php foreach ($data as $d) {
+                                        echo '<option value="'.$d->CODE_SPECIALITE.'">';
 
-                                        echo $donnees['nom_specialite'];
+                                        echo $d->NOM_SPECIALITE;
 
                                         echo '</option>';
                                     } ?>
                                 </select> 
                             </div>
                             <div class="form-group col-lg-4">
+                            <?php
+                                global $bdd;
+                                    $forme= $bdd->prepare('SELECT CODE_FORME,NOM_FORME FROM forme');
+                                    $forme->execute();
+                                    $data=$forme->fetchAll();
+                                    $four=array();
+                                ?>
                                 <label for="forme">Forme</label>
                                 <select class="form-control" id="forme" name="forme">
-                                    <?php while ($donnees = $forme->fetch()){
-                                        echo '<option value="'.$donnees['code_forme'].'">';
+                                    <?php foreach ($data as $d) {
+                                        echo '<option value="'.$d->CODE_FORME.'">';
 
-                                        echo $donnees['nom_forme'];
+                                        echo $d->NOM_FORME;
 
                                         echo '</option>';
                                     } ?>

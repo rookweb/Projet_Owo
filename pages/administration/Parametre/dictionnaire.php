@@ -104,7 +104,7 @@ $four=array();
                                    # code...
                                }{  ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $d->NUM_BANQUE; ?></td>
+                                        <td><?php echo $d->CODE_BANQUE; ?></td>
                                         <td><?php echo $d->DESCRIPTION; ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-success fa fa-edit" data-toggle="modal" data-target="#banque_mod"> MODIFIER</a>
@@ -156,10 +156,10 @@ $four=array();
                                                 <th>Action</th>
                                             </tr>
                                             <tbody>
-                                            <?php while ($donnees = $classe->fetch()){  ?>
+                                            <?php foreach ($data as $d) {  ?>
                                                 <tr class="odd gradeX">
-                                                    <td><?php echo $donnees['num_clas']; ?></td>
-                                                    <td><?php echo $donnees['description']; ?></td>
+                                                    <td><?php echo $d->CODE_CLASSE; ?></td>
+                                                    <td><?php echo $d->DESCRIPTION; ?></td>
                                                     <td class="center">
                                                         <a class="btn btn-outline btn-success fa fa-edit" data-toggle="modal" data-target="#classe_mod"> MODIFIER</a>
                                                         <a class="btn btn-outline btn-warning fa fa-times" data-toggle="modal" data-target="#classe_sup"> SUPPRIMER</a>

@@ -41,13 +41,7 @@ $four=array();
                                                     <input class="form-control"  type="text" id="commercial" name="commercial" REQUIRED value="<?php echo $d->NOM_COM.' '.$d->PRENOM_COM; ?>"/>
                                                 </div> 
                                             </div>
-                                            <div class="form-group col-lg-2">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input <?php if ($d->DROIT_CREDIT==1){echo "type='checkbox' name='droit' value='1' checked='' ";} else {echo "type='checkbox' name='droit' value='1'";}; ?>>droit au credit </input>
-                                                    </label>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     
@@ -74,13 +68,16 @@ $four=array();
                                             <input type="text" class="form-control "  id="numpiece" name="numpiece" value="<?php echo $d->NUM_PIECE; ?>"/>
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <label for="datep">Date piece </label>
+                                            <label for="datep">Date piece </label> <i class="fa fa-calendar"></i>
                                             <input type="text" class="form-control datepicker" data-provide="datepicker" placeholder="YYYY/MM/DD" id="datep" name="datep" value="<?php echo $d->DATE_PIECE; ?>"/>
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <label for="calendrar"> </label>
-                                            <i class="fa fa-calendar"></i>
-                                     </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input <?php if ($d->DROIT_CREDIT==1){echo "type='checkbox' name='droit' value='1' checked='' ";} else {echo "type='checkbox' name='droit' value='1'";}; ?>>droit au credit </input>
+                                                    </label>
+                                                </div>
+                                            </div>
 
                                     </div> 
 
