@@ -1,13 +1,13 @@
 <?php 
-    $banque = $bdd->query('SELECT code_banque, description FROM banque');
-    $classe = $bdd->query('SELECT code_clas, description FROM classe');
-    $exploitant = $bdd->query('SELECT code_exploitant, libelle FROM exploitant');
-    $famille = $bdd->query('SELECT code_famille, nom_famille FROM famille');
-    $forme = $bdd->query('SELECT code_forme, nom_forme FROM forme');
-    $laboratoire = $bdd->query('SELECT code_lab, nom_laboratoire FROM laboratoire');
-    $localisation = $bdd->query('SELECT code_localisation, nom_localisation FROM localisation');
-    $motif = $bdd->query('SELECT code_motif, description FROM motif');
-    $specialite = $bdd->query('SELECT code_specialite, nom_specialite FROM specialite');
+    $banque = $bdd->query('SELECT CODE_BANQUE, DESCRIPTION FROM banque');
+    $classe = $bdd->query('SELECT CODE_CLASSE, DESCRIPTION FROM classe_produit');
+    $exploitant = $bdd->query('SELECT CODE_EXPLOITANT, LIBELLE FROM exploitant');
+    $famille = $bdd->query('SELECT CODE_FAMILLE, NOM_FAMILLE FROM famille_produit');
+    $forme = $bdd->query('SELECT CODE_FORME, NOM_FORME FROM forme');
+    $laboratoire = $bdd->query('SELECT CODE_LAB, NOM_LABORATOIRE FROM laboratoire');
+    $localisation = $bdd->query('SELECT CODE_LOCALISATION, NOM_LOCALISATION FROM localisation');
+    $motif = $bdd->query('SELECT CODE_MOTIF, DESCRIPTION FROM motif');
+    $specialite = $bdd->query('SELECT CODE_SPECIALITE, NOM_SPECIALITE FROM specialite');
 ?>
 
 
@@ -38,7 +38,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#banque_add"> NOUVEAU</a>
+                            <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#banque_add"> AJOUTER</a>
                             <B>  <h3> Liste des Banques </h3></B>
 
                         </div>
@@ -85,7 +85,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#classe_add"> NOUVEAU</a>
+                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#classe_add"> AJOUTER</a>
                                         <B>  <h3> Liste des Classes </h3></B>
 
                                     </div>
@@ -129,7 +129,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#exploitant_add"> NOUVEAU</a>
+                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#exploitant_add"> AJOUTER</a>
                                         <B>  <h3> Liste des Exploitants</h3></B>
 
                                     </div>
@@ -173,7 +173,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#famille_add"> NOUVEAU</a>
+                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#famille_add"> AJOUTER</a>
                                         <B>  <h3> Liste des Familles</h3></B>
 
                                     </div>
@@ -217,7 +217,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#forme_add"> NOUVEAU</a>
+                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#forme_add"> AJOUTER</a>
                                         <B>  <h3> Liste des Formes</h3></B>
 
                                     </div>
@@ -261,7 +261,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#labo_add"> NOUVEAU</a>
+                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#labo_add"> AJOUTER</a>
                                         <B>  <h3> Liste des Laboratoires</h3></B>
 
                                     </div>
@@ -305,7 +305,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#loc_add"> NOUVEAU</a>
+                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#loc_add"> AJOUTER</a>
                                         <B>  <h3> Liste des Localisations</h3></B>
 
                                     </div>
@@ -349,7 +349,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#motif_add"> NOUVEAU</a>
+                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#motif_add"> AJOUTER</a>
                                         <B>  <h3> Motifs de Mise en Rebus</h3></B>
 
                                     </div>
@@ -393,7 +393,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#special_add"> NOUVEAU</a>
+                                        <a class="btn btn-outline btn-primary fa fa-plus" data-toggle="modal" data-target="#special_add"> AJOUTER</a>
                                         <B>  <h3> Liste des specialites</h3></B>
 
                                     </div>
