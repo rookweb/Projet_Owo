@@ -13,7 +13,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="assets/dist/js/sb-admin-2.js"></script>
-    <script src="assets/vendor/datatables/js/jquery.dataTables.js"></script>
+    <script src="assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="assets/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
     <script src="assets/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
@@ -22,45 +22,51 @@
     <script type="text/javascript" src="assets/js/bootstrap-datepicker.min.js"></script>
 
 
+    <!-- Bootstrap Core Js -->
+    <script src="assets/dist/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="assets/dist/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="assets/dist/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Bootstrap Colorpicker Js -->
+    <script src="assets/dist/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+
+    <!-- Dropzone Plugin Js -->
+    <script src="assets/dist/plugins/dropzone/dropzone.js"></script>
+
+    <!-- Input Mask Plugin Js -->
+    <script src="assets/dist/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+
+    <!-- Multi Select Plugin Js -->
+    <script src="assets/dist/plugins/multi-select/js/jquery.multi-select.js"></script>
+
+    <!-- Jquery Spinner Plugin Js -->
+    <script src="assets/dist/plugins/jquery-spinner/js/jquery.spinner.js"></script>
+
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="assets/dist/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+    <!-- noUISlider Plugin Js -->
+    <script src="assets/dist/plugins/nouislider/nouislider.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="assets/dist/plugins/node-waves/waves.js"></script>
+
+    <!-- Custom Js -->
+    <script src="assets/dist/jss/admin.js"></script>
+    <script src="assets/dist/jss/pages/forms/advanced-form-elements.js"></script>
+
+    <!-- Demo Js -->
+    <script src="assets/dist/jss/demo.js"></script>
+
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-
-            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tout"]],
-//            "bFilter": false,
-
-            "language":{
-                "emptyTable": "Aucune donnée valide dans la table",
-                "lengthMenu": "Afficher _MENU_ éléments",
-                "first": "Premier",
-                "last": "Dernier",
-                "paginate":{
-                    "next": "Suivant",
-                    "previous": "Précédent"
-                },
-                "info": "Affichage de _START_ à _END_ des _TOTAL_ éléments",
-                "infoEmpty": "Aucune donnée à afficher",
-                
-                "loadingRecords":"- Chargement- Veuillez patienter... ",
-                "processing": "-Calcul- Veuillez patienter...",
-                "search": "Rechercher  "
-
-            },
-
             responsive: true
         });
     });
-
-    $(document).ready(function clic_modal(id) {
-        var evt = document.createEvent("MouseEvents");
-        evt.initMouseEvent("click, true, true, windows, 0, 0, 0, 0, 0, false, false, false, false, 0, null");
-        document.getElementById(id).dispatchEvent(evt);
-        alert("tête de con!!!");
-    });
-
-//    $(document).ready(function() {
-//        document.getElementById(<?php //echo $id;  ?>//).click();
-//        alert("tête de con!!!");
-//    });
     </script>

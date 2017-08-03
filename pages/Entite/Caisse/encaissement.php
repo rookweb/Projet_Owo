@@ -1,9 +1,16 @@
 <?php 
-    global $bdd;
-    $fournisseurs = $bdd->prepare('SELECT V.DATE_VENTE ,V.STATUT,C.NOM_CLI,V.CODE_VENTE, V.STATUT, PV.MONTANT_VENTE FROM vente V JOIN produit_vendu PV ON V.CODE_VENTE=PV.CODE_VENTE JOIN client C ON V.CODE_CLI=C.CODE_CLI WHERE V.STATUT="en attente"');
-    $fournisseurs->execute();
-    $data=$fournisseurs->fetchAll();
-    $four=array()
+
+global $bdd;
+$caisse = $bdd->query('SELECT * 
+from vente v, encaissement e, utilisateur u, produit_vendu p, produit pr
+where v.CODE_VENTE = e.CODE_VENTE
+and e.CODE_USER = u.CODE_USER
+and p.CODE_PRODUIT=pr.CODE_PRODUIT');
+$caisse->execute();
+$data=$caisse->fetchAll();
+
+$cai=array();
+
 ?>
 
             <div class="row">
@@ -31,12 +38,12 @@
                                         <th>Action</th>
                                     </tr>
                                 <tbody>
-                               <?php foreach ($data as $d){?>
+                               <?php foreach ($data as $d) { ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $d->DATE_VENTE; ?></td>
-                                        <td><?php echo $d->NOM_CLI; ?></td>
-                                        <td><?php echo $d->CODE_VENTE; ?></td>
-                                        <td class="center"><?php echo $d->STATUT; ?></td>
+                                        <td><?php echo $d->DATE_ENCAISSEMENT; ?></td>
+                                        <td><?php echo $d->PRENOM_USER; ?></td>
+                                        <td><?php echo $d->DESIGNATION; ?></td>
+                                        <td><?php echo 'Non régle'; ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-primary fa fa-gear" href="#">encaisser</a>
                                             <!-- l'appuie du bouton doit declencher un popup pour definir le mode de paiement et les informations necessaires --> 
