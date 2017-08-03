@@ -51,8 +51,6 @@ if (isset($_POST['adduser'])){
                         $lastId = (int)$bdd->lastInsertId();
                     }
                // }
-
-                print_r($_POST);
                // echo json_encode($json);
 				echo '<body onload ="alert(\'Utilisateur mis a jour avec succès\')">';
 				echo '<meta http-equiv="refresh" content="0;URL=../../../index.php?page=liste_utilisateur">';

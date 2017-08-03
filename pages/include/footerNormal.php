@@ -70,3 +70,33 @@
         });
     });
     </script>
+
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+
+            lengthMenu [[10, 25, 50, -1], [10, 25, 50, Tout]],
+            bFilter false,
+
+            language{
+                emptyTable Aucune donnée valide dans la table,
+                lengthMenu Afficher _MENU_ éléments,
+                first Premier,
+                last Dernier,
+                paginate{
+                    next Suivant,
+                    previous Précédent
+                },
+                info Affichage de _START_ à _END_ des _TOTAL_ éléments,
+                infoEmpty Aucune donnée à afficher,
+                
+                loadingRecords- Chargement- Veuillez patienter... ,
+                processing -Calcul- Veuillez patienter...,
+                search Rechercher  
+
+            },
+
+            responsive true
+        });
+    });
+</script>

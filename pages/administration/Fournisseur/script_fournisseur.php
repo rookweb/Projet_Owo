@@ -60,7 +60,7 @@ if (isset($_POST['addfrs'])){
             if ($req->rowCount() != 0) {
                 $json['erreur'] = 'doublon';
             } else {
-                $req = $bdd->prepare("INSERT INTO fournisseur ( raison_social, conctact, tel, tel_urg, email, adresse,  solde_compte)
+                $req = $bdd->prepare("INSERT INTO fournisseur ( RAISON_SOCIAL, CONCTACT, TEL, TEL_URG, EMAIL, ADRESSE,  SOLDE_COMPTE)
                                                 VALUES(:raison_social,:conctact, :tel, :tel_urg,:email, :adresse, :solde_compte)");
                 $req->execute(array(
                     'raison_social'=>$raison,

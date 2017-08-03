@@ -52,7 +52,7 @@ $four=array();
                                         <td class="center">
                                             <a type="button" id="" class="btn btn-primary" data-toggle="modal" data-target=""" href="?page=update_client&amp;id=<?php echo $d->CODE_CLI; ?>"> Mod</a>
                                             <a class="btn btn-outline btn-success fa fa-eye" href="#"> Aff</a>
-                                            <a class="btn btn-outline btn-warning fa fa-times" href="pages/administration/Client/script_delete_client.php?id=<?php echo $d->CODE_CLI; ?>"> Sup</a>
+                                            <a class="btn btn-outline btn-warning fa fa-times" href="pages/administration/Client/script_delete_client.php?id=<?php echo $d->CODE_CLI; ?>" onclick = "if (! confirm('Confirmer la suppression?')) return false;"> Sup</a>
                                         </td>
                                     </tr>
                                 <?php } ?>

@@ -1,3 +1,44 @@
+<?php
+    global $bdd;
+$commerciale= $bdd->prepare('SELECT code_com,nom_com,prenom_com,date_emb,tel_com, tel_urg, chiffre, pourcentage FROM commerciale');
+$commerciale->execute();
+$data=$commerciale->fetchAll();
+$four=array();
+?>
+
+
+
+
+
+
+
+
+
+
+<?php 
+    $banque = $bdd->query('SELECT CODE_BANQUE, DESCRIPTION FROM banque');
+    $classe = $bdd->query('SELECT CODE_CLASSE, DESCRIPTION FROM classe_produit');
+    $exploitant = $bdd->query('SELECT CODE_EXPLOITANT, LIBELLE FROM exploitant');
+    $famille = $bdd->query('SELECT CODE_FAMILLE, NOM_FAMILLE FROM famille_produit');
+    $forme = $bdd->query('SELECT CODE_FORME, NOM_FORME FROM forme');
+    $laboratoire = $bdd->query('SELECT CODE_LAB, NOM_LABORATOIRE FROM laboratoire');
+    $localisation = $bdd->query('SELECT CODE_LOCALISATION, NOM_LOCALISATION FROM localisation');
+    $motif = $bdd->query('SELECT CODE_MOTIF, DESCRIPTION FROM motif');
+    $specialite = $bdd->query('SELECT CODE_SPECIALITE, NOM_SPECIALITE FROM specialite');
+?>
+
+<?php 
+    $banque = $bdd->query('SELECT CODE_BANQUE, DESCRIPTION FROM banque');
+    $classe = $bdd->query('SELECT CODE_CLASSE, DESCRIPTION FROM classe_produit');
+    $exploitant = $bdd->query('SELECT CODE_EXPLOITANT, LIBELLE FROM exploitant');
+    $famille = $bdd->query('SELECT CODE_FAMILLE, NOM_FAMILLE FROM famille_produit');
+    $forme = $bdd->query('SELECT CODE_FORME, NOM_FORME FROM forme');
+    $laboratoire = $bdd->query('SELECT CODE_LAB, NOM_LABORATOIRE FROM laboratoire');
+    $localisation = $bdd->query('SELECT CODE_LOCALISATION, NOM_LOCALISATION FROM localisation');
+    $motif = $bdd->query('SELECT CODE_MOTIF, DESCRIPTION FROM motif');
+    $specialite = $bdd->query('SELECT CODE_SPECIALITE, NOM_SPECIALITE FROM specialite');
+?>
+
 <?php 
     $banque = $bdd->query('SELECT CODE_BANQUE, DESCRIPTION FROM banque');
     $classe = $bdd->query('SELECT CODE_CLASSE, DESCRIPTION FROM classe_produit');
@@ -34,6 +75,13 @@
                 </div>
                 <!-- /.col-lg-12 -->
 
+                <?php 
+                    global $bdd;
+                    $banque= $bdd->prepare('SELECT CODE_BANQUE, DESCRIPTION FROM banque');
+                    $banque->execute();
+                    $data=$banque->fetchAll();
+                ?>
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -52,10 +100,12 @@
                                         <th>Action</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $banque->fetch()){  ?>
+                               <?php foreach ($data as $d) {
+                                   # code...
+                               }{  ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['num_banque']; ?></td>
-                                        <td><?php echo $donnees['description']; ?></td>
+                                        <td><?php echo $d->NUM_BANQUE; ?></td>
+                                        <td><?php echo $d->DESCRIPTION; ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-success fa fa-edit" data-toggle="modal" data-target="#banque_mod"> MODIFIER</a>
                                             <a class="btn btn-outline btn-warning fa fa-times" data-toggle="modal" data-target="#banque_sup"> SUPPRIMER</a>
@@ -80,6 +130,13 @@
                             <h1 class="page-header">CLASSES</h1>
                         </div>
                         <!-- /.col-lg-12 -->
+
+                        <?php
+                            global $bdd;
+                            $classe= $bdd->prepare('SELECT CODE_CLASSE, DESCRIPTION FROM classe_produit');
+                            $classe->execute();
+                            $data=$classe->fetchAll();
+                        ?>
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -124,7 +181,12 @@
                             <h1 class="page-header">EXPLOITANTS</h1>
                         </div>
                         <!-- /.col-lg-12 -->
-
+                        <?php 
+                            global $bdd;
+                            $exploitant= $bdd->prepare('SELECT CODE_EXPLOITANT, LIBELLE FROM exploitant');
+                            $exploitant->execute();
+                            $data=$exploitant->fetchAll();
+                        ?>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
@@ -169,6 +231,14 @@
                         </div>
                         <!-- /.col-lg-12 -->
 
+                        <?php 
+                            global $bdd;
+                            $famille = $bdd->prepare('SELECT CODE_FAMILLE, NOM_FAMILLE FROM famille_produit');
+                            $famille->execute();
+                            $data=$famille->fetchAll();
+                            $four=array();
+                        ?>
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
@@ -212,6 +282,14 @@
                             <h1 class="page-header">FORME</h1>
                         </div>
                         <!-- /.col-lg-12 -->
+
+                        <?php 
+                            global $bdd;
+                            $forme = $bdd->prepare('SELECT CODE_FORME, NOM_FORME FROM forme');
+                            $commerciale->execute();
+                            $data=$commerciale->fetchAll();
+                            $four=array();
+                        ?>
 
                         <div class="row">
                             <div class="col-lg-12">

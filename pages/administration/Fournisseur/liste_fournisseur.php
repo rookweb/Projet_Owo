@@ -38,6 +38,7 @@ $four=array();
                                     </tr>
                                 <tbody>
                                <?php foreach ($data as $d){?>
+
                                     <tr class="odd gradeX">
                                         <td><?php echo $d->RAISON_SOCIAL; ?></td>
                                         <td><?php echo $d->CONCTACT; ?></td>
@@ -48,7 +49,7 @@ $four=array();
                                         <td class="center">
                                             <a class="btn btn-outline btn-primary fa fa-money" href=""> Pay</a>
                                             <a class="btn btn-outline btn-success fa fa-edit" href="?page=update_fournisseur&amp;id=<?php echo $d->CODE_FOURNISSEUR; ?>"> Mod</a>
-                                            <a class="btn btn-outline btn-warning fa fa-times" href="pages/administration/Fournisseur/script_delete_fournisseur.php?id=<?php echo $d->CODE_FOURNISSEUR; ?>"> Sup</a>
+                                            <a class="btn btn-outline btn-warning fa fa-times" href="pages/administration/Fournisseur/script_delete_fournisseur.php?id=<?php echo $d->CODE_FOURNISSEUR; ?>" onclick = "if (! confirm('Confirmer la suppression?')) return false;"> Sup</a>
                                         </td>
                                     </tr>
                                 <?php } ?>

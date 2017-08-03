@@ -48,7 +48,7 @@
                                         <td class="center"><?php if($d->STATUT == 0){echo "Actif";} else {echo "Desactiver";} ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-primary fa fa-gear" href="?page=update_utilisateur&amp;id=<?php echo $d->CODE_USER; ?>"> Modifier</a>
-                                            <a class="btn btn-outline btn-success fa fa-times" href="pages/administration/utilisateurs/script_delete_utilisateur.php?id=<?php echo $d->CODE_USER; ?>"> Desactiver</a>
+                                            <a class="btn btn-outline btn-success fa fa-times" href="pages/administration/utilisateurs/script_delete_utilisateur.php?id=<?php echo $d->CODE_USER; ?>" > Desactiver</a>
                                             <a class="btn btn-outline btn-warning fa fa-times" href="#"> Reinitialiser</a>
                                         </td>
                                     </tr>

@@ -69,7 +69,7 @@ $forme = $bdd->query('SELECT code_forme,nom_forme FROM forme');
                                     <input class="form-control" id="interne" name="interne">
                                 </div>
                                 <div class="form-group col-lg-4 col-xm-2">
-                                    <a class="btn btn-primary" role="tab" data-toggle="tab" href="#tab2" >suivant</a>
+                                    <a class="btn btn-primary" role="tab" data-toggle="tab2" href="#tab2" >suivant</a>
                                 </div>
                             </div>   
                         </div>

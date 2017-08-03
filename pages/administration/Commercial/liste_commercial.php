@@ -49,8 +49,8 @@ $four=array();
                                         <td><?php echo $d->chiffre; ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-primary fa fa-edit" href="?page=update_commercial&amp;id=<?php echo $d->code_com; ?>"> Mod</a>
-                                            <a class="btn btn-outline btn-success fa fa-money" href="#"> Pay</a>
-                                            <a class="btn btn-outline btn-warning fa fa-times" href=\"#\" onclick=confirme('"pages/administration/commercial/script_delete_commerciale.php?id=<?php echo $d->code_com; ?>"')> Sup</a>
+                                            <a class="btn btn-outline btn-success fa fa-money"  href="#"> Pay</a>
+                                            <a class="btn btn-outline btn-warning fa fa-times" href="pages/administration/commercial/script_delete_commerciale.php?id=<?php echo $d->code_com; ?>" onclick = "if (! confirm('Confirmer la suppression?')) return false;"> Sup</a>
                                         </td>
                                     </tr>
                                 <?php } ?>

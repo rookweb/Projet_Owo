@@ -28,7 +28,7 @@ $four=array();
                                     <div class="col-lg-8 col-lg-push-2">
                                         <div class="row">
                                             <div class="form-group">
-                                                <div class="form-group col-lg-5">
+                                                <div class="form-group col-lg-6">
                                                     <label for="titre">Titre</label>
                                                     <select class="form-control" id="titre" name="titre">
                                                         <option value="Mr">Monsieur</option>
@@ -37,20 +37,13 @@ $four=array();
                                                     </select> 
                                                 </div>
                                             
-                                                <div class="form-group col-lg-5">
+                                                <div class="form-group col-lg-6">
                                                     <label for="commercial">Commercial</label>
                                                     <select class="form-control" id="commercial" name="commercial">
                                                     <?php foreach ($data as $d) { ?>
                                                         <option value="<?php echo $d->code_com; ?>"><?php echo $d->nom_com." ".$d->prenom_com; ?></option>
                                                     <?php } ?>
                                                     </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group col-lg-2">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name = "droit" value="1">droit au credit </input>
-                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -79,13 +72,17 @@ $four=array();
                                             <input type="text" class="form-control "  id="numpiece" name="numpiece"/>
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <label for="datep">Date piece </label>
+                                            <label for="datep">Date piece </label> <i class="fa fa-calendar"></i>
                                             <input type="text" class="form-control datepicker" data-provide="datepicker" placeholder="YYYY/MM/DD" id="datep" name="datep"/>
                                         </div>
+
                                         <div class="form-group col-lg-6">
-                                            <label for="calendrar"> </label>
-                                            <i class="fa fa-calendar"></i>
-                                     </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name = "droit" value="1">droit au credit </input>
+                                                </label>
+                                            </div>
+                                        </div>
 
                                     </div> 
 
