@@ -27,12 +27,13 @@ if (isset($_POST['addprod'])){
         $localisation = isset($_POST['localisation']) ? $_POST['localisation'] : '';
         $specialite = isset($_POST['specialite']) ? $_POST['specialite'] : '';
         $forme = isset($_POST['forme']) ? $_POST['forme'] : '';
+        $id = isset($_POST['memids']) ? $_POST['memids'] : '';
 
         //Formattage
        
 
+                $req = $bdd->prepare("UPDATE produit SET CODE_FAMILLE=:code_famille,CODE_FORME=:code_forme,CODE_CLASSE=:code_classe,CODE_CLASSE=:code_classe,CODE_LOCALISATION=:code_localisation,CODE_SPECIALITE=:code_specialite,CODE_LAB=:code_lab,DESIGNATION=:designation,DCI=:dci,SOUMIS_TVA=:soumis_tva,DATE_COMMERCIALISATION=:date_commercialisation,DATE_ENREGISTREMENT=:date_enregistrement,DATE_PEREMPTION=:date_peremption,PRIX_PRODUIT=:prix_produit,CIP=:cip,CODE_BARRE=:code_barre,TAUX_TVA=:taux_tva WHERE code_produit=:id");
         
-                $req = $bdd->prepare("INSERT INTO produit (CODE_FAMILLE,CODE_FORME,CODE_CLASSE,CODE_EXPLOITANT,CODE_LOCALISATION,CODE_SPECIALITE,CODE_LAB,DESIGNATION,DCI,SOUMIS_TVA,DATE_COMMERCIALISATION,DATE_ENREGISTREMENT,DATE_PEREMPTION,PRIX_PRODUIT,CIP,CODE_BARRE,TAUX_TVA) VALUES (:code_famille,:code_forme,:code_classe,:code_exploitant,:code_localisation,:code_specialite,:code_lab,:designation,:dci,:soumis_tva,:date_commercialisation,:date_enregistrement,:date_peremption,:prix_produit,:cip,:code_barre,:taux_tva)");
                 $req->execute(array(
                     'code_famille'=>$famille,
                     'code_forme'=>$forme,
@@ -54,7 +55,7 @@ if (isset($_POST['addprod'])){
                 $lastId = (int)$bdd->lastInsertId();
         }
         // echo json_encode($json);
-      echo '<body onload ="alert(\'Produit ajouté avec succès\')">';
+      echo '<body onload ="alert(\'Produit modifie avec succès\')">';
        echo '<meta http-equiv="refresh" content="0;URL=../../../index.php?page=list_produit">';
     
 ?>

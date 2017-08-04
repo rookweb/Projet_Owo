@@ -19,10 +19,10 @@ if($req->rowCount() > 0){
                         <div class="panel-heading">
                             <?php echo '<a class="btn btn-outline btn-primary fa fa-print col-md-offset-4"  href="?page=etat_produit&sql='.$sql2.'"' ?>> IMPRIMER</a>
                             <a class="btn btn-outline btn-success fa fa-file" href="#"> EXPORTER</a>
-                            <a class="btn btn-outline btn-warning fa fa-plus" href="?page=ajout_client"> NOUVEAU</a>
+                            <a class="btn btn-outline btn-warning fa fa-plus" href="?page=produit"> NOUVEAU</a>
 
                             <B>  <h3> Liste des produits </h3></B>
-                            <form action="search_traitement.php" method="post">
+                          <!--  <form action="search_traitement.php" method="post">
                                 <div class="input-group custom-search-form col-md-4 col-md-offset-4">
                                     <input type="text" name="searchValue" class="form-control" placeholder="Liste par molécule de base...">
                                     <span class="input-group-btn">
@@ -31,7 +31,7 @@ if($req->rowCount() > 0){
                                         </button>
                                     </span>
                                 </div>
-                            </form>
+                            </form> -->
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -57,9 +57,9 @@ if($req->rowCount() > 0){
                                     <td><?php echo $data['PRIX_PRODUIT'] ?></td>
                                     <td><?php echo $data['QTE_STOCK'] ?></td>
                                     <td class="center">
-                                        <a class="btn btn-outline btn-primary fa fa-edit" href="#"> Mod</a>
+                                        <a class="btn btn-outline btn-primary fa fa-edit" href="?page=update_produit&amp;id=<?php echo $data['CODE_PRODUIT']; ?>"> Mod</a>
                                         <a class="btn btn-outline btn-success fa fa-eye" href="#"> Aff</a>
-                                        <a class="btn btn-outline btn-warning fa fa-times" href="#"> Sup</a>
+                                        <a class="btn btn-outline btn-warning fa fa-times" href="pages/administration/Produit/script_delete_produit.php?id=<?php echo $data['CODE_PRODUIT']; ?>" onclick = "if (! confirm('Confirmer la suppression?')) return false;"> Sup</a>
                                     </td>
                                 </tr>
                                 <?php } ?>

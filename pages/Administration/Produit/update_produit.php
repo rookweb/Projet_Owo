@@ -8,6 +8,40 @@ include("/pages/include/connexionDB.php");
  $vente=0;
 ?>
 
+<?php 
+    global $bdd;
+    $id=$_GET['id'];
+    $bdd->beginTransaction();
+        $produit=$bdd->prepare('SELECT * FROM produit WHERE code_produit=?');
+        $produit->execute(array($id));
+
+        $classe=$bdd->prepare('SELECT * FROM classe_produit');
+        $classe->execute();
+
+        $famille= $bdd->prepare('SELECT * FROM famille_produit');
+        $famille->execute();
+
+        $labo= $bdd->prepare('SELECT CODE_LAB,NOM_LABORATOIRE FROM laboratoire');
+        $labo->execute();
+
+        $localisation= $bdd->prepare('SELECT CODE_LOCALISATION,NOM_LOCALISATION FROM localisation');
+        $localisation->execute();
+
+        $exploitant= $bdd->prepare('SELECT CODE_EXPLOITANT,LIBELLE FROM exploitant');
+        $exploitant->execute();
+
+        $classe= $bdd->prepare('SELECT CODE_CLASSE,DESCRIPTION FROM classe_produit');
+        $classe->execute();
+
+        $specialite= $bdd->prepare('SELECT CODE_SPECIALITE,NOM_SPECIALITE FROM specialite');
+        $specialite->execute();
+
+        $forme= $bdd->prepare('SELECT CODE_FORME,NOM_FORME FROM forme');
+        $forme->execute();
+    $bdd->commit();
+?>
+
+
 <?php
 
     if(!empty($_POST['pv'])){
@@ -43,43 +77,38 @@ include("/pages/include/connexionDB.php");
         </ul>
 
         <div class="panel-body">
-            <form role="form" method="post" action="pages/administration/Produit/script_ajout_new.php" name="insert_produit">
+            <form role="form" method="post" action="pages/administration/Produit/script_update_produit.php" name="update_produit">
+                <?php foreach ($produit as $p) { ?>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
 
-                    <?php
-                                global $bdd;
-                                    $localisation= $bdd->prepare('SELECT CODE_FAMILLE,NOM_FAMILLE FROM famille_produit');
-                                    $localisation->execute();
-                                    $data=$localisation->fetchAll();
-                                    $four=array();
-                            ?>
+                    <input type="hidden" name="memids" value="<?php echo $id; ?>" />
                         <div class="col-lg-12">
                         <h1>les identifiants</h1>
                         <h3>Les codes</h3>
                             <div class="row">
                                 <div class="form-group col-lg-4">
                                     <label for="cip">CIP</label>
-                                    <input class="form-control" id="cip" name="cip">
+                                    <input class="form-control" id="cip" name="cip" value="<?php echo $p->CIP; ?>">
                                 </div>
                                 <div class="form-group col-lg-4 col-xm-2">
                                     <label for="barre">Barre</label>
-                                    <input class="form-control" id="barre" name="barre">
+                                    <input class="form-control" id="barre" name="barre" value="<?php echo $p->CODE_BARRE; ?>">
                                 </div>
-                               <!--  <div class="form-group col-lg-4 col-xm-2">
+                                <!-- <div class="form-group col-lg-4 col-xm-2">
                                     <label for="interne">Interne</label>
-                                    <input class="form-control" id="interne" name="interne">
+                                    <input class="form-control" id="interne" name="interne" value=" ?>>
                                 </div> -->
                                 <div class="form-group col-lg-4 col-xm-2">
                                     <label for="famille">Famille</label>
-                                    <select class="form-control" id="famille" name="famille">
-                                    <?php foreach ($data as $d) {
-                                        echo '<option value="'.$d->CODE_FAMILLE.'">';
+                                    <select class="form-control" id="famille" name="famille" >
+                                    <?php foreach ($famille as $f) { ?>
+                                        <option value=<?php if($f->CODE_FAMILLE==$p->CODE_PRODUIT) {echo '"'.$f->CODE_FAMILLE.'"'." selected=\"selected\"";} else {echo '"'.$f->CODE_FAMILLE.'"';} ?>>
 
-                                        echo $d->NOM_FAMILLE;
+                                        <?php echo $f->NOM_FAMILLE; ?>
 
-                                        echo '</option>';
-                                    } ?>
+                                        </option>;
+                                    <?php } ?>
                                 </select> 
                                 </div>
                                 <div class="form-group col-lg-4 col-xm-2">
@@ -109,23 +138,23 @@ include("/pages/include/connexionDB.php");
                             <h1>Informations</h1>
                             <div class="form-group col-lg-6">
                                 <label for="dci">Denomination Commune Internatioanl</label>
-                                <input class="form-control" id="dci" name="dci">
+                                <input class="form-control" id="dci" name="dci" value="<?php echo $p->DCI; ?>">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="designation">Designation</label>
-                                <input class="form-control" id="designation" name="designation">
+                                <input class="form-control" id="designation" name="designation" value="<?php echo $p->DESIGNATION; ?>">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="commercialisation">Date commercialisation</label>
-                                <input type="text" class="form-control mydatepicker"  data-provide="datepicker" placeholder="DD/MM/YYY" id="commercialisation" name="commercialisation"/>
+                                <input type="text" class="form-control mydatepicker"  data-provide="datepicker" placeholder="DD/MM/YYY" id="commercialisation" name="commercialisation" value="<?php echo $p->DATE_COMMERCIALISATION; ?>"/>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="peremption">Date peremption</label>
-                                <input type="text" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYY" id="peremption" name="peremption"/>
+                                <input type="text" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYY" id="peremption" name="peremption" value="<?php echo $p->DATE_PEREMPTION; ?>"/>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="enregistrement">Date enregistrement</label>
-                                <input class="form-control datepicker" data-provide="datepicker" id="enregistrement" name="enregistrement" placeholder="DD/MM/YYY" type="text"/>
+                                <input class="form-control datepicker" data-provide="datepicker" id="enregistrement" name="enregistrement" placeholder="DD/MM/YYY" type="text" value="<?php echo $p->DATE_ENREGISTREMENT; ?>"/>
                             </div>
 
                             <div class="form-group col-lg-6">
@@ -139,6 +168,7 @@ include("/pages/include/connexionDB.php");
                         <div class="col-lg-8">
                             
                         <h1>Prix</h1>
+                            
                             <div class="form-group">
                                 <div class="checkbox">
                                     <label>
@@ -147,19 +177,22 @@ include("/pages/include/connexionDB.php");
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="taux_tva">Taux TVA</label>
-                                    <input class="form-control" type="text" id="taux_tva" name="taux_tva">
+                                    <input class="form-control" type="number"  id="taux_tva" name="taux_tva" value="<?php echo $p->TAUX_TVA; ?>">
+
                                 </div>
+
                                 <div class="form-group col-lg-6">
                                     <label for="achat">Prix d'achat</label>
-                                    <input class="form-control" type="text" id="achat" name="achat">
+                                    <input class="form-control" type="number" id="achat" name="achat" >
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="coef">Coeficient</label>
-                                    <input class="form-control" type="text" id="coef" name="coef" onblur="calculPrix();">
+                                    <input class="form-control" type="number" id="coef" name="coef" onblur="calculPrix();">
                                 </div>
+                                
                                 <div class="form-group col-lg-6 col-xm-2">
                                     <label for="vente">Prix de vente</label>
-                                    <input class="form-control" type="text" id="vente" name="vente" />
+                                    <input class="form-control" id="vente" name="vente" value = "<?php echo $vente;?>" required value="<?php echo $p->PRIX_PRODUIT; ?>"/>
                                 </div>
                             </div>
                             <div class="form-group col-lg-6">
@@ -174,118 +207,82 @@ include("/pages/include/connexionDB.php");
 
                         <div class="col-lg-11">
                             <h1 class="text-center">Autres informations</h1>
-                                <?php
-                                global $bdd;
-                                    $labo= $bdd->prepare('SELECT CODE_LAB,NOM_LABORATOIRE FROM laboratoire');
-                                    $labo->execute();
-                                    $data=$labo->fetchAll();
-                                    $four=array();
-                                ?>
+                                
                             <div class="form-group col-lg-4">
                                 <label for="laboratoire">Laboratoire</label>
                                 <select class="form-control" id="laboratoire" name="laboratoire">
-                                    <?php foreach ($data as $d) {
-                                        echo '<option value="'.$d->CODE_LAB.'">';
+                                    <?php foreach ($labo as $l) { ?>
+                                        <option value=<?php if($l->CODE_LAB==$p->CODE_LAB) {echo '"'.$l->CODE_LAB.'"'." selected=\"selected\"";} else {echo '"'.$l->CODE_LAB.'"';} ?>>
 
-                                        echo $d->NOM_LABORATOIRE;
+                                        <?php echo $l->NOM_LABORATOIRE; ?>
 
-                                        echo '</option>';
-                                    } ?>
+                                        </option>;
+                                    <?php } ?>
                                 </select> 
                             </div>
-                            <?php
-                                global $bdd;
-                                    $localisation= $bdd->prepare('SELECT CODE_LOCALISATION,NOM_LOCALISATION FROM localisation');
-                                    $localisation->execute();
-                                    $data=$localisation->fetchAll();
-                                    $four=array();
-                            ?>
+                            
                             <div class="form-group col-lg-4">
                                 <label for="localisation">Localisation</label>
                                 <select class="form-control" id="localisation" name="localisation">
-                                    <?php foreach ($data as $d) {
-                                        echo '<option value="'.$d->CODE_LOCALISATION.'">';
+                                <?php foreach ($localisation as $l) { ?>
+                                    <option value=<?php if($l->CODE_LOCALISATION==$p->CODE_LOCALISATION) {echo '"'.$l->CODE_LOCALISATION.'"'." selected=\"selected\"";} else {echo '"'.$l->CODE_LOCALISATION.'"';} ?>>
 
-                                                echo $d->NOM_LOCALISATION;
+                                        <?php echo $l->NOM_LOCALISATION; ?>
 
-                                        echo '</option>';
-                                     } ?>
+                                        </option>;
+                                    <?php } ?>
                                 </select> 
                             </div>
+
                             <div class="form-group col-lg-4">
-                            <?php
-                                global $bdd;
-                                    $exploitant= $bdd->prepare('SELECT CODE_EXPLOITANT,LIBELLE FROM exploitant');
-                                    $exploitant->execute();
-                                    $data=$exploitant->fetchAll();
-                                    $four=array();
-                                ?>
+                            
                                 <label for="exploitant">Exploitant</label>
                                 <select class="form-control" id="exploitant" name="exploitant">
-                                    <?php foreach ($data as $d) {
-                                        echo '<option value="'.$d->CODE_EXPLOITANT.'">';
+                                <?php foreach ($exploitant as $e) { ?>
+                                    <option value=<?php if($e->CODE_EXPLOITANT==$p->CODE_EXPLOITANT) {echo '"'.$e->CODE_EXPLOITANT.'"'." selected=\"selected\"";} else {echo '"'.$e->CODE_EXPLOITANT.'"';} ?>>
 
-                                        echo $d->LIBELLE;
+                                        <?php echo $e->LIBELLE; ?>
 
-                                        echo '</option>';
-                                    } ?>
+                                    </option>;
+                                    <?php } ?>
                                 </select> 
                             </div>
                             <div class="form-group col-lg-4">
-                            <?php
-                                global $bdd;
-                                    $classe= $bdd->prepare('SELECT CODE_CLASSE,DESCRIPTION FROM classe_produit');
-                                    $classe->execute();
-                                    $data=$classe->fetchAll();
-                                    $four=array();
-                                ?>
                                 <label for="classe">Classe</label>
                                 <select class="form-control" id="classe" name="classe">
-                                    <?php foreach ($data as $d) {
-                                        echo '<option value="'.$d->CODE_CLASSE.'">';
+                                    <?php foreach ($classe as $c) { ?>
+                                    <option value=<?php if($c->CODE_CLASSE==$p->CODE_CLASSE) {echo '"'.$c->CODE_CLASSE.'"'." selected=\"selected\"";} else {echo '"'.$c->CODE_CLASSE.'"';} ?>>
 
-                                        echo $d->DESCRIPTION;
+                                        <?php echo $c->DESCRIPTION; ?>
 
-                                        echo '</option>';
-                                    } ?>
+                                    </option>;
+                                    <?php } ?>
                                 </select> 
                             </div>
                             <div class="form-group col-lg-4">
-                            <?php
-                                global $bdd;
-                                    $specialite= $bdd->prepare('SELECT CODE_SPECIALITE,NOM_SPECIALITE FROM specialite');
-                                    $specialite->execute();
-                                    $data=$specialite->fetchAll();
-                                    $four=array();
-                                ?>
+                            
                                 <label for="specialite">Specialite</label>
                                 <select class="form-control" id="specialite" name="specialite">
-                                    <?php foreach ($data as $d) {
-                                        echo '<option value="'.$d->CODE_SPECIALITE.'">';
+                                    <?php foreach ($specialite as $s) { ?>
+                                    <option value=<?php if($s->CODE_SPECIALITE==$p->CODE_SPECIALITE) {echo '"'.$s->CODE_SPECIALITE.'"'." selected=\"selected\"";} else {echo '"'.$s->CODE_SPECIALITE.'"';} ?>>
 
-                                        echo $d->NOM_SPECIALITE;
+                                        <?php echo $s->NOM_SPECIALITE; ?>
 
-                                        echo '</option>';
-                                    } ?>
+                                    </option>;
+                                    <?php } ?>
                                 </select> 
                             </div>
                             <div class="form-group col-lg-4">
-                            <?php
-                                global $bdd;
-                                    $forme= $bdd->prepare('SELECT CODE_FORME,NOM_FORME FROM forme');
-                                    $forme->execute();
-                                    $data=$forme->fetchAll();
-                                    $four=array();
-                                ?>
+                            
                                 <label for="forme">Forme</label>
                                 <select class="form-control" id="forme" name="forme">
-                                    <?php foreach ($data as $d) {
-                                        echo '<option value="'.$d->CODE_FORME.'">';
+                                    <?php foreach ($forme as $f) { ?>
+                                    <option value=<?php if($f->CODE_FORME==$p->CODE_FORME) {echo '"'.$f->CODE_FORME.'"'." selected=\"selected\"";} else {echo '"'.$f->CODE_FORME.'"';} ?>>
 
-                                        echo $d->NOM_FORME;
+                                        <?php echo $f->NOM_FORME; ?>
 
-                                        echo '</option>';
-                                    } ?>
+                                    </option>;
+                                    <?php } ?>
                                 </select> 
                             </div>      
                         </div>
@@ -295,6 +292,7 @@ include("/pages/include/connexionDB.php");
                         </div>
                     </div>
                 </div>
+                <?php } ?>
             </form>
         </div>   
     </div>     
@@ -307,12 +305,11 @@ include("/pages/include/connexionDB.php");
 
 <script type="text/javascript">
     
-       function calculPrix() {
+        function calculPrix() {
 
-        var tva=document.insert_produit.taux_tva.value;
-        var pa=document.insert_produit.achat.value;
-        var coef=document.insert_produit.coef.value;
-        var pv=(pa*coef)+(pa*tva);
+        var tva=document.update_produit.taux_tva.value;
+        var pa=document.update_produit.achat.value;
+        var coef=document.update_produit.coef.value;
 
         if (document.getElementById('tva').checked == true){
             var pv=(pa*coef)+(pa*tva);
@@ -321,7 +318,7 @@ include("/pages/include/connexionDB.php");
             var pv=(pa*coef);
         }
 
-        document.insert_produit.vente.value=pv;
+        document.update_produit.vente.value=pv;
        }
    
 </script>
