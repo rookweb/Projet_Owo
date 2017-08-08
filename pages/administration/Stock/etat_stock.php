@@ -1,5 +1,5 @@
 <?php 
-    $stock = $bdd->query('SELECT code_cip,designation,dci,prix_vente,qte_stock FROM produit P JOIN stock S  WHERE S.code_produit = P.code_produit');
+    $stock = $bdd->query('SELECT p.cip,p.designation,p.dci,p.qte_stock FROM produit p ORDER BY p.designation');
 ?>
 
             <div class="row">
@@ -27,17 +27,17 @@
                                         <th>Code CIP</th>
                                         <th>Designation</th>
                                         <th>DCI</th>
-                                        <th>Prix unitaire</th>
+<!--                                        <th>Prix unitaire</th>-->
                                         <th>Quantite en stock</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                               <?php while ($donnees = $stock->fetch()){  ?>
+                               <?php while ($donnees = $stock->fetch(PDO::FETCH_ASSOC)){  ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['code_cip']; ?></td>
+                                        <td><?php echo $donnees['cip']; ?></td>
                                         <td><?php echo $donnees['designation']; ?></td>
                                         <td><?php echo $donnees['dci']; ?></td>
-                                        <td><?php echo $donnees['prix_vente']; ?></td>
+<!--                                        <td>--><?php //echo $donnees['prix_vente']; ?><!--</td>-->
                                         <td class="center"><?php echo $donnees['qte_stock']; ?></td>
                                     </tr>
                                 <?php } ?>

@@ -5,11 +5,24 @@
 	**/
 	function login($d){
 		global $bdd;
-		$req=$bdd->prepare('SELECT login,pwd,utilisateur.code_privilege,privileges.designation,privileges.level FROM utilisateur LEFT JOIN privileges ON utilisateur.code_privilege=privileges.code_privilege WHERE login=:login AND pwd=:pwd');
-		$req->execute(array(':login'=>$d['Login'], ':pwd'=>$d['Pwd']));
+    $bdd->beginTransaction();
+
+        $reload=$bdd->prepare('SELECT login FROM utilisateur WHERE login=:login AND pwd=NULL');
+        $reload->execute(array(':login'=>$d['Login']));
+        $reload=$reload->fetchAll();
+
+        $req=$bdd->prepare('SELECT login,pwd,utilisateur.code_privilege,privileges.designation,privileges.level FROM utilisateur LEFT JOIN privileges ON utilisateur.code_privilege=privileges.code_privilege WHERE login=:login AND pwd=:pwd');
+        $req->execute(array(':login'=>$d['Login'], ':pwd'=>$d['Pwd']));
 		$data=$req->fetchAll();
-		print_r($data);
-		if(count($data)>0){ 
+    $bdd->commit();
+
+
+		if(count($reload)>0){
+			echo '<body onload ="alert(\'Votre mot de passe doit etre renseigné \')">';
+			echo '<meta http-equiv="refresh" content="0;URL=../../../index.php?page=reload_mdp">';
+		}
+		//print_r($data);
+		if(count($data)>0){
 			$_SESSION['Auth']=$data[0];
 			return true;
 		}

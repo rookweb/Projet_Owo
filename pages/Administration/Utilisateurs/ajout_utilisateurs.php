@@ -37,7 +37,7 @@
                                     <label for="prenom">Pr&eacute;nom </label>
                                     <input class="form-control" type="text" id="prenom" name="prenom" REQUIRED />
                                 </div>
-                                <div class="form-group col-lg-10">
+                                <div class="form-group col-lg-6">
                                     <label for="priv">Privil&egrave;ge</label>
                                     <select class="form-control" id="priv" name="priv">
                                         <?php foreach ($data as $d){
@@ -49,7 +49,7 @@
                                         } ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-lg-1">
+                                <div class="form-group col-lg-6">
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox" value="1" id="statut" name="statut">  Bloqu&eacute;
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
 
-                            <div class=" form-group col-lg-8">
+                            <div class=" form-group col-lg-12">
 
                                 <h3>INFORMATION DE CONNEXION</h3>
                                 <div class="form-group col-lg-6">
@@ -69,14 +69,14 @@
                                     <label for="pass">Mot de Passe</label>
                                     <input type = "password" class="form-control" id="pass" name = "pass" REQUIRED/>
                                 </div>
-                                <div class="form-group ">
+                                <div class="form-group col-lg-6">
                                     <label for="pass2"> Confirmer Mot de Passe</label>
                                     <input type = "password" class="form-control" id="pass2" name = "pass2" REQUIRED/>
                                 </div>
 
-                            <div class="col-lg-8">
+                            <div class="col-lg-12">
                                 <button  type="submit" class="btn btn-success col-lg-5" name="adduser" >Enregistrer </button>
-                                <button type="reset" class="btn btn-danger col-lg-5 col-lg-push-2" >Annuler </button>
+                                <button type="reset" class="btn btn-danger col-lg-5 col-lg-push-2   " >Annuler </button>
                             </div>
                             </div>
 

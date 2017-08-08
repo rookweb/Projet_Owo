@@ -10,7 +10,7 @@ if (isset($_POST['addcli'])){
     //<editor-fold defaultstate="collapsed" desc=" case 'ajout_client' ">
 
      // if (isset($_GET['form'])) {
-            if ( isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['tel1']) && isset($_POST['adresse'])) {
+            //if ( isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['tel1']) && isset($_POST['adresse'])) {
                 $commercial = isset($_POST['commercial']) ? $_POST['commercial'] : '';
                 $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
                 $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
@@ -50,7 +50,6 @@ if (isset($_POST['addcli'])){
                   ECHO   $datep ; ?> </Br> <?Php
                 ECHO  $droit ; ?> </Br> <?Php
                 ECHO  $depassement ; ?> </Br> <?Php
-**/
 
                 //Traitement
                 $json = array();
@@ -77,11 +76,9 @@ if (isset($_POST['addcli'])){
                     $req->execute(array($nom));
                     if ($req->rowCount() != 0) {
                         $json['erreur'] = 'doublon';
-                    } else {
-                        $req = $bdd->prepare("INSERT INTO client (CODE_COM,TITRE, NOM_CLI, PRENOM_CLI, TYPE_PIECE, NUM_PIECE, DATE_PIECE,
-                        EMAIL, ADRESSE, TEL1, TEL2, STATUT,TOTAL_DU, CREDIT_MAX, DELAI_PAIEMENT, REMISE, DROIT_CREDIT, DEPASSEMENT)
-                                                VALUES(:code_com,:titre,:Nom_cli,:prenom_cli,:type_piece, :num_piece, :date_piece,
-						:Email, :adresse, :tel1, :tel2, :statut,:total_du, :credit_max, :delai_paiement, :remise, :droit_credit, :depassement)");
+                    } else { **/
+
+                        $req = $bdd->prepare("INSERT INTO client (CODE_COM,TITRE, NOM_CLI, PRENOM_CLI, TYPE_PIECE, NUM_PIECE, DATE_PIECE,EMAIL, ADRESSE, TEL1, TEL2, STATUT,TOTAL_DU, CREDIT_MAX, DELAI_PAIEMENT, REMISE, DROIT_CREDIT, DEPASSEMENT) VALUES(:code_com,:titre,:Nom_cli,:prenom_cli,:type_piece,:num_piece, :date_piece,:Email,:adresse,:tel1,:tel2,:statut,:total_du,:credit_max,:delai_paiement,:remise, :droit_credit,:depassement)");
                         $req->execute(array(
                         'code_com'=>$commercial,
                         'titre' =>$titre,
@@ -100,18 +97,17 @@ if (isset($_POST['addcli'])){
 						'delai_paiement'=>$delai, 
 						'remise' =>$remise,
 						'droit_credit'=>$droit,
-						'depassement' =>$depassement)
-                        );
+						'depassement' =>$depassement));
                         $lastId = (int)$bdd->lastInsertId();
 
                     }
-                }
+               // }
                // echo json_encode($json);
 				echo '<body onload ="alert(\'Client ajouté avec succès\')">';
 				echo '<meta http-equiv="refresh" content="0;URL=../../../index.php?page=list_client">';
-            }
+          //  }
      //  }
-}
+//}
 
 
 ?>

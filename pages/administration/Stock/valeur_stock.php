@@ -1,5 +1,5 @@
 <?php
-$stock = $bdd->query('SELECT code_cip,designation,dci,prix_vente,qte_stock FROM produit P JOIN stock S  WHERE S.code_produit = P.code_produit');
+$stock = $bdd->query('SELECT cip,designation,dci,prix_produit,qte_stock,(qte_stock * prix_produit) as montant_stock FROM produit p');
 $total=0;
 $cout=0;
 ?>
@@ -33,17 +33,15 @@ $cout=0;
                                     </tr>
                                 </thead>
                                 <tbody>
-                               <?php while ($donnees = $stock->fetch()){  ?>
+                               <?php while ($donnees = $stock->fetch(PDO::FETCH_ASSOC)){  ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['code_cip']; ?></td>
+                                        <td><?php echo $donnees['cip']; ?></td>
                                         <td><?php echo $donnees['designation']; ?></td>
-                                        <td><?php echo $donnees['prix_vente']; ?></td>
+                                        <td><?php echo $donnees['prix_produit']; ?></td>
                                         <td><?php echo $donnees['qte_stock']; ?></td>
-                                        <td class="center"><?php
-                                            $cout=$donnees['prix_vente']*$donnees['qte_stock'];
-                                            echo $cout; ?></td>
+                                        <td><?php echo $donnees['montant_stock']; ?></td>
                                     </tr>
-                                <?php $total+=$cout;
+                                <?php $total+=$donnees['montant_stock'];
                                }
                                ?>
                                 </tbody>

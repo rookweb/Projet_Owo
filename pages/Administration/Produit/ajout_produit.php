@@ -56,15 +56,30 @@ include("/pages/include/connexionDB.php");
                             ?>
                         <div class="col-lg-12">
                         <h1>les identifiants</h1>
-                        <h3>Les codes</h3>
+                        
                             <div class="row">
+                                <div class="col-lg-3">
+                                    <h3>La photo</h3>
+                                        <div class="form-group">
+                                        <br/>
+                                            <textarea class="form-control" rows="4" id="photo"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="photo">File input</label>
+                                            <input type="file" id="photo" name="photo">
+                                        </div>
+                                    </div>
                                 <div class="form-group col-lg-4">
                                     <label for="cip">CIP</label>
                                     <input class="form-control" id="cip" name="cip">
                                 </div>
-                                <div class="form-group col-lg-4 col-xm-2">
+                                <div class="form-group col-lg-3 col-xm-2">
                                     <label for="barre">Barre</label>
                                     <input class="form-control" id="barre" name="barre">
+                                </div>
+                                <div class="form-group col-lg-1 col-xm-2">
+                                <br/>
+                                    <a class="btn btn-primary"  href="#" >lire</a>
                                 </div>
                                <!--  <div class="form-group col-lg-4 col-xm-2">
                                     <label for="interne">Interne</label>
@@ -82,10 +97,11 @@ include("/pages/include/connexionDB.php");
                                     } ?>
                                 </select> 
                                 </div>
-                                <div class="form-group col-lg-4 col-xm-2">
+
+                                <div class="form-group col-lg-4 col-xm-2" style="padding-top: 1.8em;">
                                     <a class="btn btn-primary" role="tab" data-toggle="tab" href="#tab2" >suivant</a>
                                 </div>
-                            </div>   
+                            </div>  
                         </div>
                         <!--
                         <div class="col-lg-3">
@@ -129,6 +145,7 @@ include("/pages/include/connexionDB.php");
                             </div>
 
                             <div class="form-group col-lg-6">
+                            <br/>
                                 <a class="btn btn-primary col-lg-12" role="tab" data-toggle="tab" href="#tab3" >suivant</a>
                             </div>
                         </div> 

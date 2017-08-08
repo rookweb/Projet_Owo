@@ -4,7 +4,7 @@ if (isset($_POST['update_cli'])){
     //<editor-fold defaultstate="collapsed" desc=" case 'ajout_client' ">
 
      // if (isset($_GET['form'])) {
-            if ( isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['tel1']) && isset($_POST['adresse'])) {
+           // if ( isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['tel1']) && isset($_POST['adresse'])) {
                 $commercial = isset($_POST['commercial']) ? $_POST['commercial'] : '';
                 $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
                 $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
@@ -48,7 +48,7 @@ if (isset($_POST['update_cli'])){
 **/
                 
                         $req = $bdd->prepare("UPDATE client SET TITRE=:titre, NOM_CLI=:Nom_cli, PRENOM_CLI=:prenom_cli, TYPE_PIECE=:type_piece, NUM_PIECE:=num_piece, DATE_PIECE:=date_piece,
-                        EMAIL:=Email, ADRESSE=:adresse, TEL1=:tel1, TEL2=:tel2, STATUT=:statut,TOTAL_DU=:total_du, CREDIT_MAX=:credit_max, DELAI_PAIEMENT=:delai_paiement, REMISE=:remise, DROIT_CREDIT=:droit_credit, DEPASSEMENT=:depassement WHERE CODE_CLI=:code");
+                        EMAIL=:Email, ADRESSE=:adresse, TEL1=:tel1, TEL2=:tel2, STATUT=:statut,TOTAL_DU=:total_du, CREDIT_MAX=:credit_max, DELAI_PAIEMENT=:delai_paiement, REMISE=:remise, DROIT_CREDIT=:droit_credit, DEPASSEMENT=:depassement WHERE CODE_CLI=:code");
                         $req->execute(array(
                         'titre' =>$titre,
                         'Nom_cli'=>$nom, 
@@ -77,7 +77,7 @@ if (isset($_POST['update_cli'])){
                // echo json_encode($json);
                 echo '<body onload ="alert(\'Client mis a jour avec succès\')">';
                 echo '<meta http-equiv="refresh" content="0;URL=../../../index.php?page=list_client">';
-            }
+           // }
      //  }
 
 
