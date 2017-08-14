@@ -10,7 +10,7 @@ include "../../include/connexionDB.php";
 if (isset($_POST['addprod'])){
 
         $cip = isset($_POST['cip']) ? $_POST['cip'] : '';
-        $barre = isset($_POST['barre']) ? $_POST['barre'] : '';
+        //$barre = isset($_POST['barre']) ? $_POST['barre'] : '';
         $interne = isset($_POST['interne']) ? $_POST['interne'] : '';
         $famille = isset($_POST['famille']) ? $_POST['famille'] : '';
         $dci = isset($_POST['dci']) ? $_POST['dci'] : '';
@@ -19,7 +19,7 @@ if (isset($_POST['addprod'])){
         $peremption = isset($_POST['peremption']) ? $_POST['peremption'] : '';
         $enregistrement = isset($_POST['enregistrement']) ? $_POST['enregistrement'] : '';
         $tva = isset($_POST['tva']) ? $_POST['tva'] : '';
-        $taux_tva = isset($_POST['taux_tva']) ? $_POST['taux_tva'] : '';
+        $taux_tva = isset($_POST['taux_tva']) ? $_POST['taux_tva'] : 0;
         $vente = isset($_POST['vente']) ? $_POST['vente'] : '';
         $laboratoire = isset($_POST['laboratoire']) ? $_POST['laboratoire'] : '';
         $exploitant = isset($_POST['exploitant']) ? $_POST['exploitant'] : '';
@@ -32,7 +32,7 @@ if (isset($_POST['addprod'])){
        
 
         
-                $req = $bdd->prepare("INSERT INTO produit (CODE_FAMILLE,CODE_FORME,CODE_CLASSE,CODE_EXPLOITANT,CODE_LOCALISATION,CODE_SPECIALITE,CODE_LAB,DESIGNATION,DCI,SOUMIS_TVA,DATE_COMMERCIALISATION,DATE_ENREGISTREMENT,DATE_PEREMPTION,PRIX_PRODUIT,CIP,CODE_BARRE,TAUX_TVA) VALUES (:code_famille,:code_forme,:code_classe,:code_exploitant,:code_localisation,:code_specialite,:code_lab,:designation,:dci,:soumis_tva,:date_commercialisation,:date_enregistrement,:date_peremption,:prix_produit,:cip,:code_barre,:taux_tva)");
+                $req = $bdd->prepare("INSERT INTO produit (CODE_FAMILLE,CODE_FORME,CODE_CLASSE,CODE_EXPLOITANT,CODE_LOCALISATION,CODE_SPECIALITE,CODE_LAB,DESIGNATION,DCI,SOUMIS_TVA,DATE_COMMERCIALISATION,DATE_ENREGISTREMENT,DATE_PEREMPTION,PRIX_PRODUIT,CIP,TAUX_TVA) VALUES (:code_famille,:code_forme,:code_classe,:code_exploitant,:code_localisation,:code_specialite,:code_lab,:designation,:dci,:soumis_tva,:date_commercialisation,:date_enregistrement,:date_peremption,:prix_produit,:cip,:taux_tva)");
                 $req->execute(array(
                     'code_famille'=>$famille,
                     'code_forme'=>$forme,
@@ -49,7 +49,6 @@ if (isset($_POST['addprod'])){
                     'date_peremption'=>$peremption,
                     'prix_produit'=>$vente,
                     'cip'=>$cip,
-                    'code_barre'=>$barre,
                     'taux_tva'=>$taux_tva));
                 $lastId = (int)$bdd->lastInsertId();
         }

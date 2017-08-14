@@ -65,14 +65,6 @@
                                     <label for="login">Login</label>
                                     <input  type = "text" class="form-control" id="login" name ="login" REQUIRED/>
                                 </div>
-                                <div class="form-group col-lg-6">
-                                    <label for="pass">Mot de Passe</label>
-                                    <input type = "password" class="form-control" id="pass" name = "pass" REQUIRED/>
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <label for="pass2"> Confirmer Mot de Passe</label>
-                                    <input type = "password" class="form-control" id="pass2" name = "pass2" REQUIRED/>
-                                </div>
 
                             <div class="col-lg-12">
                                 <button  type="submit" class="btn btn-success col-lg-5" name="adduser" >Enregistrer </button>

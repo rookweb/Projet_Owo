@@ -7,19 +7,23 @@
 		global $bdd;
     $bdd->beginTransaction();
 
-        $reload=$bdd->prepare('SELECT login FROM utilisateur WHERE login=:login AND pwd=NULL');
+        $reload=$bdd->prepare('SELECT code_user,login FROM utilisateur WHERE login=:login AND pwd IS NULL');
         $reload->execute(array(':login'=>$d['Login']));
         $reload=$reload->fetchAll();
 
         $req=$bdd->prepare('SELECT login,pwd,utilisateur.code_privilege,privileges.designation,privileges.level FROM utilisateur LEFT JOIN privileges ON utilisateur.code_privilege=privileges.code_privilege WHERE login=:login AND pwd=:pwd');
-        $req->execute(array(':login'=>$d['Login'], ':pwd'=>$d['Pwd']));
+        $req->execute(array(':login'=>$d['Login'], ':pwd'=>sha1($d['Pwd'])));
 		$data=$req->fetchAll();
     $bdd->commit();
 
 
 		if(count($reload)>0){
+			print_r($reload);
+			foreach ($reload as $r) {
+				$identif=$r->code_user;
+			}
 			echo '<body onload ="alert(\'Votre mot de passe doit etre renseigné \')">';
-			echo '<meta http-equiv="refresh" content="0;URL=../../../index.php?page=reload_mdp">';
+			echo '<meta http-equiv="refresh" content="0;URL=?page=reload_mdp&amp;id='.$identif.'">';
 		}
 		//print_r($data);
 		if(count($data)>0){

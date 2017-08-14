@@ -16,14 +16,12 @@ if (isset($_POST['adduser'])){
                 $privilege = isset($_POST['priv']) ? $_POST['priv'] : '';
                 $statut = isset($_POST['statut']) ? $_POST['statut'] : '0';
                 $login = isset($_POST['login']) ? $_POST['login'] : '';
-                $pass = isset($_POST['pass']) ? $_POST['pass'] : '';
                 $date = date("Y-m-d H:i:s");
                // $date_enr=date('Y-m-d');
                 //Formattage
                 $nom = htmlspecialchars($nom);
                 $prenom = htmlspecialchars($prenom);
                 $login = htmlspecialchars($login);
-                $pass = htmlspecialchars($pass);
                 //TEST
             /**    ECHO $titre ; ?> </Br> <?Php
                ECHO $nom ; ?> </Br> <?Php
@@ -40,13 +38,12 @@ if (isset($_POST['adduser'])){
                 ECHO  $depassement ; ?> </Br> <?Php
 **/
                     {
-                        $req = $bdd->prepare("INSERT INTO utilisateur (CODE_PRIVILEGE,NOM_USER,PRENOM_USER,LOGIN,PWD,STATUT,DATE_ENREGISTREMENT) VALUES(:code_privilege,:nom_user,:prenom_user,:login, :pass, :statut, :date_enregistrement)");
+                        $req = $bdd->prepare("INSERT INTO utilisateur (CODE_PRIVILEGE,NOM_USER,PRENOM_USER,LOGIN,STATUT,DATE_ENREGISTREMENT) VALUES(:code_privilege,:nom_user,:prenom_user,:login, :statut, :date_enregistrement)");
                         $req->execute(array(
                         'code_privilege'=>$privilege,
             						'nom_user'=>$nom, 
             						'prenom_user'=>$prenom, 
             						'login'=>$login,
-            						'pass' =>$pass,
                         'statut' =>$statut,
                         'date_enregistrement' => $date
                         //'date_enr'=>$date_enr

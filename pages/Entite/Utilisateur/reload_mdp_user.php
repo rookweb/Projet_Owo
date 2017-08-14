@@ -24,7 +24,7 @@
                 <div class="panel-body">
                     <div class="row">
 
-                        <form role="form" method="post" action="pages/Entite/Utilisateurs/script_reload_mdp.php">
+                        <form role="form" method="post" action="pages/Entite/Utilisateur/script_reload_mdp.php">
                         <?php foreach ($data as $d) {  ?>
                             <input type="hidden" name="memids" value="<?php echo $id; ?>" />
 

@@ -12,7 +12,7 @@ include "../../include/connexionDB.php";
                 $id = isset($_POST['memids']) ? $_POST['memids'] : '';
 
                     {
-                        $req = $bdd->prepare("UPDATE utilisateur SET STATUT='0' WHERE utilisateur.CODE_USER=:code");
+                        $req = $bdd->prepare("UPDATE `utilisateur` SET `STATUT` = '1' WHERE `utilisateur`.`CODE_USER`=:code");
                         $req->execute(array('code'=>$id));
                     }
                // }
