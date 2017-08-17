@@ -42,7 +42,7 @@ LEFT JOIN encaissement AS E ON V.CODE_ENCAISSEMENT = E.CODE_ENCAISSEMENT
 LEFT JOIN produit_vendu AS P ON P.CODE_VENTE = V.CODE_VENTE ,
 utilisateur";
   $req=$bdd->query($sql);
-  }
+  
 
 ?>
 <div class="row">

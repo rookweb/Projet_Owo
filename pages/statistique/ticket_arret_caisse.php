@@ -32,11 +32,10 @@
                                 <tbody>
                                <?php while ($donnees = $fournisseurs->fetch()){  ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['raison_social']; ?></td>
                                         <td><?php echo $donnees['contact']; ?></td>
-                                        <td><?php echo $donnees['adresse']; ?></td>
-                                        <td><?php echo $donnees['tel']; ?></td>
-                                        <td><?php echo $donnees['email']; ?></td>
+                                        <td><?php echo $donnees['ADRESSE']; ?></td>
+                                        <td><?php echo $donnees['TEL']; ?></td>
+                                        <td><?php echo $donnees['EMAIL']; ?></td>
                                         <td class="center"><?php echo $donnees['solde_compte']; ?></td>
                                         <td class="center">
                                             <a class="btn btn-outline btn-primary fa fa-money" href="#"> Pay</a>

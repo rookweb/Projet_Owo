@@ -37,34 +37,41 @@ WHERE J.DATE BETWEEN ".$_POST['dated']." AND ".$_POST['datef'] ;
                         <div class="panel-body">
                         <div class="container">
                             <form role="form" method="post" >
-                                    <div class="row">
-
+                            
                                           <input type="text" class="hidden" name="page" value="recap_benefice" />
 
-                                        <div class="col-lg-8 col-lg-push-0 text-align-center">
+                                           <div class="col-lg-8 col-lg-push-0 text-align-center">
                                                 
-                                            <div class="form-group col-lg-3">
+                                            <div class="form-group col-lg-5">
+                                                <label for="date"> Date debut: </label>
                                                 <input type="text" placeholder="Date debut" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYYY" id="dated" name="dated"/>
                                             </div>
                                         
-                                            <div class="form-group col-lg-3">
+                                            <div class="form-group col-lg-5">
+                                              <label for="date"> Date fin: </label>
                                                 <input type="text" placeholder="Date fin" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYYY" id="datef" name="datef"/>
                                            </div>
 
-                                            <div class="form-group col-lg-4">
+                                            <div class="form-group col-lg-0" style="padding-top:2em;">
                                                 <input class="btn btn-outline btn-success btn-sm" type="submit" name="go" id="go" value="valider" />
                                             </div>
                                         </div>
                                     </div>
                               </form>
                             </div >
+                            <hr style="border-top: 0.2em solid black; padding-bottom: 0.5em;" width="80%" />
 
                             <table class="table table-striped table-bordered table-hover">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>Date journee</th>
-                                        <th>ID encaisseent</th>
+                                        <th>Encaissement</th>
+                                        <th>Article vendu</th>
+                                        <th>Montant</th>
+                                        <th>Operateur</th>
+                                        <th>Date</th>
+                                        <th>Heure</th>  
+                                        <th>Action</th>                                                                               
                                     </tr>
                                 <tbody>
                                 <?php 
@@ -86,6 +93,9 @@ WHERE J.DATE BETWEEN ".$_POST['dated']." AND ".$_POST['datef'] ;
                                     <tr class="odd gradeX">
                                         <td><?php echo $donnees2['DATE']; ?></td>
                                         <td><?php echo $donnees2['CODE_ENCAISSEMENT']; ?></td>
+                                          <td class="center">
+                                            <a class="btn btn-outline btn-primary fa fa-money" href="#">Imprimer</a>
+                                        </td>
                                     </tr>
 
                                           }
@@ -98,6 +108,7 @@ WHERE J.DATE BETWEEN ".$_POST['dated']." AND ".$_POST['datef'] ;
                               }
 
                                ?>
+                            
                              </tbody>
                             </table>
                         </div>

@@ -1,5 +1,26 @@
-<?php 
-    $produits = $bdd->query('SELECT designation,nom_forme,code_cip,dci FROM produit P JOIN forme F WHERE F.code_forme = P.code_forme');
+<?php
+$dd="";
+$df="";
+
+if (isset($_POST['dated']) && isset($_POST['datef']) && $_POST['dated'] !='' && $_POST['datef'] !='' ) {
+     $dd = $_POST['dated'];
+     $df = $_POST['datef'];
+
+  global $bdd;
+
+  $sql2= "SELECT V.CODE_VENTE,U.LOGIN,V.DATE_VENTE,J.DATE,C.PRENOM_CLI,C.NOM_CLI,U.NOM_USER,J.DATE_OUVERTURE,J.DATE_FERMETURE,J.CODE_USER_OUVRIR,
+J.CODE_USER_FERMER FROM 
+client C LEFT JOIN vente V ON V.CODE_CLI=C.CODE_CLI LEFT JOIN utilisateur U ON V.CODE_USER= U.CODE_USER LEFT JOIN journee J ON V.CODE_JOURNEE=J.CODE_JOURNEE
+WHERE V.DATE_VENTE BETWEEN ".$_POST['dated']." AND ".$_POST['datef'] ;
+     $req2= $bdd->query($sql2); 
+
+
+  }
+     $sql= "SELECT V.CODE_VENTE,J.DATE,U.LOGIN,V.DATE_VENTE,C.NOM_CLI,C.PRENOM_CLI,U.NOM_USER,J.DATE_OUVERTURE,J.DATE_FERMETURE,J.CODE_USER_OUVRIR,
+J.CODE_USER_FERMER FROM
+client C LEFT JOIN vente V ON V.CODE_CLI=C.CODE_CLI LEFT JOIN utilisateur U ON V.CODE_USER= U.CODE_USER LEFT JOIN journee J ON V.CODE_JOURNEE=J.CODE_JOURNEE 
+WHERE J.CODE_USER_OUVRIR=U.CODE_USER AND J.CODE_USER_FERMER=U.CODE_USER ORDER BY C.NOM_CLI";
+     $req= $bdd->query($sql); 
 ?>
 
       <div class="row">
@@ -18,19 +39,31 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                        
-                            <form role="form" method="post">
-                                <div class="col-lg-8">
-                                    <div class="form-group col-lg-6">
-                                        <label for="date"> Periode: </label>
-                                        <input type="date" name="periode_1" id="periode_1">
+                         <div class="container">
+                            <form role="form" method="post" >
+                            
+                                          <input type="text" class="hidden" name="page" value="recap_benefice" />
+
+                                           <div class="col-lg-8 col-lg-push-0 text-align-center">
+                                                
+                                            <div class="form-group col-lg-5">
+                                                <label for="date"> Date debut: </label>
+                                                <input type="text" placeholder="Date debut" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYYY" id="dated" name="dated"/>
+                                            </div>
+                                        
+                                            <div class="form-group col-lg-5">
+                                              <label for="date"> Date fin: </label>
+                                                <input type="text" placeholder="Date fin" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYYY" id="datef" name="datef"/>
+                                           </div>
+
+                                            <div class="form-group col-lg-0" style="padding-top:2em;">
+                                                <input class="btn btn-outline btn-success btn-sm" type="submit" name="go" id="go" value="valider" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-lg-4">
-                                        <input type="text" name="periode_2" id="periode_2">
-                                    </div>
-                                        <input class="btn btn-outline btn-success" type="submit" name="go" id="go" value="Ouvrir" />
-                                </div>
-                            </form>
+                              </form>
+                            </div >
+                            <hr style="border-top: 0.2em solid black; padding-bottom: 0.5em;" width="80%" />
 
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
@@ -39,22 +72,39 @@
                                         <th>Type d'operation</th>
                                         <th>Utilisateur</th>
                                         <th>Identifiant</th>
-                                        <th>Action</th>
                                     </tr>
                                 <tbody>
-                               <?php while ($donnees = $produits->fetch()){  ?>
+                               <?php
+                              if (!isset($_POST['go']) || ($_POST['dated'] =='' && $_POST['datef'] =='')) {
+                                    while ($donnees = $req->fetch(PDO::FETCH_ASSOC)){  ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $donnees['code_cip']; ?></td>
-                                        <td><?php echo $donnees['code_cip']; ?></td>
-                                        <td><?php echo $donnees['designation']; ?></td>
-                                        <td><?php echo $donnees['dci']; ?></td>
-                                        <td class="center">
-                                            <a class="btn btn-outline btn-primary fa fa-gear" href="#"></a>
-                                            <a class="btn btn-outline btn-success fa fa-times" href="#"></a>
-                                            <a class="btn btn-outline btn-warning fa fa-times" href="#"></a>
-                                        </td>
+                                    <td><?php echo $donnees['DATE']; ?></td>
+                                    <td><?php echo $donnees['CODE_VENTE']; ?></td>
+                                    <td><?php echo $donnees['CODE_USER_OUVRIR']; ?></td>
+                                    <td><?php echo $donnees['LOGIN']; ?></td>
                                     </tr>
-                                <?php } ?>
+                                <?php } 
+                              }else{
+                                 if (!empty($_POST['dated']) && !empty($_POST['datef'])){
+                                       
+                                          if (isset($req2)) {
+                                            while ($donnees2 = $req2->fetch(PDO::FETCH_ASSOC)){  ?>
+                                                <tr class="odd gradeX">
+                                                 <td><?php echo $donnees['DATE']; ?></td>
+                                    <td><?php echo $donnees['CODE_VENTE']; ?></td>
+                                    <td><?php echo $donnees['CODE_USER_OUVRIR']; ?></td>
+                                    <td><?php echo $donnees['LOGIN']; ?></td>
+                                          }
+                                         
+                                          <?php }
+
+                                       } 
+                                 } 
+                              }
+
+                                   
+
+                               ?>
                                 </tbody>
                                 </tbody>
                             </table>

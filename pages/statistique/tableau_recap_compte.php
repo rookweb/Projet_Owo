@@ -1,6 +1,6 @@
 <?php
 global $bdd;
-$sql="SELECT client.TITRE,client.NOM_CLI,client.CREDIT_MAX,client.DELAI_PAIEMENT,client.REMISE,client.TOTAL_DU,client.DEPASSEMENT,operationcompte.SOLDE FROM client ,operationcompte";
+$sql="SELECT client.TITRE,client.NOM_CLI,client.PRENOM_CLI,client.DROIT_CREDIT,client.CREDIT_MAX,client.DELAI_PAIEMENT,client.REMISE,client.TOTAL_DU,client.DEPASSEMENT, operationcompte.SOLDE FROM client ,operationcompte";
 $req= $bdd->query($sql);
 ?>
 
@@ -30,7 +30,7 @@ $req= $bdd->query($sql);
                                         <th>Credit Max</th>
                                         <th>Delai</th>
                                         <th>Remise</th>
-                                        <th>Credit</th>
+                                        <th>Droit au credit</th>
                                         <th>Solde</th>
                                         <th>Depassement</th>
                                     </tr>
@@ -38,11 +38,12 @@ $req= $bdd->query($sql);
                                <?php while ($donnees = $req->fetch(PDO::FETCH_ASSOC)){  ?>
                                     <tr class="odd gradeX">
                                         <td><?php echo $donnees['TITRE']; ?></td>
-                                        <td><?php echo $donnees['NOM_CLI']; ?></td>
+                                        <td><?php echo $donnees['NOM_CLI']; ?>
+                                        <?php echo $donnees['PRENOM_CLI']; ?></td>
                                         <td><?php echo $donnees['CREDIT_MAX']; ?> FCFA</td>
                                         <td><?php echo $donnees['DELAI_PAIEMENT']; ?></td>
                                         <td><?php echo $donnees['REMISE']; ?></td>
-                                        <td><?php echo $donnees['TOTAL_DU']; ?></td>
+                                        <td><?php echo $donnees['DROIT_CREDIT']; ?></td>
                                         <td><?php echo $donnees['DEPASSEMENT']; ?></td>
                                         <td><?php echo $donnees['SOLDE']; ?></td>
                                     </tr>

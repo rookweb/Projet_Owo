@@ -44,29 +44,30 @@ if (isset($_POST['dated']) && isset($_POST['datef']) && $_POST['dated'] !='' && 
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                           <div class="container">
-                        
                             <form role="form" method="post" >
-                                    <div class="row">
-
+                            
                                           <input type="text" class="hidden" name="page" value="recap_benefice" />
 
-                                        <div class="col-lg-8 col-lg-push-0 text-align-center">
+                                           <div class="col-lg-8 col-lg-push-0 text-align-center">
                                                 
-                                            <div class="form-group col-lg-3">
+                                            <div class="form-group col-lg-5">
+                                                <label for="date"> Date debut: </label>
                                                 <input type="text" placeholder="Date debut" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYYY" id="dated" name="dated"/>
                                             </div>
                                         
-                                            <div class="form-group col-lg-3">
+                                            <div class="form-group col-lg-5">
+                                              <label for="date"> Date fin: </label>
                                                 <input type="text" placeholder="Date fin" class="form-control datepicker" data-provide="datepicker" placeholder="DD/MM/YYYY" id="datef" name="datef"/>
                                            </div>
 
-                                            <div class="form-group col-lg-4">
+                                            <div class="form-group col-lg-0" style="padding-top:2em;">
                                                 <input class="btn btn-outline btn-success btn-sm" type="submit" name="go" id="go" value="valider" />
                                             </div>
                                         </div>
                                     </div>
                               </form>
                             </div >
+                            <hr style="border-top: 0.2em solid black; padding-bottom: 0.5em;" width="80%" />
 
                             <table class="table table-striped table-bordered table-hover">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -76,7 +77,6 @@ if (isset($_POST['dated']) && isset($_POST['datef']) && $_POST['dated'] !='' && 
                                         <th>Prix achat</th>
                                         <th>TVA</th>
                                         <th>Taux de TVA</th>
-                                        <th>Montant du TVA sur le produit</th>
                                         <th>Montant total</th>
                                         <th>Benefice</th>
                                     </tr>
@@ -94,7 +94,6 @@ if (isset($_POST['dated']) && isset($_POST['datef']) && $_POST['dated'] !='' && 
                                     <td><?php echo $donnees['PRIX_PRODUIT']; ?></td>
                                     <td><?php echo $donnees['SOUMIS_TVA']; ?></td>
                                     <td><?php echo $donnees['TAUX_TVA']; ?></td>
-                                    <td><?php echo $donnees['TVA SUR LE PRODUIT']; ?></td>
                                     <td><?php echo $donnees['MONTANT TOTAL']; ?></td>
                                     <td><?php echo $donnees['BENEFICE']; ?></td>
                                     </tr>
@@ -109,7 +108,6 @@ if (isset($_POST['dated']) && isset($_POST['datef']) && $_POST['dated'] !='' && 
                                                 <td><?php echo $donnees2['PRIX_PRODUIT']; ?></td>
                                                 <td><?php echo $donnees2['SOUMIS_TVA']; ?></td>
                                                 <td><?php echo $donnees2['TAUX_TVA']; ?></td>
-                                                <td><?php echo $donnees2['TVA SUR LE PRODUIT']; ?></td>
                                                 <td><?php echo $donnees2['MONTANT TOTAL']; ?></td>
                                                 <td><?php echo $donnees2['BENEFICE']; ?></td>
                                                </tr>
